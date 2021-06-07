@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This file is NOT compatible with Silverlight-->
+<Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform">
+  <Canvas Name="SVGRoot" Width="32" Height="32">
+    <Canvas.RenderTransform>
+      <TranslateTransform X="0" Y="0"/>
+    </Canvas.RenderTransform>
+    <Canvas.Resources/>
+    <!--Unknown tag: sodipodi:namedview-->
+    <!--Unknown tag: metadata-->
+    <Canvas Name="layer1">
+            <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1475" Fill="White" StrokeThickness="2" Stroke="Black" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Opacity="1">
+        <Path.Data>
+          <PathGeometry Figures="m -4.0437674 17.150757 c -0.3380854 0.603251 -5.252685 3.525041 -5.9441579 3.533876 -0.6914727 0.0088 -5.6791167 -2.786439 -6.0325047 -3.380855 -0.353387 -0.594415 -0.426432 -6.311479 -0.08835 -6.914729 0.338086 -0.6032505 5.252685 -3.5250405 5.944158 -3.5338751 0.6914733 -0.00883 5.6791174 2.7864384 6.0325049 3.3808541 0.3533875 0.594416 0.4264321 6.311479 0.088347 6.914729 z" FillRule="NonZero"/>
+        </Path.Data>
+        <Path.RenderTransform>
+          <MatrixTransform Matrix="1.7396631 0 0 1.5952014 30.083966 -5.9657688"/>
+        </Path.RenderTransform>
+      </Path>
+            <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                  Fill="{Binding Brush}" 
+                >
+        <Path.Data>
+          <PathGeometry Figures="M 27 25 V 7 l 5 9 z" FillRule="NonZero"/>
+        </Path.Data>
+      </Path>
+    </Canvas>
+  </Canvas>
+</Viewbox>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This file is NOT compatible with Silverlight-->
+<Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform">
+  <Canvas Name="svg900" Width="16.933333" Height="16.933334">
+    <Canvas.RenderTransform>
+      <TranslateTransform X="0" Y="0"/>
+    </Canvas.RenderTransform>
+    <Canvas.Resources/>
+    <!--Unknown tag: sodipodi:namedview-->
+    <!--Unknown tag: metadata-->
+    <Canvas Name="layer1">
+      <Canvas.RenderTransform>
+        <TranslateTransform X="0" Y="-280.06665"/>
+      </Canvas.RenderTransform>
+      <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1546" StrokeThickness="1.58749998" Stroke="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type Control}},FallbackValue=black}" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat">
+        <Path.Data>
+          <PathGeometry Figures="m 0.6063657 286.15071 h 5.790198 l 1.0343885 5.98043 h 8.8814738" FillRule="NonZero"/>
+        </Path.Data>
+      </Path>
+      <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path15463" StrokeThickness="1.58455729" Stroke="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type Control}},FallbackValue=black}" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat" Opacity="0.5">
+        <Path.Data>
+          <PathGeometry Figures="m 0.6063662 292.11857 h 5.790198 l 1.034388 -5.95827 h 8.8814738" FillRule="NonZero"/>
+        </Path.Data>
+      </Path>
+      <Canvas Name="text832" Opacity="1">
+        <Canvas.RenderTransform>
+          <ScaleTransform ScaleX="1.0739634" ScaleY="0.93113043"/>
+        </Canvas.RenderTransform>
+        <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path855" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type Control}},FallbackValue=black}" StrokeThickness="0.14004557">
+          <Path.Data>
+            <PathGeometry Figures="m 3.4630557 316.19906 q 0 0.21062 0.024617 0.62637 0.024617 0.41576 0.024617 0.62364 0 0.10941 -0.095733 0.11761 -0.339169 0.0246 -0.7768063 0.0246 -0.051969 0 -0.071116 -0.15591 -0.016411 -0.15864 -0.041028 -0.16138 -0.021882 0.0109 -0.05744 0.0465 -0.3063461 0.30908 -0.656456 0.30908 -0.5333705 0 -0.88348039 -0.42122 -0.33096324 -0.39388 -0.33096324 -0.94092 0 -0.63184 0.34190418 -1.01751 0.35558035 -0.39935 0.97374305 -0.39935 0.4294317 0 0.6783379 0.30088 0.010941 0.0137 0.019147 0.0137 0.024617 0 0.054705 -0.1313 0.032823 -0.13402 0.076587 -0.13402 0.1012036 0 0.3856679 0.0574 0.2707881 0.0547 0.3884031 0.093 0.041029 0.0164 0.041029 0.0438 0 0.0109 -0.00821 0.0574 -0.087528 0.49508 -0.087528 1.04759 z m -0.8807451 0.0164 q 0 -0.2325 -0.1477026 -0.38294 -0.1449674 -0.15317 -0.3801975 -0.15317 -0.23523 0 -0.3801974 0.15044 -0.1449674 0.15044 -0.1449674 0.38567 0 0.22155 0.1531731 0.38019 0.1531731 0.15865 0.3719917 0.15865 0.2324949 0 0.3801975 -0.15044 0.1477026 -0.15317 0.1477026 -0.3884 z" FillRule="NonZero"/>
+          </Path.Data>
+        </Path>
+      </Canvas>
+      <Canvas Name="text8325" Opacity="1">
+        <Canvas.RenderTransform>
+          <ScaleTransform ScaleX="1.0739634" ScaleY="0.93113043"/>
+        </Canvas.RenderTransform>
+        <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path852" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type Control}},FallbackValue=black}" StrokeThickness="0.14004558">
+          <Path.Data>
+            <PathGeometry Figures="m 3.6481906 304.78897 q 0 0.5744 -0.328228 0.96006 -0.3501099 0.41029 -0.913568 0.41029 -0.410285 0 -0.6619265 -0.23523 -0.019147 -0.0164 -0.032823 -0.0164 -0.027352 0 -0.051969 0.1012 -0.021882 0.1012 -0.054705 0.11214 -0.046499 0.0137 -0.7795415 0.0137 -0.1723197 0 -0.1723197 -0.0629 0 -0.008 0.00547 -0.041 0.0547047 -0.4349 0.0547047 -1.65755 0 -1.16794 -0.082057 -2.03228 l -0.002735 -0.0301 q 0 -0.0438 0.0847922 -0.0492 0.0601751 -0.003 0.47593057 -0.041 0.29267 -0.0273 0.4759307 -0.0273 0.051969 0 0.051969 0.0903 0 0.10668 -0.013676 0.28173 -0.016411 0.21608 -0.019147 0.28447 -0.013676 0.27078 -0.013676 0.73851 0 0.0848 0.043764 0.0848 0.021882 0 0.041029 -0.0219 0.246171 -0.26258 0.645515 -0.26258 0.5990162 0 0.9354499 0.40755 0.3118166 0.37746 0.3118166 0.99289 z m -0.9901545 -0.0301 q 0 -0.22703 -0.1394969 -0.38293 -0.1394969 -0.15865 -0.3637861 -0.15865 -0.2297596 0 -0.363786 0.15865 -0.1312912 0.1559 -0.1312912 0.3884 0 0.2407 0.128556 0.3884 0.1367616 0.15591 0.3719917 0.15591 0.2324948 0 0.3692565 -0.16138 0.128556 -0.15044 0.128556 -0.3884 z" FillRule="NonZero"/>
+          </Path.Data>
+        </Path>
+      </Canvas>
+    </Canvas>
+  </Canvas>
+</Viewbox>

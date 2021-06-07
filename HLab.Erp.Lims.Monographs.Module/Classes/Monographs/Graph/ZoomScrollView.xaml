@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph.ZoomScrollView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             x:Name="UserControl">
+    <!--<UserControl.Style>
+        <Style TargetType="{x:Type UserControl}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type UserControl}" >-->
+                        
+
+<ScrollViewer x:Name="ScrollViewer"
+             MouseMove="Grid_OnMouseMove"
+             MouseDown="Grid_OnMouseDown"
+             MouseUp="Grid_OnMouseUp"
+             HorizontalScrollBarVisibility="Auto"
+             VerticalScrollBarVisibility="Auto"
+             >
+    
+        <Grid
+            x:Name="Grid"
+            PreviewMouseWheel="Grid_OnPreviewMouseWheel"
+            MouseWheel="Grid_OnMouseWheel"
+            >
+            <Grid.LayoutTransform>
+                <TransformGroup>
+                    <ScaleTransform x:Name="ScaleTransform"/>
+                    <TranslateTransform x:Name="TranslateTransform"/>
+                </TransformGroup>
+            </Grid.LayoutTransform>
+
+            <ContentPresenter Content="{Binding ZoomedContent, ElementName=UserControl}" />
+        </Grid>
+    </ScrollViewer>
+
+
+                    <!--</ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Style>-->
+</UserControl>

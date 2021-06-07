@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph.Links.LinkFlowchartView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="100"
+             d:DataContext="{d:DesignInstance Type=links:LinkGraphViewModel, IsDesignTimeCreatable=True}"
+             >
+    <Grid>
+        <Canvas>
+
+            <Path 
+                x:Name="Path" 
+                Stroke="{Binding State.Current.Background, FallbackValue=blue}"  
+                StrokeThickness="{Binding StrokeThickness}"
+                StrokeDashOffset="{Binding StrokeDashOffset}"
+                StrokeDashArray="{Binding StrokeDashArray}"
+                MouseLeftButtonDown="Path_OnMouseLeftButtonDown">
+                <!--<Path x:Name="Path" Stroke="Blue" StrokeThickness="5">-->
+                <Path.Data>
+                    <PathGeometry>
+                        <PathGeometry.Figures>
+                            <PathFigure x:Name="Figure" StartPoint="0,100" IsClosed="False">
+                                <QuadraticBezierSegment Point1="-50,100" Point2="50,50"/>
+                                <QuadraticBezierSegment Point1="150,0" Point2="100,0"/>
+                            </PathFigure>
+                        </PathGeometry.Figures>
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+
+            <StackPanel x:Name="Label" VerticalAlignment="Center" Visibility="{Binding LabelVisibility}">
+                <Label Foreground="AliceBlue" Content="{Binding LeftViewModel.Model.Cost,FallbackValue=Left}"/>
+                <Label Foreground="AliceBlue" Content="{Binding LeftViewModel.Model.QtyAbs,FallbackValue=Right}"/>
+                <Label Foreground="AliceBlue" Content="{Binding Model.QtyAbs,FallbackValue=Right}"/>
+            </StackPanel>
+
+
+        </Canvas>
+    </Grid>
+
+</UserControl>

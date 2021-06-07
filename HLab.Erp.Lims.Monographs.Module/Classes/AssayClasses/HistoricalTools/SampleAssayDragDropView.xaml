@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="HLab.Erp.Lims.Monographs.Module.Classes.TestClasses.HistoricalTools.SampleAssayDragDropView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Border 
+            BorderThickness="2" 
+            CornerRadius="8" 
+            Opacity="50"
+            BorderBrush="{Binding State.Border, FallbackValue=DarkGray}"
+            Background="{Binding State.Background, FallbackValue=LightGray}"
+            />
+
+        <StackPanel Orientation="Horizontal">
+            <ContentControl 
+                Foreground="#90FFFFFF"
+                Height="40" MaxWidth="40"
+                Content="{Binding Icon}"
+            />
+
+            <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+            
+                <!--<Label Grid.Column="1" Content="{Binding Model.TestClass.Name, FallbackValue=TEST}"/>-->
+            <!--<Label Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" 
+                   Content="{Binding Icon}"/>-->
+            
+                <!--<Label Grid.Row="1">Nom</Label>-->
+                <Label 
+                    Margin="5"
+                    Padding="1"
+                    Foreground="White"
+                    Background="{Binding State.Front}" Grid.Column="1"  Grid.Row="1" Content="{Binding Model.AssayName, FallbackValue=Nom du test}" FontWeight="Bold"/>
+
+                <Grid Grid.Column="1" Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <!--<Label FontWeight="Bold">Description</Label>
+                    <Label Grid.Column="1" FontWeight="Bold">Norme</Label>-->
+                    <Label Opacity="0.8" Foreground="White" Grid.Row="1" Content="{Binding Model.Description, FallbackValue=Description}" FontStyle="Italic"/>
+                    <Label Foreground="White" Grid.Row="1" Grid.Column="1" Content="{Binding Model.Specification, FallbackValue=Norme}" FontStyle="Italic"/>
+                </Grid>
+
+
+            </Grid>
+        </StackPanel>
+    </Grid>
+</UserControl>

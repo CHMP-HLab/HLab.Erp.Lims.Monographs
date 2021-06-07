@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This file is NOT compatible with Silverlight-->
+<Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform">
+  <Canvas Width="1536" Height="1536">
+    <Canvas.RenderTransform>
+      <TranslateTransform X="0" Y="0"/>
+    </Canvas.RenderTransform>
+    <Canvas.Resources/>
+    <!--Unknown tag: metadata-->
+    <!--Unknown tag: sodipodi:namedview-->
+        <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type Control}},FallbackValue=black}">
+      <Path.Data>
+        <PathGeometry Figures="m 1536 768 q 0 156 -61 298 -61 142 -164 245 -103 103 -245 164 -142 61 -298 61 -172 0 -327 -72.5 Q 286 1391 177 1259 q -7 -10 -6.5 -22.5 0.5 -12.5 8.5 -20.5 l 137 -138 q 10 -9 25 -9 16 2 23 12 73 95 179 147 106 52 225 52 104 0 198.5 -40.5 Q 1061 1199 1130 1130 1199 1061 1239.5 966.5 1280 872 1280 768 1280 664 1239.5 569.5 1199 475 1130 406 1061 337 966.5 296.5 872 256 768 256 670 256 580 291.5 490 327 420 393 l 137 138 q 31 30 14 69 -17 40 -59 40 H 64 Q 38 640 19 621 0 602 0 576 V 128 Q 0 86 40 69 79 52 109 83 L 239 212 Q 346 111 483.5 55.5 621 0 768 0 q 156 0 298 61 142 61 245 164 103 103 164 245 61 142 61 298 z M 896 480 v 448 q 0 14 -9 23 -9 9 -23 9 H 544 q -14 0 -23 -9 -9 -9 -9 -23 v -64 q 0 -14 9 -23 9 -9 23 -9 H 768 V 480 q 0 -14 9 -23 9 -9 23 -9 h 64 q 14 0 23 9 9 9 9 23 z" FillRule="NonZero"/>
+      </Path.Data>
+    </Path>
+  </Canvas>
+</Viewbox>

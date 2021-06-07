@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="HLab.Erp.Lims.Monographs.Module.Classes.Consumables.Graph.ConsumableFlowchartView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:graph="clr-namespace:HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph"
+             xmlns:graph1="clr-namespace:HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="300"
+             d:DataContext="{d:DesignInstance Type=graph1:ConsumableGraphViewModel, IsDesignTimeCreatable=False}"
+            >
+ 
+    <graph1:BlockGraphView x:Name="Block">
+        <Grid>
+            <StackPanel>
+                <TextBlock                     
+                    Text="{Binding Model.Consumable.Designation, FallbackValue='Consommable'}" 
+                    TextWrapping="WrapWithOverflow"
+                    FontWeight="Bold" 
+                    FontSize="12">
+                    <TextBlock.Background>
+                        <LinearGradientBrush>
+                            <GradientStop Offset="0" Color="#70FFFFFF"/>
+                            <GradientStop Offset="1" Color="Transparent"/>
+                        </LinearGradientBrush>
+                    </TextBlock.Background>
+                </TextBlock>
+
+                <graph1:QteTarifView/>
+
+            </StackPanel>
+        </Grid>
+
+    </graph1:BlockGraphView>
+</UserControl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,87 @@
+﻿<UserControl x:Class="HLab.Erp.Lims.Monographs.Module.Classes.Solutions.Graph.SolutionFlowchartView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:annotations="clr-namespace:HLab.Mvvm.Annotations;assembly=HLab.Mvvm.Annotations"
+             xmlns:core="clr-namespace:HLab.Erp.Core;assembly=HLab.Erp.Core.Wpf"
+             xmlns:mvvm="clr-namespace:HLab.Mvvm;assembly=HLab.Mvvm.Wpf"
+             xmlns:monographsGraph="clr-namespace:HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph"
+             xmlns:solutionsGraph="clr-namespace:HLab.Erp.Lims.Monographs.Module.Classes.Solutions.Graph"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             Margin="{Binding Margin}"
+             
+             HorizontalAlignment="Right"
+             VerticalAlignment="Top"
+             d:DataContext="{d:DesignInstance Type=solutionsGraph:SolutionGraphViewModel, IsDesignTimeCreatable=True}"
+             >
+    <monographsGraph:BlockGraphView x:Name="Block">
+        <StackPanel>
+            <!--<Label Content="{Binding ActualViewModeContext.Name}"/>-->
+            <!--<TextBlock Text="{Binding Top}"/>
+            <TextBlock Text="{Binding Left}"/>-->
+            <Grid>
+            <!--<TextBlock Text="{Binding Model.Designation, FallbackValue='Solution'}" FontWeight="Bold"/>-->
+            <TextBox
+                     BorderThickness="0"
+                     GotKeyboardFocus="TextBox_OnGotKeyboardFocus"
+                     LostKeyboardFocus="TextBox_OnLostKeyboardFocus"
+                     Text="{Binding Model.Designation, FallbackValue='Solution'}" FontWeight="Bold">
+                
+                    <TextBox.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Offset="0" Color="#70FFFFFF"/>
+                        <GradientStop Offset="1" Color="Transparent"/>
+                    </LinearGradientBrush>
+                </TextBox.Background>
+
+                </TextBox>
+            </Grid>
+            <ComboBox 
+                ItemsSource="{Binding QtyModeList}" 
+                SelectedItem="{Binding QtyMode}"
+                DisplayMemberPath="Value"/>
+            
+            <StackPanel Visibility="{Binding QtyMinVisibility}" Orientation="Horizontal">
+                <Label>Quantité min</Label>
+                <core:TextBoxDecimal  
+                    Margin="0,0,0,0" 
+                    VerticalContentAlignment="Center"
+                    Text="{Binding Model.QtyMin, FallbackValue=0.00}"
+                />
+                <ComboBox  
+                    Margin="0,0,0,0" 
+                    ItemsSource="{Binding UnitMinList}" 
+                    SelectedItem="{Binding UnitMinEdit}" 
+                    DisplayMemberPath="Symbol" 
+                />
+            </StackPanel>
+
+
+            <mvvm:ViewLocator 
+                Visibility ="{Binding GradientVisibility}"
+                Model="{Binding Model.Gradient}" 
+                ViewMode="{x:Type annotations:ViewModePreview}" 
+                Background="#10FFFFFF"/>
+
+            <monographsGraph:QteTarifView/>
+            
+        </StackPanel>
+    </monographsGraph:BlockGraphView>
+</UserControl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

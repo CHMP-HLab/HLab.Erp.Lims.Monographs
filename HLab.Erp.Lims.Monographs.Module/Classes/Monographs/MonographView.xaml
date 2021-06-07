@@ -1,0 +1,113 @@
+﻿<UserControl x:Class="HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:monographs="clr-namespace:HLab.Erp.Lims.Monographs.Module.Classes.Monographs"
+             xmlns:annotations="clr-namespace:HLab.Mvvm.Annotations;assembly=HLab.Mvvm.Annotations"
+             xmlns:mvvm="clr-namespace:HLab.Mvvm;assembly=HLab.Mvvm.Wpf"
+             xmlns:flowchart="clr-namespace:HLab.Mvvm.Flowchart;assembly=HLab.Mvvm.Flowchart.Wpf"
+             xmlns:monographs1="clr-namespace:HLab.Erp.Lims.Monographs.Module.Classes.Monographs"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             d:DataContext="{d:DesignInstance Type=monographs:MonographViewModel, IsDesignTimeCreatable=True}"
+             >
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height ="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="Black">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            
+            <StackPanel>
+                <Label Foreground="AliceBlue" FontWeight="Bold" FontSize="20" Content="{Binding Model.Inn.Name, FallbackValue=Abacavir Sulfate}"></Label>
+                <StackPanel Orientation="Horizontal">
+                    <ContentControl
+                    Foreground="White" 
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Center" Height="25" Width ="25"  Content="{Binding IconForm}"/>
+                    <Label Foreground="LightBlue" FontSize="17" FontStyle="Italic" Content="{Binding Model.Form.Name, FallbackValue=Abacavir Sulfate}"/>
+                </StackPanel>
+                <Label HorizontalAlignment="Left" FontSize="10" Foreground="White" Content="{Binding Model.Id}"></Label>
+            </StackPanel>
+            
+            <monographs1:MonographCostView Grid.Column="1"/>
+            
+            <StackPanel Grid.Column="2" Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <ContentControl 
+                        Foreground="AliceBlue" 
+                        VerticalAlignment="Top" 
+                        HorizontalAlignment="Center" 
+                        Height="40" 
+                        Width ="50"  
+                        Content="{Binding IconPharmacopoeia}"/>
+
+                    <Label 
+                        Foreground="AliceBlue" 
+                        FontSize="15" 
+                        HorizontalAlignment="Center" 
+                        FontWeight="Bold" 
+                        Content="{Binding Model.Pharmacopoeia.NameFr, FallbackValue=Pharmacopee}"/>
+                    
+                </StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height ="Auto"/>
+                        <RowDefinition Height ="Auto"/>
+                        <RowDefinition Height ="Auto"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Label Foreground="AliceBlue" FontStyle="Italic">Version</Label>
+
+                    <ComboBox
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        
+                        IsEditable="True"
+                        ItemsSource="{Binding PharmacopoeiaVersionList}"
+                        Text="{Binding Model.PharmacopoeiaVersion}" 
+                        MinWidth="100"/>
+                    
+                    <Label 
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Foreground="AliceBlue" FontStyle="Italic">Référence</Label>
+                    
+                        <TextBox 
+                        Grid.Row="1"
+                        Grid.Column="1"
+                            
+                            Text="{Binding Model.Reference}" MinWidth="100"/>
+                    
+                        <Button 
+                            Grid.Column="2"
+                            Command="{Binding OpenWebPharmacopoeiaCommand}">Web</Button>
+                        <Button 
+                            Grid.Column="2"
+                            Grid.Row="1"
+                            Command="{Binding OpenLocalPharmacopoeiaCommand}">Locale</Button>
+                </Grid>
+    </StackPanel>
+
+    </Grid>
+
+        <ContentControl  Grid.Row="1"
+                mvvm:ViewLocator.ViewClass ="{x:Type flowchart:IViewClassGraphContainer}"
+                mvvm:ViewLocator.ViewMode ="{x:Type annotations:ViewModeDefault}"
+                Content="{Binding}" 
+                />
+    </Grid>
+</UserControl>

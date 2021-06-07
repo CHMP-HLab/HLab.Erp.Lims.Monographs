@@ -1,0 +1,391 @@
+﻿<UserControl x:Class="HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph.Links.LinkContentView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:core1="clr-namespace:HLab.Erp.Core;assembly=HLab.Erp.Core.Wpf"
+             mc:Ignorable="d" 
+             d:DesignHeight="150" d:DesignWidth="300">
+
+<UserControl.Resources>
+    
+    <ControlTemplate x:Key="ComboBoxTextBox" TargetType="TextBox">
+        <Border x:Name="PART_ContentHost" Focusable="True" />
+    </ControlTemplate>
+    
+    <Style x:Key="ComboBoxToggleButton" TargetType="ToggleButton">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <!--<ColumnDefinition Width="32" />-->
+                        </Grid.ColumnDefinitions>
+                        <Border
+                            x:Name="Border"
+                            Grid.ColumnSpan="2"
+                            CornerRadius="0"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="1" />
+                        <Border
+                            Grid.Column="0"
+                            CornerRadius="0"
+                            Background="Transparent"
+                            BorderBrush="Transparent"
+                            BorderThickness="10" />
+                        <!--<Path
+                            x:Name="Arrow"
+                            Grid.Column="1"    
+                            Fill="{TemplateBinding Foreground}"
+                            Stroke="{TemplateBinding Foreground}"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Data="M 0 0 L 8 12 L 16 0 Z"/>-->
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Border" Property="Background" Value="LightGray" />
+                            <Setter TargetName="Border" Property="BorderBrush" Value="Gray" />
+                            <Setter Property="Foreground" Value="Gray"/>
+                            <!--<Setter TargetName="Arrow" Property="Fill" Value="Gray" />-->
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style TargetType="{x:Type ComboBox}">
+        <Setter Property="Foreground" Value="Gray" />
+        <Setter Property="BorderBrush" Value="Gray" />
+        <Setter Property="Background" Value="White" />
+        <Setter Property="SnapsToDevicePixels" Value="true"/>
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+        <!--<Setter Property="FontSize" Value="16" />-->
+        <Setter Property="FontWeight" Value="Bold" />
+        <!--<Setter Property="MinWidth" Value="50"/>-->
+        <!--<Setter Property="MinHeight" Value="32"/>-->
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ComboBox">
+                    <Grid>
+                        <ToggleButton
+                            Name="ToggleButton"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            Background="{TemplateBinding Background}"
+                            Foreground="{TemplateBinding Foreground}"
+                            Style="{StaticResource ComboBoxToggleButton}"
+                            Focusable="false"
+                            IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}"
+                            ClickMode="Press">
+                        </ToggleButton>
+                        <ContentPresenter
+                            Name="ContentSite"
+                            IsHitTestVisible="False"
+                            Content="{TemplateBinding SelectionBoxItem}"
+                            ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                            ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                            Margin="3,3,3,3"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center" />
+                        <TextBox x:Name="PART_EditableTextBox"
+                                 Style="{x:Null}"
+                                 Template="{StaticResource ComboBoxTextBox}"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Center"
+                                 Margin="3,3,3,3"
+                                 Focusable="True"                               
+                                 Visibility="Hidden"
+                                 IsReadOnly="{TemplateBinding IsReadOnly}"/>
+                        <Popup
+                            Name="Popup"
+                            Placement="Bottom"
+                            IsOpen="{TemplateBinding IsDropDownOpen}"
+                            AllowsTransparency="True"
+                            Focusable="False"
+                            PopupAnimation="Slide">
+                            <Grid
+                                Name="DropDown"
+                                SnapsToDevicePixels="True"               
+                                MinWidth="{TemplateBinding ActualWidth}"
+                                MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                <Border
+                                    x:Name="DropDownBorder"
+                                    Background="White"
+                                    BorderThickness="2"
+                                    BorderBrush="Gray"/>
+                                <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
+                                    <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
+                                </ScrollViewer>
+                            </Grid>
+                        </Popup>
+
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="HasItems" Value="false">
+                            <Setter TargetName="DropDownBorder" Property="MinHeight" Value="95"/>
+                        </Trigger>
+                        <Trigger Property="IsGrouping" Value="true">
+                            <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+                        </Trigger>
+                        <Trigger SourceName="Popup" Property="Popup.AllowsTransparency" Value="true">
+                            <Setter TargetName="DropDownBorder" Property="CornerRadius" Value="0"/>
+                            <Setter TargetName="DropDownBorder" Property="Margin" Value="0,2,0,0"/>
+                        </Trigger>
+                        <Trigger Property="IsEditable" Value="true">
+                            <Setter Property="IsTabStop" Value="false"/>
+                            <Setter TargetName="PART_EditableTextBox" Property="Visibility"    Value="Visible"/>
+                            <Setter TargetName="ContentSite" Property="Visibility" Value="Hidden"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="{x:Type ComboBoxItem}">
+        <Setter Property="SnapsToDevicePixels" Value="true" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <!--<Setter Property="FontSize" Value="16" />-->
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="OverridesDefaultStyle" Value="true"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ComboBoxItem">
+                    <Border
+                        Name="Border"
+                        Padding="5"
+                        Margin="2"
+                        BorderThickness="2"
+                        CornerRadius="0"
+                        Background="Transparent"
+                        BorderBrush="Transparent" >
+
+                        <TextBlock TextAlignment="Center">
+                            <ContentPresenter />
+                        </TextBlock>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsHighlighted" Value="true">
+                            <Setter TargetName="Border" Property="BorderBrush" Value="Gray"/>
+                                <Setter TargetName="Border" Property="Background" Value="LightGray"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    </UserControl.Resources>
+
+
+    <Grid Width="Auto"  AllowDrop="True" Drop="UIElement_OnDrop">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Border x:Name="Border" Grid.Column="1" CornerRadius="5" BorderThickness="2" BorderBrush="Black">
+            <ToggleButton x:Name="Button" 
+                          BorderThickness="0" 
+                          Margin="5" Background="Transparent" HorizontalAlignment="Stretch" 
+                          IsChecked="{Binding Selected}">
+
+
+                <StackPanel MinWidth="50">
+                    <Button 
+                        Content ="X" 
+                        Command="{Binding DeleteCommand}"
+                        MinWidth="10"
+                        MinHeight="10"
+                        HorizontalAlignment="Right"
+                        VerticalContentAlignment="Top"
+                        FontSize="7"
+                        Padding="0,-1,0,0"/>
+                    <!--<Label VerticalAlignment="Top"  Width="50" Height="50" Content="{Binding Icon}"/>-->
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <!-- E1 -->
+                                <Label Foreground="Black"
+                            Opacity="0.65"
+                            HorizontalContentAlignment="Right"
+                            FontStyle="Oblique"
+                            >
+                                    <TextBlock>
+                            <Span FontWeight="Bold">E</Span>
+                            <Span BaselineAlignment="Subscript">1</Span>
+                                    </TextBlock>
+                                </Label>
+
+                                <!-- E1 - Value -->
+                                <core1:TextBoxDecimal  
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Margin="5,0,0,0" 
+                        VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Right"
+                        Text="{Binding QtyEdit, FallbackValue=0.00}"
+                        Visibility="{Binding QtyVisibility}"
+                        />
+
+
+
+                                <!-- En -->
+                                <Label Foreground="Black"                    
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            Opacity="0.65"
+                            FontStyle="Italic">
+                                    <TextBlock>
+                            <Span FontWeight="Bold">E</Span>
+                            <Span BaselineAlignment="Subscript">n</Span>
+                                    </TextBlock>
+                                </Label>
+
+                                <!-- En - Value -->
+                                <core1:TextBoxDecimal  
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Margin="5,0,0,0" 
+                        VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Right"
+                        Text="{Binding QtyNextEdit, FallbackValue=0.00}"
+                        Visibility="{Binding QtyNextVisibility}"
+                        />
+
+
+
+                                <StackPanel
+                        Grid.ColumnSpan="3"
+                        Grid.Row="2"
+                        Orientation="Horizontal">
+                                    <ComboBox  
+                             Margin="0,0,0,0" 
+                                    ItemsSource="{Binding UnitList}" 
+                                    SelectedItem="{Binding UnitEdit}" 
+                                    DisplayMemberPath="Symbol" 
+                                    />
+
+                                    <Label 
+                                        Visibility="{Binding IsRatioVisibility}">/</Label>
+                                    <!--IsChecked="{Binding IsRatio}"-->
+
+                                    <core1:TextBoxDecimal  
+                                        Margin="0,0,0,0" 
+                                        Text="{Binding Model.QtyRatio, FallbackValue=0.00}"
+                                        Visibility="{Binding RatioVisibility}"
+                                        VerticalContentAlignment="Center"
+                                        />
+
+                                    <ComboBox  
+                                        Margin="0,0,0,0" 
+                                        ItemsSource="{Binding UnitRatioList}" 
+                                        SelectedItem="{Binding UnitRatioEdit}" 
+                                        DisplayMemberPath="Symbol" 
+                                        Visibility="{Binding RatioVisibility}"
+                                        />
+
+                                </StackPanel>
+
+
+                                <Border 
+                                    Grid.Row="0" 
+                                    Grid.Column="2" 
+                                    Grid.RowSpan="2" 
+                                    BorderThickness="0" 
+                                    Background="#10000000"/>
+                                <!-- E1 - ViewQty -->
+                                <TextBox 
+                                    Grid.Row="0" 
+                                    Grid.Column="2" 
+                                    BorderThickness="0" 
+                                    IsReadOnly="True" 
+                                    Background="Transparent"  
+                                    Foreground="AliceBlue"  
+                                    Margin="1,0,1,0" 
+                                    HorizontalAlignment="Left"
+                                    Text="{Binding ViewQty, StringFormat=N2, FallbackValue=-.--, Mode=OneWay}"
+                                />
+
+
+                                <!-- En - ViewQty -->
+                                <TextBox 
+                                    Grid.Row="1" 
+                                    Grid.Column="2"  
+                                    BorderThickness="0" 
+                                    IsReadOnly="True" 
+                                    Background="Transparent"  
+                                    Foreground="AliceBlue"   
+                                    Margin="1,0,1,0" 
+                                    HorizontalAlignment="Left"
+                                    Text="{Binding ViewQtyNext, StringFormat=N2, FallbackValue=-.--, Mode=OneWay}"
+                                />
+
+                                <TextBox 
+                                    Grid.Row="0"
+                                    Grid.RowSpan="2"
+                                    Grid.Column="2"  
+                                    BorderThickness="0" 
+                                    IsReadOnly="True" 
+                                    Background="Transparent"  
+                                    Foreground="#80FFFFFF" 
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Margin="1,0,1,0" 
+                                    Text="{Binding ViewUnit.Symbol, FallbackValue=--, Mode=OneWay}"
+                                    />
+
+
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1">
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </ToggleButton>
+        </Border>
+
+    </Grid>
+</UserControl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

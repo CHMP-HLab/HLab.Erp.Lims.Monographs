@@ -1,0 +1,60 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+	  <TargetFramework>net5.0-windows</TargetFramework>
+	  <UseWPF>true</UseWPF>
+    <RootNamespace>HLab.Erp.Lims.Monographs.Module</RootNamespace>
+    <Platforms>AnyCPU;x64;x86</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Page Remove="Icons\Consumable\Consumable.xaml" />
+    <Page Remove="Icons\Consumable\Reagent.xaml" />
+    <Page Remove="Icons\Consumable\Sample.xaml" />
+    <Page Remove="Icons\Consumable\Service.xaml" />
+    <Page Remove="Icons\Consumable\Standard.xaml" />
+    <Page Remove="Icons\Pins\Diamond.xaml" />
+    <Page Remove="Icons\Pins\Hex.xaml" />
+    <Page Remove="Icons\Pins\Round.xaml" />
+    <Page Remove="Icons\Pins\Square.xaml" />
+    <Page Remove="Icons\Tests.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <COMReference Include="MSHTML.dll">
+      <Guid>3050f1c5-98b5-11cf-bb82-00aa00bdce0b</Guid>
+      <VersionMajor>4</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AvalonEdit" Version="6.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\HLab.Erp\HLab.Erp.Core.Wpf\HLab.Erp.Core.Wpf.csproj" />
+    <ProjectReference Include="..\..\HLab\HLab.Mvvm.Flowchart.Wpf\HLab.Mvvm.Flowchart.Wpf.csproj" />
+    <ProjectReference Include="..\..\HLab\HLab.Mvvm.Wpf\HLab.Mvvm.Wpf.csproj" />
+    <ProjectReference Include="..\..\HLab.Erp.Lims.Analysis\Hlab.Erp.Lims.Analysis.Data\HLab.Erp.Lims.Analysis.Data.csproj" />
+    <ProjectReference Include="..\..\HLab.Erp.Lims.Analysis\HLab.Erp.Lims.Analysis.Module\HLab.Erp.Lims.Analysis.Module.csproj" />
+    <ProjectReference Include="..\HLab.Erp.Lims.Monographs.Data\HLab.Erp.Lims.Monographs.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Icons\Consumable\Consumable.xaml" />
+    <Resource Include="Icons\Consumable\Sample.xaml" />
+    <Resource Include="Icons\Consumable\Service.xaml" />
+    <Resource Include="Icons\Consumable\Standard.xaml" />
+    <Resource Include="Icons\Consumable\Reagent.xaml" />
+    <Resource Include="Icons\Pins\Diamond.xaml" />
+    <Resource Include="Icons\Pins\Hex.xaml" />
+    <Resource Include="Icons\Pins\Round.xaml" />
+    <Resource Include="Icons\Pins\Square.xaml" />
+    <Resource Include="Icons\Tests.xaml" />
+  </ItemGroup>
+
+</Project>

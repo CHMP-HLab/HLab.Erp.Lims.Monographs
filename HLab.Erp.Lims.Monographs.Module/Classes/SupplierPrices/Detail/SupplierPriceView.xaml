@@ -1,0 +1,181 @@
+﻿<UserControl x:Class="HLab.Erp.Lims.Monographs.Module.Classes.SupplierPrices.Detail.SupplierPriceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:converters="clr-namespace:HLab.Mvvm.Converters;assembly=HLab.Mvvm.Wpf"
+             xmlns:mvvm="clr-namespace:HLab.Mvvm;assembly=HLab.Mvvm.Wpf"
+             xmlns:annotations="clr-namespace:HLab.Mvvm.Annotations;assembly=HLab.Mvvm.Annotations"
+             xmlns:core="clr-namespace:HLab.Erp.Core;assembly=HLab.Erp.Core.Wpf"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <converters:ModelToViewModelConverter x:Key="evm"/>
+    </UserControl.Resources>
+    <Grid Grid.Row="3">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <ListBox 
+                        DisplayMemberPath="Nom" 
+                        SelectedItem="{Binding Supplier}"
+                        ItemsSource="{Binding FournisseurList}"                        
+                        />
+            <Button Grid.Row="1" Content="Web Supplier" Command="{Binding SearchWebCommand}"/>
+        </Grid>
+
+
+        <GridSplitter Grid.Column="1" Height="Auto" HorizontalAlignment="Stretch" />
+
+        <ListView Grid.Column="2"  Width="Auto" 
+                  mvvm:ViewLocator.ViewMode ="{x:Type annotations:ViewModeList}"
+                          ItemsSource="{Binding PricesViewModel}"
+                          SelectedItem="{Binding PricesViewModel.Selected}"
+                  
+                          >
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Defaut">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding DefaultSelected}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Select">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding IsSelected}" IsEnabled="{Binding SelectedEnabled}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Supplier" DisplayMemberBinding="{Binding Model.Supplier.Nom}" />
+                    <GridViewColumn Header="Référence">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Model.Reference}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    
+                    <GridViewColumn Header="Concentration">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <core:TextBoxDecimal Text="{Binding Model.Assay}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    
+                    <GridViewColumn Header="Densité">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <core:TextBoxDecimal Text="{Binding Model.Density}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+
+                    <GridViewColumn Header="Tarif">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <core:TextBoxDecimal Text="{Binding Model.Cost, StringFormat=f}"  TextAlignment="Right"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Monnaie">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <ComboBox  
+                                    ItemsSource="{Binding CurrencyList}" 
+                                    SelectedItem="{Binding Currency}" 
+                                    DisplayMemberPath="Iso" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Tarif €/Qté">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <core:TextBoxDecimal Text="{Binding UnitPriceView, StringFormat=f, Mode=OneWay}" TextAlignment="Right"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="MàJ">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Command="{Binding UpdateCommand}" Content="MàJ"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Remise">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <core:TextBoxDecimal Text="{Binding Model.Remise}"  TextAlignment="Right"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Qté">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Model.Qty}"  TextAlignment="Right"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+
+                    <GridViewColumn Header="Unité">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <ComboBox  
+                                    ItemsSource="{Binding UnitList}" 
+                                    SelectedItem="{Binding Unit}" 
+                                    DisplayMemberPath="Symbol" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Maj">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock   Text="{Binding Model.DateValid}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock   Text="{Binding Model.Message}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+            <Button Content=">>" Command="{Binding AddCommand}"/>
+            <Button Content="&lt;&lt;" Command="{Binding RemoveCommand}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,62 @@
+﻿<UserControl x:Class="HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView.Views.CreateMonographieView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:annotations="clr-namespace:HLab.Mvvm.Annotations;assembly=HLab.Mvvm.Annotations"
+        xmlns:monographsTreeView="clr-namespace:HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView"
+        xmlns:mvvm="clr-namespace:HLab.Mvvm;assembly=HLab.Mvvm.Wpf"
+        mc:Ignorable="d"
+        Height="300" Width="300"
+        d:DataContext="{d:DesignInstance Type=monographsTreeView:CreateMonographViewModel, IsDesignTimeCreatable=True}"
+        mvvm:ViewLocator.ViewMode ="{x:Type annotations:ViewModeList}"
+        >
+    <DockPanel>
+        <ComboBox 
+            DockPanel.Dock="Top" 
+            ItemsSource="{Binding InnList}" 
+            SelectedItem="{Binding InnList.Selected}"
+            IsEnabled="{Binding InnEnabled}"/>
+        
+        <ComboBox 
+            DockPanel.Dock="Top" 
+            ItemsSource="{Binding FormList}" 
+            SelectedItem="{Binding FormList.Selected}"
+            IsEnabled="{Binding FormEnabled}"/>
+        
+        <ComboBox 
+            DockPanel.Dock="Top" 
+            ItemsSource="{Binding PharmacopoeiaList}" 
+            SelectedItem="{Binding PharmacopoeiaList.Selected}"
+            IsEnabled="{Binding PharmacopoeiaEnabled}"/>
+        
+        <ComboBox
+            IsEditable="True"
+            DockPanel.Dock="Top"
+            Text="{Binding PharmacopoeiaVersion}"
+            ItemsSource="{Binding PharmacopoeiaVersionList}" 
+            SelectedItem="{Binding PharmacopoeiaVersion, UpdateSourceTrigger=PropertyChanged}"
+            IsEnabled ="{Binding PharmacopoeiaVersionEnabled}"/>
+        
+        <StackPanel 
+            DockPanel.Dock="Bottom" 
+            VerticalAlignment="Bottom" 
+            Orientation="Horizontal" 
+            HorizontalAlignment="Right">
+            <Button 
+                DockPanel.Dock ="Right" 
+                Content=" Ok " 
+                Command="{Binding OkCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
+                />
+            <Button 
+                DockPanel.Dock ="Right" 
+                Content=" Annuler " 
+                Command="{Binding CancelCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
+                
+                />
+            
+        </StackPanel>
+    </DockPanel>
+</UserControl>

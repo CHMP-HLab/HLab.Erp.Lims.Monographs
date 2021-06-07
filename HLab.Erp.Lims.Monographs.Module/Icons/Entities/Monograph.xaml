@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This file is NOT compatible with Silverlight-->
+<Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform">
+  <Canvas Name="Layer_1" Width="512" Height="512" Canvas.Left="0" Canvas.Top="0">
+    <Canvas.RenderTransform>
+      <TranslateTransform X="0" Y="0"/>
+    </Canvas.RenderTransform>
+    <Canvas.Resources/>
+    <!--Unknown tag: metadata-->
+    <!--Unknown tag: sodipodi:namedview-->
+        <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type Control}},FallbackValue=black}">
+      <Path.Data>
+        <PathGeometry Figures="M480 256v256H224c-35.344 0-64-28.656-64-64V224c0-35.344 28.656-64 64-64h224v32v32h-32v-32H224c-17.672 0-32 14.313-32 32  s14.328 32 32 32H480z M128 224c0-52.938 43.063-96 96-96h128V96H96c-17.672 0-32-14.313-32-32s14.328-32 32-32h192v32h32V32V0H96  C60.656 0 32 28.656 32 64v224c0 35.344 28.656 64 64 64h32V224z" FillRule="NonZero"/>
+      </Path.Data>
+    </Path>
+  </Canvas>
+</Viewbox>

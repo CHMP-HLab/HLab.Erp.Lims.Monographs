@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="HLab.Erp.Lims.Monographs.Module.Classes.Solutions.Gradients.GradientPreview"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:gradients="clr-namespace:HLab.Erp.Lims.Monographs.Module.Classes.Solutions.Gradients"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             >
+    <Grid>
+        <!--<wpf:CartesianChart
+            DisableAnimations="True"
+            
+            Series="{Binding Ratios}" 
+            MinHeight="100"
+            x:Name="Chart"
+            AnimationsSpeed="00:00:00.2"
+            >
+            --><!--DisableAnimations="True"--><!--
+            <wpf:CartesianChart.AxisY>
+                <dimensions:Axis Title="Ratio" 
+                          MaxValue="100" 
+                          MinValue="0"
+                          x:Name="AxisRatio"
+                          />
+            </wpf:CartesianChart.AxisY>
+
+            <wpf:CartesianChart.AxisX>
+                <dimensions:Axis Name="SecondaryAxis" Title="Temps" 
+                          Separator="{x:Static wpf:DefaultAxes.CleanSeparator}"
+                          />
+            </wpf:CartesianChart.AxisX>
+
+        </wpf:CartesianChart>-->
+    </Grid>
+</UserControl>

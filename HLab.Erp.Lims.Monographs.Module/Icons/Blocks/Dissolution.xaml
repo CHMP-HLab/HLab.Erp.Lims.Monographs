@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This file is NOT compatible with Silverlight-->
+<Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform">
+  <Canvas Name="svg900" Width="16.933333" Height="16.933334">
+    <Canvas.RenderTransform>
+      <TranslateTransform X="0" Y="0"/>
+    </Canvas.RenderTransform>
+    <Canvas.Resources/>
+    <!--Unknown tag: sodipodi:namedview-->
+    <!--Unknown tag: metadata-->
+    <Canvas Name="layer1">
+      <Canvas.RenderTransform>
+        <TranslateTransform X="0" Y="-280.06665"/>
+      </Canvas.RenderTransform>
+      <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="rect1448" StrokeThickness="1.5875" Stroke="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type Control}},FallbackValue=black}" StrokeMiterLimit="4">
+        <Path.Data>
+          <PathGeometry Figures="m 14.242522 287.40383 v 5.30799 c 0 1.92939 -1.840857 3.48263 -4.127483 3.48263 H 6.3519505 c -2.286626 0 -4.1274838 -1.55324 -4.1274838 -3.48263 v -5.30799 c 5.1995155 0 7.6546907 0 12.0180553 0 z" FillRule="NonZero"/>
+        </Path.Data>
+      </Path>
+      <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path1477" StrokeThickness="0" Fill="Blue" StrokeMiterLimit="4">
+        <Path.Data>
+          <PathGeometry Figures="m 6.2428678 284.36656 c -9.3e-6 0.84393 -0.7606674 1.52805 -1.6989849 1.52805 -0.9383152 0 -1.6989726 -0.68412 -1.6989805 -1.52805 -3.6e-6 -0.84395 0.8518765 -1.46168 1.6989805 -2.65759 0.5506383 0.68654 1.6989882 1.81364 1.6989849 2.65759 z" FillRule="NonZero"/>
+        </Path.Data>
+      </Path>
+      <Ellipse xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="12.2" Canvas.Top="280.9" Name="path1501" StrokeThickness="1.5875" Stroke="Green"/>
+      <Ellipse xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="9.6" Canvas.Top="282.7" Name="path15012" StrokeThickness="1.5875" Stroke="Green"/>
+      <Ellipse xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="12.8" Canvas.Top="283.4" Name="path15015" StrokeThickness="1.5875" Stroke="Green"/>
+      <Ellipse xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="10.1" Canvas.Top="285" Name="path15010" StrokeThickness="1.5875" Stroke="Green"/>
+    </Canvas>
+  </Canvas>
+</Viewbox>

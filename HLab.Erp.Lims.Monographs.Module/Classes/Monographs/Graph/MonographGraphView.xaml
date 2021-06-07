@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph.MonographFlowchartView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             ClipToBounds="False">
+        <Grid  
+            VerticalAlignment="Center" 
+            HorizontalAlignment="Center"
+            MouseLeftButtonDown="UIElement_OnMouseLeftButtonDown">
+            <Canvas>
+                <Canvas.Background>
+                    <DrawingBrush 
+                        TileMode="Tile" 
+                        Viewport="0,0,15,15" 
+                        ViewportUnits="Absolute">
+                        <DrawingBrush.Drawing>
+                            <GeometryDrawing 
+                                Brush="#101010" 
+                                Geometry="M5,5 L0,5 0,10 5,10 5,5 10,5 10,0 5,0 Z" />
+                        </DrawingBrush.Drawing>
+                    </DrawingBrush>
+                </Canvas.Background>
+            </Canvas>
+            <!--<ContentControl Content="{Binding DragCanvas}"/>-->
+            <Grid IsSharedSizeScope="True" RenderTransformOrigin="0.5, 0.5">
+
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="250" />
+                </Grid.ColumnDefinitions>
+
+                <Border x:Name="MousePanel"
+                        Background="Transparent"
+                />
+
+                <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Name="PanelLinks"/>
+
+                <StackPanel Grid.Column="0" Name="PanelConsumables"/>
+
+                <Grid Grid.Column="2" Name="PanelSolutions" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+                <StackPanel Grid.Column="4" Name="PanelTests"/>
+
+                <Grid Grid.Column="2" Name="GridDragPanelSolutions"/>
+
+            </Grid>
+        </Grid>
+</UserControl>

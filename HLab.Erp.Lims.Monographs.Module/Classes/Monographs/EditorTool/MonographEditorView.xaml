@@ -1,0 +1,62 @@
+﻿<UserControl x:Class="HLab.Erp.Lims.Monographs.Module.Classes.Monographs.EditorTool.MonographEditorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit"
+             xmlns:core="clr-namespace:HLab.Erp.Core;assembly=HLab.Erp.Core.Wpf"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <ToggleButton x:Name="EditButton" IsChecked="{Binding EditMode}">Modifier</ToggleButton>
+            <ToggleButton x:Name="SourceButton" IsChecked="{Binding SourceMode}">SourceQuery</ToggleButton>
+
+        </StackPanel>
+        
+        <avalonedit:TextEditor 
+            FontFamily="Consolas"
+            SyntaxHighlighting="XML"
+            x:Name="TextEditor" Visibility="{Binding SourceVisibility}" Grid.Row="1"
+            />
+
+        <RichTextBox 
+            Visibility="{Binding EditorVisibility}" 
+            Grid.Row="1" 
+            x:Name="RichTextBox" 
+            core:RichTextBoxHelper.DocumentXaml="{Binding EditDocument}"
+            />
+        
+        <FlowDocumentReader 
+            Grid.Row="1" 
+            x:Name="FlowDocumentReader" 
+            ViewingMode="Scroll"
+            IsInactiveSelectionHighlightEnabled="true"
+            Document="{Binding Document}"
+            Visibility="{Binding ReaderVisibility}"
+            >
+            <FlowDocumentReader.Resources>
+                <Style TargetType="FlowDocument">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0.2,1">
+                                <GradientStop Offset="0" Color="White"/>
+                                <GradientStop Offset="1" Color ="AntiqueWhite"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                       
+                        
+                    </Setter>
+                    <!--<EventSetter Event="MouseLeftButtonDown" Handler="Span_Click"/>
+                    <EventSetter Event="MouseLeftButtonUp" Handler="Span_MouseUp"/>
+                    <EventSetter Event="MouseMove" Handler="Span_MouseUp"/>-->
+                </Style>
+            </FlowDocumentReader.Resources>
+        </FlowDocumentReader>
+    </Grid>
+</UserControl>
+
