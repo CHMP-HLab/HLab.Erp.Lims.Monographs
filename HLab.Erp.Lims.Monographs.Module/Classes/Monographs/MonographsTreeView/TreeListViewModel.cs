@@ -87,7 +87,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView
             get => _innSource.Get();
             private set
             {
-                value.UpdateAsync(() =>
+                value.Update(() =>
                 {
                     if (_innSource.Set(value))
                         Children.OnTriggered();

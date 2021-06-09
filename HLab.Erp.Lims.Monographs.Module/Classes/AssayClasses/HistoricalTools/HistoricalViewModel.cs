@@ -97,7 +97,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.AssayClasses.HistoricalTools
         private readonly IProperty<ObservableQuery<Sample>> _searchHistoryList = H.Property<ObservableQuery<Sample>>(c => c
             .On(e => e.PharmacopoeiaId)
             .On(e => e.ProductsId)
-            .Do((e,f) => f.Get().FluentUpdateAsync())
+            .Do((e,f) => f.Get().Update())
         );
 
         [TriggerOn(nameof(SearchHistoryList), "Selected")]
