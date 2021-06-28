@@ -5,13 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Background="#A0000000">
+    <Grid>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-        <Label Foreground="White" VerticalAlignment="Center"  Width="50" Height="50" Content="{Binding Icon}"/>
+        <Label VerticalAlignment="Center"  Width="50" Height="50" Content="{Binding Icon}"/>
         <TextBlock
             Grid.Column="1"
             Margin="5"
@@ -19,7 +19,7 @@
             VerticalAlignment="Center"
             TextWrapping="Wrap"
             Text="{Binding Model.Name,FallbackValue=TestClass}" 
-            Foreground="White" FontWeight="Bold" FontSize="14">
+            FontWeight="Bold" FontSize="14">
             
             <!--<Label.LayoutTransform>
                 <RotateTransform Angle="-90" />
