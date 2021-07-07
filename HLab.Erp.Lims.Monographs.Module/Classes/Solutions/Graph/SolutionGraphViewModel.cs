@@ -12,7 +12,6 @@ using HLab.Erp.Data;
 using HLab.Erp.Data.Observables;
 using HLab.Erp.Lims.Monographs.Data;
 using HLab.Erp.Lims.Monographs.Module.Classes.AssayClasses.HistoricalTools;
-using HLab.Erp.Lims.Monographs.Module.Classes.TestClasses.HistoricalTools;
 using HLab.Erp.Lims.Monographs.Module.Classes.Consumables.Tool;
 using HLab.Erp.Lims.Monographs.Module.Classes.Monographs.EditorTool;
 using HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph;

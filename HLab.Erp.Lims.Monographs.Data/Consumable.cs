@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using HLab.Erp.Data;
+﻿using HLab.Erp.Data;
 using HLab.Notify.PropertyChanged;
 using NPoco;
 

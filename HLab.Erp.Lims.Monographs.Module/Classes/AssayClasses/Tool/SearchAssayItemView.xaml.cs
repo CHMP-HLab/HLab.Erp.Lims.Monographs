@@ -3,7 +3,6 @@ using HLab.Erp.Core.DragDrops;
 using HLab.Erp.Core.ToolBoxes;
 using HLab.Erp.Lims.Monographs.Module.Classes.AssayClasses.HistoricalTools;
 using HLab.Erp.Lims.Monographs.Module.Classes.AssayClasses.Tool;
-using HLab.Erp.Lims.Monographs.Module.Classes.TestClasses.HistoricalTools;
 using HLab.Mvvm.Annotations;
 
 namespace HLab.Erp.Lims.Monographs.Module.Classes.TestClasses.Tool

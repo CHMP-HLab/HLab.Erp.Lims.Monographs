@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using HLab.Erp.Lims.Monographs.Module.Classes.SupplierPrices.PriceRetreiver;
 
 namespace HLab.Erp.Lims.Monographs.Module.Classes.SupplierPrices.PriceRetriever
 {
