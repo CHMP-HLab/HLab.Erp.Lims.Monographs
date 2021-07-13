@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Media;
 using HLab.Erp.Lims.Analysis.Data;
+using HLab.Erp.Lims.Analysis.Data.Entities;
 using HLab.Erp.Lims.Monographs.Data;
 using HLab.Notify.PropertyChanged;
 

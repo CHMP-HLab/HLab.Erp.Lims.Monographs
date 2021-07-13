@@ -3,6 +3,7 @@ using HLab.Erp.Acl;
 using HLab.Erp.Core;
 using HLab.Erp.Data.Observables;
 using HLab.Erp.Lims.Analysis.Data;
+using HLab.Erp.Lims.Analysis.Data.Entities;
 using HLab.Erp.Lims.Monographs.Data;
 using HLab.Mvvm;
 using HLab.Notify.Annotations;

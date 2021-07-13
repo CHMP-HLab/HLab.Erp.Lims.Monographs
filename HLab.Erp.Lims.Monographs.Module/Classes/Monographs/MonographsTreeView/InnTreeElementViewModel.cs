@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using HLab.Erp.Lims.Analysis.Data;
+using HLab.Erp.Lims.Analysis.Data.Entities;
 using HLab.Erp.Lims.Monographs.Data;
 using HLab.Notify.Annotations;
 using HLab.Notify.PropertyChanged;

@@ -3,6 +3,7 @@ using System.Windows.Input;
 using HLab.Erp.Data;
 using HLab.Erp.Data.Observables;
 using HLab.Erp.Lims.Analysis.Data;
+using HLab.Erp.Lims.Analysis.Data.Entities;
 using HLab.Erp.Lims.Monographs.Data;
 using HLab.Icons.Annotations.Icons;
 using HLab.Mvvm;

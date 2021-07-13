@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Media;
 using HLab.Erp.Lims.Analysis.Data;
+using HLab.Erp.Lims.Analysis.Data.Entities;
 using HLab.Notify.PropertyChanged;
 
 namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView
