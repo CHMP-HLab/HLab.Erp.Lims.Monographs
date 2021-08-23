@@ -5,6 +5,7 @@
 	  <UseWPF>true</UseWPF>
     <RootNamespace>HLab.Erp.Lims.Monographs.Module</RootNamespace>
     <Platforms>AnyCPU;x64;x86</Platforms>
+    <LangVersion>default</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
