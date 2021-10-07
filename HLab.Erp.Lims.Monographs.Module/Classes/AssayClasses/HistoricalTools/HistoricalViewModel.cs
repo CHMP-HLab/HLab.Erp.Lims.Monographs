@@ -82,7 +82,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.AssayClasses.HistoricalTools
         [TriggerOn(nameof(FormId))]
         public List<int> ProductsId => _productsId.Get();
         private readonly IProperty<List<int>> _productsId = H.Property<List<int>>(c => c
-            .Set(async e => await e._db.FetchWhereAsync<Product>(f => f.FormId == e.FormId && f.Inn == e.Inn).Select(f => f.Id).ToListAsync()));
+            .Set(async e => await e._db.FetchWhereAsync<Product>(f => f.FormId == e.FormId && f.Name == e.Inn).Select(f => f.Id).ToListAsync()));
 
 
 
