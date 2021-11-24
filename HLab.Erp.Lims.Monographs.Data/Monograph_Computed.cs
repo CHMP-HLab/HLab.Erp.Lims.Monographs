@@ -65,10 +65,14 @@ namespace HLab.Erp.Lims.Monographs.Data
             .On(e => e.Form.Name)
             .On(e => e.Pharmacopoeia.Name)
             .On(e => e.PharmacopoeiaVersion)
-            .Set(e => e.Inn?.Name + " " +
-                      e.Form?.Name + " " +
-                      e.Pharmacopoeia?.Name + " " +
-                      e.PharmacopoeiaVersion)
+            .Set(e =>
+            {
+                if(string.IsNullOrEmpty(e.Inn.Name)) return "{New monograph}";
+                return "Monograph\n" + e.Inn?.Name + " " +
+                                      e.Form?.Name + " " +
+                                      e.Pharmacopoeia?.Name + " " +
+                                      e.PharmacopoeiaVersion;
+            })
         );
 
     }

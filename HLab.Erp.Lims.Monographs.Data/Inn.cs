@@ -20,8 +20,12 @@ namespace HLab.Erp.Lims.Monographs.Data
         private readonly IProperty<string> _name = H.Property<string>(c => c.Default(""));
 
 
-        [TriggerOn(nameof(Name)), Ignore]
-        public string Caption => Name;
+        [Ignore]
+        public string Caption => _caption.Get();
+        private readonly IProperty<string> _caption = H.Property<string>(c => c
+            .On(e => e.Name)
+            .Set(e => string.IsNullOrWhiteSpace(e.Name)?"{New INN}":$"{{INN}}\n{e.Name}")
+        );
 
         [Ignore]
         public string IconPath => "IconMolecule";

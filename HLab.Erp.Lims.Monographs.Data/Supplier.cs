@@ -1,10 +1,11 @@
 ﻿using HLab.Erp.Data;
+using HLab.Mvvm.Application;
 using HLab.Notify.PropertyChanged;
 
 namespace HLab.Erp.Lims.Monographs.Data
 {
     using H = HD<Supplier>;
-    public partial class Supplier : Entity
+    public partial class Supplier : Entity, IListableModel
     {
         public Supplier() => H.Initialize(this);
 

@@ -11,20 +11,20 @@ namespace HLab.Erp.Lims.Analysis.Module.Products
         public MonographListViewModel() : base(c => c
                 //.AddAllowed()
                 //.DeleteAllowed()
-                .Column()
+                .Column("Name")
                 .Header("{Name}")
                 .Width(100)
                 .Link(e => e.Caption)
                     .Filter()
                         
-                .Column()
+                .Column("Pharmacopoeia")
                 .Header("{Pharmacopoeia}")
                 .Width(300)
                     .Link(e => e.Pharmacopoeia)
                     .Filter()
                         .IconPath("Icons/Entities/Products/Dose")
 
-                .Column()
+                .Column("Inn")
                     .Header("{Inn}")
                     .Width(200)
                     .Link(e => e.Inn)
