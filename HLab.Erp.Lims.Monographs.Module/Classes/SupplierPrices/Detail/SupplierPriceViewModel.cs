@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Input;
+using HLab.Erp.Base.Data;
 using HLab.Erp.Data;
 using HLab.Erp.Data.Observables;
 using HLab.Erp.Lims.Monographs.Data;
 using HLab.Erp.Lims.Monographs.Module.Classes.SupplierPrices.PriceRetreiver;
-using HLab.Erp.Units;
 using HLab.Mvvm;
 
 using HLab.Notify.Annotations;
@@ -37,7 +37,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.SupplierPrices.Detail
         public ObservableQuery<Unit> UnitList
         {
             get => _unitList.Get();
-            set => _unitList.Set(value.AddFilter(e => e.Group == Model.Consumable.UnitGroup));
+            set => _unitList.Set(value.AddFilter(e => e.UnitClass.Symbol == Model.Consumable.UnitGroup));
         }
 
         private readonly IProperty<ObservableQuery<Unit>> _unitList = H.Property<ObservableQuery<Unit>>(c => c

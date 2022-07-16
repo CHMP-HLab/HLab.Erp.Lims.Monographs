@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using HLab.Erp.Base.Data;
 using HLab.Erp.Data;
-using HLab.Erp.Units;
 using HLab.Notify.PropertyChanged;
 
 namespace HLab.Erp.Lims.Monographs.Data

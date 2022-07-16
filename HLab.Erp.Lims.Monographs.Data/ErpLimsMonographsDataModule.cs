@@ -1,6 +1,5 @@
 ﻿using HLab.Erp.Base.Data;
 using HLab.Erp.Data;
-using HLab.Erp.Units;
 
 namespace HLab.Erp.Lims.Monographs.Data
 {

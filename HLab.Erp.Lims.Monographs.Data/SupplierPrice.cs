@@ -1,6 +1,6 @@
 ﻿using System;
+using HLab.Erp.Base.Data;
 using HLab.Erp.Data;
-using HLab.Erp.Units;
 using HLab.Notify.PropertyChanged;
 using NPoco;
 

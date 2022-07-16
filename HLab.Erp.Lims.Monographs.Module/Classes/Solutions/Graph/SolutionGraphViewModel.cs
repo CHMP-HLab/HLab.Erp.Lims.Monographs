@@ -15,7 +15,6 @@ using HLab.Erp.Lims.Monographs.Module.Classes.AssayClasses.HistoricalTools;
 using HLab.Erp.Lims.Monographs.Module.Classes.Consumables.Tool;
 using HLab.Erp.Lims.Monographs.Module.Classes.Monographs.EditorTool;
 using HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph;
-using HLab.Erp.Units;
 using HLab.Mvvm;
 using HLab.Mvvm.Extensions;
 using HLab.Notify.Annotations;
@@ -387,7 +386,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Solutions.Graph
 
 
         public IObservableFilter<Unit> UnitMinList { get; } = H.Filter<Unit>(c => c
-                .AddFilter((s,e) => e.Group == s.Model?.UnitGroup)
+                .AddFilter((s,e) => e.UnitClass.Symbol == s.Model?.UnitGroup)
                 .Link(e => e.Root?.Units)
                 .On(e => e.Root.Units)
                 .On(e => e.Model.UnitGroup)

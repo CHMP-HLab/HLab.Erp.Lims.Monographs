@@ -4,11 +4,11 @@ using System.Windows.Controls;
 using System.Windows.Input;
 
 using HLab.Core.Annotations;
+using HLab.Erp.Base.Data;
 using HLab.Erp.Core.DragDrops;
 using HLab.Erp.Core.ViewModelStates;
 using HLab.Erp.Lims.Monographs.Data;
 using HLab.Erp.Lims.Monographs.Module.Tools.Details;
-using HLab.Erp.Units;
 using HLab.Icons.Annotations.Icons;
 using HLab.Mvvm;
 using HLab.Notify.Annotations;
@@ -256,11 +256,11 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
 
         public Unit ViewUnit => _viewUnit.Get();
         private readonly IProperty<Unit> _viewUnit = H<GraphViewModel<T>>.Property<Unit>(c => c
-            .On(e => e.Root.Units.Item().Group)
+            .On(e => e.Root.Units.Item().UnitClass.Symbol)
             .On(e => e.LinkedElement.UnitGroup)
             .On(e => e.LinkedElement.QtyAbs)
             .On(e => e.LinkedElement.QtyAbsNext)
-            .Set(e => e.Root.Units.Where(f => f.Group == e.LinkedElement.UnitGroup).BestMatch(Math.Max(e.LinkedElement.QtyAbs, e.LinkedElement.QtyAbsNext)))
+            .Set(e => e.Root.Units.Where(f => f.UnitClass.Symbol == e.LinkedElement.UnitGroup).BestMatch(Math.Max(e.LinkedElement.QtyAbs, e.LinkedElement.QtyAbsNext)))
         );
 
 

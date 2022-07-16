@@ -48,13 +48,13 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView
         private readonly IProperty<Form> _form = H<MonographTreeElement<T>>.Property<Form>(c => c
             .On(e => e.Model)
             .On(e => e.Parent.Form)
-            .Set(e => (e.Model as Form) ?? e.Parent.Form));
+            .Set(e => (e.Model as Form) ?? e.Parent?.Form));
 
         public Pharmacopoeia Pharmacopoeia => _pharmacopoeia.Get();
         private readonly IProperty<Pharmacopoeia> _pharmacopoeia = H<MonographTreeElement<T>>.Property<Pharmacopoeia>(c => c
             .On(e => e.Model)
             .On(e => e.Parent.Pharmacopoeia)
-            .Set(e => (e.Model as Pharmacopoeia) ?? e.Parent.Pharmacopoeia));
+            .Set(e => (e.Model as Pharmacopoeia) ?? e.Parent?.Pharmacopoeia));
 
 
         public string Version => "";

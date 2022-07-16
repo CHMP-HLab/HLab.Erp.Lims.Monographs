@@ -13,10 +13,5 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView.
             InitializeComponent();
         }
 
-        //private void UIElement_OnMouseDown(object sender, MouseButtonEventArgs e)
-        //{
-        //    (DataContext as MonographTreeElement)?.ClickCommand.Execute(this);
-
-        //}
     }
 }

@@ -1,11 +1,11 @@
 ﻿using System.Linq;
 using System.Windows.Input;
+using HLab.Erp.Base.Data;
 using HLab.Erp.Core.WebService;
 using HLab.Erp.Data;
 using HLab.Erp.Data.Observables;
 using HLab.Erp.Lims.Monographs.Data;
 using HLab.Erp.Lims.Monographs.Module.Classes.SupplierPrices.Detail;
-using HLab.Erp.Units;
 using HLab.Mvvm;
 using HLab.Mvvm.Annotations;
 using HLab.Notify.Annotations;

@@ -7,7 +7,6 @@ using HLab.Erp.Lims.Monographs.Data;
 using HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph;
 using HLab.Erp.Lims.Monographs.Module.Classes.Solutions.Graph;
 using HLab.Erp.Lims.Monographs.Module.Classes.TestClasses.Graph;
-using HLab.Erp.Units;
 using HLab.Mvvm;
 using HLab.Notify.Annotations;
 using HLab.Notify.PropertyChanged;

@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\HLab.Erp.Lims.Analysis\Hlab.Erp.Lims.Analysis.Data\HLab.Erp.Lims.Analysis.Data.csproj" />
-    <ProjectReference Include="..\..\HLab.Erp\HLab.Erp.Units\HLab.Erp.Units.csproj" />
   </ItemGroup>
 
   <ItemGroup>

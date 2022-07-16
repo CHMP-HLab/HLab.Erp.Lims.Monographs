@@ -8,7 +8,7 @@ using HLab.Notify.PropertyChanged;
 namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView
 {
     using H = H<PharmacopoeiaTreeElementViewModel>;
-    class PharmacopoeiaTreeElementViewModel : MonographTreeElement<Pharmacopoeia>
+    public class PharmacopoeiaTreeElementViewModel : MonographTreeElement<Pharmacopoeia>
     {
         public Visibility IconVisibility => Visibility.Visible;
         public Brush TabColor => new LinearGradientBrush

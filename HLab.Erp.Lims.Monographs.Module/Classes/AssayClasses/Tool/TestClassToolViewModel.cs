@@ -4,6 +4,7 @@ using HLab.Erp.Core;
 using HLab.Erp.Core.ToolBoxes;
 using HLab.Erp.Data.Observables;
 using HLab.Erp.Lims.Analysis.Data;
+using HLab.Erp.Lims.Analysis.Data.Entities;
 using HLab.Erp.Lims.Monographs.Module.Tools.Details;
 using HLab.Mvvm;
 using HLab.Mvvm.Annotations;

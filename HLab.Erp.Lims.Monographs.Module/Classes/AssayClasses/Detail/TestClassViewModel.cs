@@ -2,6 +2,7 @@
 using HLab.ColorTools.Wpf;
 using HLab.Erp.Core.ViewModelStates;
 using HLab.Erp.Lims.Analysis.Data;
+using HLab.Erp.Lims.Analysis.Data.Entities;
 using HLab.Icons.Annotations.Icons;
 using HLab.Mvvm;
 using HLab.Notify.Annotations;

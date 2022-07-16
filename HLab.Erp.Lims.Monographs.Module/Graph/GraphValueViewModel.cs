@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using HLab.Erp.Base.Data;
 using HLab.Erp.Data;
-using HLab.Erp.Units;
 using HLab.Mvvm;
 using HLab.Notify.Annotations;
 using HLab.Notify.PropertyChanged;
@@ -22,7 +22,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Graph
 
         public List<Unit> Units => _units.Get();
         private readonly IProperty<List<Unit>> _units = H.Property<List<Unit>>(c => c
-            .Set(async e => await e._db.FetchAsync<Unit>().Where(u => u.Group == ((MonographValueType)e.Model.Type).UnitGroup).ToListAsync()));
+            .Set(async e => await e._db.FetchAsync<Unit>().Where(u => u.UnitClass.Symbol == ((MonographValueType)e.Model.Type).UnitGroup).ToListAsync()));
 
 
 
