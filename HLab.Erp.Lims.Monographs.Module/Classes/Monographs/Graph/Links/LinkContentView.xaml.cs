@@ -18,7 +18,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph.Links
 
         public LinkGraphViewModel ViewModel => DataContext as LinkGraphViewModel;
 
-        private void UIElement_OnDrop(object sender, DragEventArgs e)
+        void UIElement_OnDrop(object sender, DragEventArgs e)
         {
             var formats = e.Data.GetFormats();
 

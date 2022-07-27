@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
+using HLab.Erp.Data;
 using HLab.Erp.Lims.Analysis.Data;
 using HLab.Erp.Lims.Analysis.Data.Entities;
 using HLab.Erp.Lims.Monographs.Data;
+using HLab.Icons.Annotations.Icons;
 using HLab.Notify.Annotations;
 using HLab.Notify.PropertyChanged;
 
@@ -10,9 +12,9 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView
 {
     using H = H<InnTreeElementViewModel>;
 
-    class InnTreeElementViewModel : MonographTreeElement<Inn>, ITreeContentViewModel
+    internal class InnTreeElementViewModel : MonographTreeElement<Inn>, ITreeContentViewModel
     {
-        public InnTreeElementViewModel() => H.Initialize(this);
+        public InnTreeElementViewModel(IDataService db, IIconService icons) : base(db, icons) => H.Initialize(this);
 
 
         [TriggerOn(nameof(Model),"Name")]
@@ -20,7 +22,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView
 
 
         public List<int> MonographSourceId => _monographSourceId.Get();
-        private readonly IProperty<List<int>> _monographSourceId = H.Property<List<int>>(c => c
+
+        readonly IProperty<List<int>> _monographSourceId = H.Property<List<int>>(c => c
             .On(e => e.MonographSource.Item().FormId)
             .Set(e => e.MonographSource
                 .Where(m => m.FormId!=null)

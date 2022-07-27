@@ -32,7 +32,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
         //public TranslateTransform TranslateTransform => (TranslateTransform)GetTemplateChild("TranslateTransform");
         //public ScrollViewer ScrollViewer => (ScrollViewer)GetTemplateChild("ScrollViewer");
 
-        private void Grid_OnPreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        void Grid_OnPreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
             var element = sender as UIElement;
             var p1 = e.GetPosition(Grid);
@@ -59,14 +59,15 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
             e.Handled = true;
         }
 
-        private void Grid_OnMouseWheel(object sender, MouseWheelEventArgs e)
+        void Grid_OnMouseWheel(object sender, MouseWheelEventArgs e)
         {
             throw new NotImplementedException();
         }
 
-        private Point _movePoint;
-        private bool _moved = false;
-        private void Grid_OnMouseMove(object sender, MouseEventArgs e)
+        Point _movePoint;
+        bool _moved = false;
+
+        void Grid_OnMouseMove(object sender, MouseEventArgs e)
         {
             var p = e.GetPosition(sender as IInputElement);
             //            ViewModel.DebugText = p.X + "-" + p.Y;
@@ -86,7 +87,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
             }
         }
 
-        private void Grid_OnMouseDown(object sender, MouseButtonEventArgs e)
+        void Grid_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
             if ((e.ChangedButton == MouseButton.Middle || e.ChangedButton == MouseButton.Right) && sender is UIElement element)
             {
@@ -97,7 +98,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
             }
         }
 
-        private void Grid_OnMouseUp(object sender, MouseButtonEventArgs e)
+        void Grid_OnMouseUp(object sender, MouseButtonEventArgs e)
         {
             if (sender is UIElement element && element.IsMouseCaptured)
             {

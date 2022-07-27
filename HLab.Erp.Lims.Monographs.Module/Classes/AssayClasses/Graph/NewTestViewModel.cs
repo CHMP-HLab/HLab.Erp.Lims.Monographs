@@ -7,9 +7,9 @@ using HLab.Notify.PropertyChanged;
 
 namespace HLab.Erp.Lims.Monographs.Module.Classes.AssayClasses.Graph
 {
-    class NewTestViewModel : NotifierBase
+    internal class NewTestViewModel : NotifierBase
     {
-        private readonly IDataService _db;
+        readonly IDataService _db;
 
         public NewTestViewModel(IDataService db)
         {
@@ -17,7 +17,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.AssayClasses.Graph
         }
 
         public List<TestClass> TestList => _testList.Get();
-        private readonly IProperty<List<TestClass>> _testList = H<NewTestViewModel>.Property<List<TestClass>>( c => c
+
+        readonly IProperty<List<TestClass>> _testList = H<NewTestViewModel>.Property<List<TestClass>>( c => c
             .Set(async e => await e._db.FetchAsync<TestClass>().ToListAsync())
         );
     }

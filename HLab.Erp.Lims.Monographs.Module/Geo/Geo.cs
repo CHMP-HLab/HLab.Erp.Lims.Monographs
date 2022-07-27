@@ -75,7 +75,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Geo
 
         public double Coef { get; }
 
-        private readonly double _origine;
+        readonly double _origine;
         public double OrigineY => double.IsPositiveInfinity(Coef) ? 0 : _origine;
 
         public double OrigineX => double.IsPositiveInfinity(Coef) ? _origine : (0 - _origine)/Coef;
@@ -192,7 +192,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Geo
         }
 
 
-        private const double Epsilon = 0.001; 
+        const double Epsilon = 0.001; 
         public Point? Intersect(Segment s)
         {
             Point? p = Line.Intersect(s.Line);

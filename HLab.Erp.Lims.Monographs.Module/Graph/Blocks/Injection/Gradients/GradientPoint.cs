@@ -19,6 +19,6 @@ namespace HLab.Erp.Lims.Monographs.Module.Graph.Blocks.Injection.Gradients
             set => _ratio.Set(value);
         }
 
-        private readonly IProperty<double> _ratio = H<GradientPoint>.Property<double>(c => c.Default(0.0));
+        readonly IProperty<double> _ratio = H<GradientPoint>.Property<double>(c => c.Default(0.0));
     }
 }

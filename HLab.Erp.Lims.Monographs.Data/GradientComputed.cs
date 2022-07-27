@@ -17,7 +17,7 @@ namespace HLab.Erp.Lims.Monographs.Data
         [Ignore]
         public double PerInjectionVolumeMl => _perInjectionVolumeMl.Get();
 
-        private readonly IProperty<double> _perInjectionVolumeMl = H.Property<double>(c => c
+        readonly IProperty<double> _perInjectionVolumeMl = H.Property<double>(c => c
             .On(e => e.Lines.Item().Ratio)
             .On(e => e.Lines.Item().Time)
             .On(e => e.FlowRate)
@@ -55,7 +55,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _lines.Set(value);
         }
 
-        private readonly IProperty<ObservableQuery<GradientLine>> _lines = H.Property<ObservableQuery<GradientLine>>(c => c
+        readonly IProperty<ObservableQuery<GradientLine>> _lines = H.Property<ObservableQuery<GradientLine>>(c => c
             //.Set(e => new ObservableQuery<GradientLine>(e.Context.Db) { }
             //    .AddFilter(gl => gl.GradientId == e.Id)
             //    .AddFilterFunc(q => q.OrderBy(gl => gl.Time), 1)

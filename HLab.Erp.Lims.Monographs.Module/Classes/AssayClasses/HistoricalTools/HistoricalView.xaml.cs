@@ -20,24 +20,24 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.AssayClasses.HistoricalTools
 
         public Func<Panel, FrameworkElement, bool, ErpDragDrop> GetDragDrop { get; set; }
 
-        public void Inject(IDragDropService dragDrop)
+        public HistoricalView(IMvvmService mvvm, IDragDropService dragDrop)
         {
+            Mvvm = mvvm;
+
+            InitializeComponent();
+
             var drag2 = GetDragDrop((Panel)dragDrop.GetDragCanvas(), ListView, true);
 
             drag2.Start += drag_Start;
             drag2.Drop += drag_Drop;
         }
-        public HistoricalView(IMvvmService mvvm)
-        {
-            Mvvm = mvvm;
-            InitializeComponent();
-        }
-        private void drag_Drop(object source)
+
+        void drag_Drop(object source)
         {
 
         }
 
-        private void drag_Start(ErpDragDrop source)
+        void drag_Start(ErpDragDrop source)
         {
             if (source == null) return;
             if (ListView.SelectedValue == null) return;

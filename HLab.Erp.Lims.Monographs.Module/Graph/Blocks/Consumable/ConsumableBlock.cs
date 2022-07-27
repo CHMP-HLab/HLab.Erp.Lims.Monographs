@@ -10,9 +10,9 @@ namespace HLab.Erp.Lims.Monographs.Module.Graph.Blocks.Consumable
 {
     using H = H<ConsumableBlock>;
 
-    class ConsumableBlock : GraphBlock
+    internal class ConsumableBlock : GraphBlock
     {
-        public ConsumableBlock() => H.Initialize(this);
+        public ConsumableBlock(Injector i) : base(i) => H.Initialize(this);
 
         public MonographConsumable MonographConsumable
         {
@@ -20,7 +20,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Graph.Blocks.Consumable
             set => _monographConsumable.Set(value);
         }
 
-        private readonly IProperty<MonographConsumable> _monographConsumable = H.Property<MonographConsumable>();
+        readonly IProperty<MonographConsumable> _monographConsumable = H.Property<MonographConsumable>();
 
 
         [TriggerOn(nameof(MonographConsumable), "Consumable", "UnitGroup")]
@@ -44,7 +44,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Graph.Blocks.Consumable
         public int ConsumableId => MonographConsumable.Consumable.Id;
         
         public override string Caption => _caption.Get();
-        private readonly IProperty<string> _caption = H.Property<string>(c => c
+
+        readonly IProperty<string> _caption = H.Property<string>(c => c
             .On(self => self.MonographConsumable.Consumable.Name)
             .Set(self => self. MonographConsumable.Consumable.Name)
         );
@@ -52,14 +53,16 @@ namespace HLab.Erp.Lims.Monographs.Module.Graph.Blocks.Consumable
 
 
         public override string IconName => _iconName.Get();
-        private readonly IProperty<string> _iconName = H.Property<string>(c => c
+
+        readonly IProperty<string> _iconName = H.Property<string>(c => c
             .On(self => self.MonographConsumable.Consumable.Type.IconPath)
             .Set(self => self.MonographConsumable.Consumable.Type.IconPath)
         );
 
 
         public override Color Color => _color.Get();
-        private readonly IProperty<Color> _color = H.Property<Color>(c => c
+
+        readonly IProperty<Color> _color = H.Property<Color>(c => c
             .On(self => self.MonographConsumable.Consumable.Type.Color)
             .Set(self => self.MonographConsumable.Consumable.Type.Color.ToColor().AdjustBrightness(-0.5)));
 
@@ -75,7 +78,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Graph.Blocks.Consumable
             }
         }
 
-        private readonly IProperty<GraphValueType> _outputType = H.Property<GraphValueType>();
+        readonly IProperty<GraphValueType> _outputType = H.Property<GraphValueType>();
 
     }
 }

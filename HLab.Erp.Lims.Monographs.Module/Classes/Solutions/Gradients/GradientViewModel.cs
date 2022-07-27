@@ -18,7 +18,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Solutions.Gradients
 
     public class GradientViewModel : ViewModel<Gradient>, IMvvmContextProvider
     {
-        private readonly IDataService _db;
+        readonly IDataService _db;
 
         public void ConfigureMvvmContext(IMvvmContext ctx)
         {
@@ -84,7 +84,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Solutions.Gradients
                 .Link(() => Model?.Lines));
         }
 
-        private readonly IProperty<ObservableViewModelCollection<GradientLineViewModel>> _linesViewModel = H.Property<ObservableViewModelCollection<GradientLineViewModel>>(c => c
+        readonly IProperty<ObservableViewModelCollection<GradientLineViewModel>> _linesViewModel = H.Property<ObservableViewModelCollection<GradientLineViewModel>>(c => c
             .On(e => e.Model.Lines)
             .Do(e => e.LinesViewModel.OnTriggered())
         );
@@ -92,27 +92,31 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Solutions.Gradients
 
 
         public List<int> NbInjectionFirstList => _nbInjectionFirstList.Get();
-        private readonly IProperty<List<int>> _nbInjectionFirstList = H.Property<List<int>>(c => c
+
+        readonly IProperty<List<int>> _nbInjectionFirstList = H.Property<List<int>>(c => c
             .Set(e => e._db.FetchAsync<Gradient>().ToListAsync().Result.Select(i => i.NbInjectionFirst ?? 0).Distinct().OrderBy(i => i).ToList())
         );
 
         public List<int> NbInjectionNextList => _nbInjectionNextList.Get();
-        private readonly IProperty<List<int>> _nbInjectionNextList = H.Property<List<int>>(c => c
+
+        readonly IProperty<List<int>> _nbInjectionNextList = H.Property<List<int>>(c => c
             .Set(e => e._db.FetchAsync<Gradient>().ToListAsync().Result.Select(i => i.NbInjectionNext ?? 0).Distinct().OrderBy(i => i).ToList())
         );
 
         public List<double> LostVolumeList => _lostVolumeList.Get();
-        private readonly IProperty<List<double>> _lostVolumeList = H.Property<List<double>>(c => c
+
+        readonly IProperty<List<double>> _lostVolumeList = H.Property<List<double>>(c => c
             .Set(e => e._db.FetchAsync<Gradient>().ToListAsync().Result.Select(i => i.LostVolume ?? 0).Distinct().OrderBy(i => i).ToList())
         );
 
         public List<double?> RatioList => _ratioList.Get();
-        private readonly IProperty<List<double?>> _ratioList = H.Property<List<double?>>(c => c
+
+        readonly IProperty<List<double?>> _ratioList = H.Property<List<double?>>(c => c
             .Set(e => e._db.FetchWhereAsync<GradientLine>(i => i.Ratio != null).ToListAsync().Result.Select(i => i.Ratio).Distinct().OrderBy(i => i).ToList())
         );
 
 
-        private void Lines_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        void Lines_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             switch (e.Action)
             {

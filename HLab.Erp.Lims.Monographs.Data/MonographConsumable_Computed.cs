@@ -19,7 +19,7 @@ namespace HLab.Erp.Lims.Monographs.Data
         [NotMapped]
         public SupplierPrice ActualSupplierPrice => _actualSupplierPrice.Get();
 
-        private readonly IProperty<SupplierPrice> _actualSupplierPrice = H.Property<SupplierPrice>(c => c
+        readonly IProperty<SupplierPrice> _actualSupplierPrice = H.Property<SupplierPrice>(c => c
             .On(e => e.SupplierPrice)
             .On(e => e.Consumable.SupplierPriceDefault)
             .Set(e => e.SupplierPrice ?? e.Consumable?.SupplierPriceDefault)
@@ -28,14 +28,15 @@ namespace HLab.Erp.Lims.Monographs.Data
         [NotMapped]
         public double UnitPrice => _unitPrice.Get();
 
-        private readonly IProperty<double> _unitPrice = H.Property<double>(c => c
+        readonly IProperty<double> _unitPrice = H.Property<double>(c => c
             .On(e => e.ActualSupplierPrice.UnitPrice)
             .Set(e => e.ActualSupplierPrice?.UnitPrice??0)
         );
 
         [NotMapped]
         public double Cost => _cost.Get();
-        private readonly IProperty<double> _cost = H.Property<double>(c => c
+
+        readonly IProperty<double> _cost = H.Property<double>(c => c
             .On(e => e.UnitPrice)
             .On(e => e.QtyAbs)
             .Set(e => e.QtyAbs * e.UnitPrice)
@@ -43,7 +44,8 @@ namespace HLab.Erp.Lims.Monographs.Data
 
         [NotMapped]
         public double CostNext => _costNext.Get();
-        private readonly IProperty<double> _costNext = H.Property<double>(c => c
+
+        readonly IProperty<double> _costNext = H.Property<double>(c => c
             .On(e => e.UnitPrice)
             .On(e => e.QtyAbsNext)
             .Set(e => e.QtyAbsNext * e.UnitPrice)
@@ -52,7 +54,8 @@ namespace HLab.Erp.Lims.Monographs.Data
         //[TriggerOn(nameof(SumRightQtyAbs)), NotMapped]
         [Ignore]
         public double QtyAbs => _qtyAbs.Get();
-        private readonly IProperty<double> _qtyAbs = H.Property<double>(c => c
+
+        readonly IProperty<double> _qtyAbs = H.Property<double>(c => c
             //.On(e => e.SumRightQtyAbs)
             //.Set(e => e.SumRightQtyAbs)
         );
@@ -60,7 +63,8 @@ namespace HLab.Erp.Lims.Monographs.Data
 
         [NotMapped]
         public double QtyAbsNext => _qtyAbsNext.Get();
-        private readonly IProperty<double> _qtyAbsNext = H.Property<double>(c => c
+
+        readonly IProperty<double> _qtyAbsNext = H.Property<double>(c => c
             //.On(e => e.SumRightQtyAbsNext)
             //.Set(e => e.SumRightQtyAbsNext)
         );

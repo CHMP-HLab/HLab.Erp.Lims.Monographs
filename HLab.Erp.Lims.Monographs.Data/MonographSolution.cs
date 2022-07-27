@@ -20,7 +20,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _qtyMin.Set(value);
         }
 
-        private readonly IProperty<double> _qtyMin = H.Property<double>(c => c.Default(0.0));
+        readonly IProperty<double> _qtyMin = H.Property<double>(c => c.Default(0.0));
 
 
         //[Column]
@@ -36,7 +36,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _unitMinId.Set(value);
         }
 
-        private readonly IProperty<int?> _unitMinId = H.Property<int?>();
+        readonly IProperty<int?> _unitMinId = H.Property<int?>();
 
         [NotMapped]
         public Unit UnitMin
@@ -45,7 +45,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => UnitMinId = value.Id;
         }
 
-        private readonly IProperty<Unit> _unitMin = H.Property<Unit>(c => c.Foreign(e => e.UnitMinId));
+        readonly IProperty<Unit> _unitMin = H.Property<Unit>(c => c.Foreign(e => e.UnitMinId));
 
 
         [Column]
@@ -55,7 +55,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _designation.Set(value);
         }
 
-        private readonly IProperty<string> _designation = H.Property<string>(c => c.Default(""));
+        readonly IProperty<string> _designation = H.Property<string>(c => c.Default(""));
 
 
 
@@ -66,7 +66,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _note.Set(value);
         }
 
-        private readonly IProperty<string> _note = H.Property<string>(c => c.Default(""));
+        readonly IProperty<string> _note = H.Property<string>(c => c.Default(""));
 
 
         [Column("QuantiteMode")]
@@ -76,7 +76,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _qtyMode.Set(value);
         }
 
-        private readonly IProperty<string> _qtyMode = H.Property<string>(c => c.Default(""));
+        readonly IProperty<string> _qtyMode = H.Property<string>(c => c.Default(""));
 
 
         [Column]
@@ -86,7 +86,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _order.Set(value);
         }
 
-        private readonly IProperty<int?> _order = H.Property<int?>();
+        readonly IProperty<int?> _order = H.Property<int?>();
 
 
         [Column]
@@ -96,7 +96,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _top.Set(value);
         }
 
-        private readonly IProperty<double> _top = H.Property<double>(c => c.Default(0.0));
+        readonly IProperty<double> _top = H.Property<double>(c => c.Default(0.0));
 
 
         [Column]
@@ -106,7 +106,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _right.Set(value);
         }
 
-        private readonly IProperty<double> _right = H.Property<double>(c => c.Default(0.0));
+        readonly IProperty<double> _right = H.Property<double>(c => c.Default(0.0));
 
 
         public override double CostNext { get; }

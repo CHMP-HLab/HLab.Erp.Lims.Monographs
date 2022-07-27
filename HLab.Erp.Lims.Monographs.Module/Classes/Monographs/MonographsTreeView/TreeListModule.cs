@@ -10,7 +10,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView
 
     public class TreeListModule : NotifierBase, IBootloader
     {
-        private readonly IErpServices _erp;
+        readonly IErpServices _erp;
 
         public TreeListModule(IErpServices erp)
         {

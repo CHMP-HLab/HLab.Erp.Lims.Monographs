@@ -24,7 +24,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.SupplierPrices.PriceRetreiver
         protected IDataService DbService { get; private set; }
         protected IBrowserService Browser { get; private set; }
 
-        public void Inject(IDataService dbService, IBrowserService browser)
+        protected PriceRetriever(IDataService dbService, IBrowserService browser)
         {
             DbService = dbService;
             Browser = browser;
@@ -33,7 +33,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.SupplierPrices.PriceRetreiver
         protected static object LockBrowser = new object();
 
         [DllImport("urlmon.dll", CharSet = CharSet.Ansi)]
-        private static extern int UrlMkSetSessionOption(
+        static extern int UrlMkSetSessionOption(
             int dwOption, string pBuffer, int dwBufferLength, int dwReserved);
 
         const int URLMON_OPTION_USERAGENT = 0x10000001;

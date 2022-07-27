@@ -15,10 +15,10 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.AssayClasses.Detail
 
     public class TestClassViewModel : ViewModel<TestClass>
     {
-        public IIconService IconService { get; private set; }
-        public State State { get; private set; }
+        public IIconService IconService { get; }
+        public State State { get; }
 
-        public void Inject(IIconService iconService, State state)
+        public TestClassViewModel(IIconService iconService, State state)
         {
             IconService = iconService;
             State = state;
@@ -27,7 +27,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.AssayClasses.Detail
 
 
         public string IconName => _iconName.Get();
-        private readonly IProperty<string> _iconName = H.Property<string>(c => c
+
+        readonly IProperty<string> _iconName = H.Property<string>(c => c
             .On(e => e.Model.IconPath)
             .Set(e=>"Icons/" + e.Model?.IconPath ?? "IconMicroscope")
         );

@@ -12,7 +12,7 @@ namespace HLab.Erp.Lims.Monographs.Data
         [NotMapped][Ignore]
         public double UnitPrice => _unitPrice.Get();
 
-        private readonly IProperty<double> _unitPrice = H.Property<double>(c => c
+        readonly IProperty<double> _unitPrice = H.Property<double>(c => c
             .On(e => e.Cost)
             .On(e => e.Quantity)
             .On(e => e.Currency.Rate)

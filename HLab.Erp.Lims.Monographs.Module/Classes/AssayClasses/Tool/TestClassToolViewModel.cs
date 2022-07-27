@@ -38,7 +38,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.AssayClasses.Tool
         public ObservableQuery<TestClass> SearchList { get; }
 
         [TriggerOn(nameof(SearchList), "Selected")]
-        private void UpdateConsommableSelected()
+        void UpdateConsommableSelected()
         {
             MessageBus.Publish(new DetailMessage(SearchList.Selected));
         }

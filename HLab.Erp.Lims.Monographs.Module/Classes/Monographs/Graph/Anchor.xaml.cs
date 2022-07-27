@@ -47,16 +47,18 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
         {
             get => (bool)GetValue(HighlightProperty); set => SetValue(HighlightProperty, value);
         }
-        private static void OnDragCanvasChanged(DependencyObject source,
+
+        static void OnDragCanvasChanged(DependencyObject source,
             DependencyPropertyChangedEventArgs e)
         {
         }
 
-        private static void OnEnabledChanged(DependencyObject source,
+        static void OnEnabledChanged(DependencyObject source,
             DependencyPropertyChangedEventArgs e)
         {
         }
-        private static void OnHighlightChanged(DependencyObject source,
+
+        static void OnHighlightChanged(DependencyObject source,
             DependencyPropertyChangedEventArgs e)
         {
             (source as Anchor)?.OnHighlightChanged(e);
@@ -73,7 +75,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
         }
 
 
-        private void UIElement_OnMouseEnter(object sender, MouseEventArgs e)
+        void UIElement_OnMouseEnter(object sender, MouseEventArgs e)
         {
             if (Enabled)
             {
@@ -81,7 +83,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
             }
         }
 
-        private void Border_OnMouseLeave(object sender, MouseEventArgs e)
+        void Border_OnMouseLeave(object sender, MouseEventArgs e)
         {
             if (Enabled)
             {
@@ -89,10 +91,10 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
             }
         }
 
-        private Path _line = null;
-        private Point _point;
+        Path _line = null;
+        Point _point;
 
-        private void SetLine(Point startPoint, Point endPoint)
+        void SetLine(Point startPoint, Point endPoint)
         {
             if (_line == null)
             {
@@ -130,7 +132,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
         }
 
 
-        private void Border_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        void Border_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (DragCanvas == null) return;
 
@@ -147,7 +149,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
             t.CaptureMouse();
         }
 
-        private void Border_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        void Border_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             var t = e.Source as FrameworkElement;
             t?.ReleaseMouseCapture();
@@ -163,7 +165,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
             //e.Handled = true;
         }
 
-        private void Connect(Anchor dest)
+        void Connect(Anchor dest)
         {
             var dstViewModel = dest.DataContext as IGraphViewModel;
             var dstClass = dest.AnchorClass;
@@ -180,10 +182,10 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
             return false;
         }
 
-        private Anchor _dest = null;
-        
+        Anchor _dest = null;
 
-        private void Border_OnMouseMove(object sender, MouseEventArgs e)
+
+        void Border_OnMouseMove(object sender, MouseEventArgs e)
         {
 
             var p = e.GetPosition(DragCanvas);

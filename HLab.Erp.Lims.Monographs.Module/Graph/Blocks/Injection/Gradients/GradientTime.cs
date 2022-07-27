@@ -16,7 +16,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Graph.Blocks.Injection.Gradients
             set => _time.Set(value);
         }
 
-        private readonly IProperty<double> _time = H<GradientTime>.Property<double>(c => c.Default(0.0));
+        readonly IProperty<double> _time = H<GradientTime>.Property<double>(c => c.Default(0.0));
 
         public void AdjustPoints()
         {

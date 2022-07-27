@@ -16,26 +16,26 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView
 {
     using H = H<CreateMonographViewModel>;
 
-    class InnViewModel : ViewModel<Inn>
+    internal class InnViewModel : ViewModel<Inn>
     {
 
         public string Caption => Model.Name;
     }
 
-    class FormViewModel : ViewModel<Form>
+    internal class FormViewModel : ViewModel<Form>
     {
         public string Caption => Model.Name;
     }
 
-    class PharmacopoeiaViewModel : ViewModel<Pharmacopoeia>
+    internal class PharmacopoeiaViewModel : ViewModel<Pharmacopoeia>
     {
         public string Caption => Model.Name;
     }
 
 
-    class CreateMonographViewModel : ViewModel
+    internal class CreateMonographViewModel : ViewModel
     {
-        private readonly IDataService _db;
+        readonly IDataService _db;
 
         public CreateMonographViewModel(IDataService db, IMvvmService mvvm)
         {
@@ -85,14 +85,16 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView
             get => _created.Get();
             set => _created.Set(value);
         }
-        private readonly IProperty<bool> _created = H.Property<bool>(c => c.Default(false));
+
+        readonly IProperty<bool> _created = H.Property<bool>(c => c.Default(false));
 
         public bool InnEnabled
         {
             get => _innEnabled.Get();
             set => _innEnabled.Set(value);
         }
-        private readonly IProperty<bool> _innEnabled = H.Property<bool>();
+
+        readonly IProperty<bool> _innEnabled = H.Property<bool>();
 
 
         public bool FormEnabled
@@ -100,7 +102,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView
             get => _formEnabled.Get();
             set => _formEnabled.Set(value);
         }
-        private readonly IProperty<bool> _formEnabled = H.Property<bool>();
+
+        readonly IProperty<bool> _formEnabled = H.Property<bool>();
 
 
         public bool PharmacopoeiaEnabled
@@ -108,7 +111,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView
             get => _pharmacopoeiaEnabled.Get();
             set => _pharmacopoeiaEnabled.Set(value);
         }
-        private readonly IProperty<bool> _pharmacopoeiaEnabled = H.Property<bool>();
+
+        readonly IProperty<bool> _pharmacopoeiaEnabled = H.Property<bool>();
 
 
         public bool PharmacopoeiaVersionEnabled
@@ -116,7 +120,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView
             get => _pharmacopoeiaVersionEnabled.Get();
             set => _pharmacopoeiaVersionEnabled.Set(value);
         }
-        private readonly IProperty<bool> _pharmacopoeiaVersionEnabled = H.Property<bool>();
+
+        readonly IProperty<bool> _pharmacopoeiaVersionEnabled = H.Property<bool>();
 
 
 
@@ -126,7 +131,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView
             set => _innList.Set(value.AddFilterFunc((d) => d.OrderBy(e => e.Name)).FluentUpdate());
         }
 
-        private readonly IProperty<ObservableQuery<Inn>> _innList = H.Property<ObservableQuery<Inn>>(c => c
+        readonly IProperty<ObservableQuery<Inn>> _innList = H.Property<ObservableQuery<Inn>>(c => c
             //.On(e => e)
             //.Update()
         );
@@ -139,7 +144,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView
             set => _formList.Set(value.AddFilterFunc(d => d.OrderBy(fp => fp.Name)).FluentUpdate());
         }
 
-        private readonly IProperty<ObservableQuery<Form>> _formList = H.Property<ObservableQuery<Form>>(c => c
+        readonly IProperty<ObservableQuery<Form>> _formList = H.Property<ObservableQuery<Form>>(c => c
             //.On(e => e)
             //.Update()
         );
@@ -152,7 +157,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView
             set => _pharmacopoeiaList.Set(value.AddFilterFunc(d => d.OrderBy(fp => fp.Name)).FluentUpdate());
         }
 
-        private readonly IProperty<ObservableQuery<Pharmacopoeia>> _pharmacopoeiaList = H.Property<ObservableQuery<Pharmacopoeia>>(c => c
+        readonly IProperty<ObservableQuery<Pharmacopoeia>> _pharmacopoeiaList = H.Property<ObservableQuery<Pharmacopoeia>>(c => c
             //.On(e => e)
             //.Update()
         );
@@ -160,7 +165,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView
 
 
         public List<string> PharmacopoeiaVersionList => _pharmacopoeiaVersionList.Get();
-        private readonly IProperty<List<string>> _pharmacopoeiaVersionList = H.Property<List<string>>(c => c
+
+        readonly IProperty<List<string>> _pharmacopoeiaVersionList = H.Property<List<string>>(c => c
             .On(e => e.PharmacopoeiaList.Selected)
             .Set(async e => await e._db.FetchAsync<Monograph>().Select(m => m.PharmacopoeiaVersion).Distinct().OrderBy(i => i).ToListAsync())
         );
@@ -172,7 +178,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView
             set => _pharmacopoeiaVersion.Set(value);
         }
 
-        private readonly IProperty<string> _pharmacopoeiaVersion = H.Property<string>();
+        readonly IProperty<string> _pharmacopoeiaVersion = H.Property<string>();
 
         public ICommand OkCommand { get; } = H.Command(c => c
             .CanExecute(self =>

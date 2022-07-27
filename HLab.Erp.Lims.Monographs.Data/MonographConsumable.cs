@@ -22,7 +22,8 @@ namespace HLab.Erp.Lims.Monographs.Data
             get => _monograph.Get();
             set => _monograph.Set(value);
         }
-        private readonly IForeign<Monograph> _monograph = H.Foreign<Monograph>(); 
+
+        readonly IForeign<Monograph> _monograph = H.Foreign<Monograph>(); 
 
 
         public int? ConsumableId
@@ -37,7 +38,8 @@ namespace HLab.Erp.Lims.Monographs.Data
             get => _consumable.Get();
             set => _consumable.Set(value);
         }
-        private readonly IForeign<Consumable> _consumable = H.Foreign<Consumable>(); 
+
+        readonly IForeign<Consumable> _consumable = H.Foreign<Consumable>(); 
 
 
         public int? SupplierPriceId
@@ -46,7 +48,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _supplierPriceId.Set(value);
         }
 
-        private readonly IProperty<int?> _supplierPriceId = H.Property<int?>();
+        readonly IProperty<int?> _supplierPriceId = H.Property<int?>();
 
         [Ignore]
         public SupplierPrice SupplierPrice
@@ -55,7 +57,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => SupplierPriceId = value.Id;
         }
 
-        private readonly IProperty<SupplierPrice> _supplierPrice = H.Property<SupplierPrice>(c => c.Foreign(e => e.SupplierPriceId));
+        readonly IProperty<SupplierPrice> _supplierPrice = H.Property<SupplierPrice>(c => c.Foreign(e => e.SupplierPriceId));
 
 
         public int? Order
@@ -64,7 +66,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _order.Set(value);
         }
 
-        private readonly IProperty<int?> _order = H.Property<int?>(c => c.Default((int?)default));
+        readonly IProperty<int?> _order = H.Property<int?>(c => c.Default((int?)default));
 
 
         public string Designation
@@ -73,7 +75,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _designation.Set(value);
         }
 
-        private readonly IProperty<string> _designation = H.Property<string>(c => c.Default(""));
+        readonly IProperty<string> _designation = H.Property<string>(c => c.Default(""));
 
 
         public string Note
@@ -82,13 +84,13 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _note.Set(value);
         }
 
-        private readonly IProperty<string> _note = H.Property<string>(c => c.Default(""));
+        readonly IProperty<string> _note = H.Property<string>(c => c.Default(""));
 
 
         [Ignore]
         public string UnitGroup => _unitGroup.Get();
 
-        private  readonly IProperty<string> _unitGroup = H.Property<string>(c => c
+        readonly IProperty<string> _unitGroup = H.Property<string>(c => c
             .On(e => e.Consumable.UnitGroup)
             .Set(e=>e.Consumable.UnitGroup)
         );
@@ -97,7 +99,7 @@ namespace HLab.Erp.Lims.Monographs.Data
          [Ignore]
         public string RightUnitGroup => _rightUnitGroup.Get();
 
-        private  readonly IProperty<string> _rightUnitGroup = H.Property<string>(c => c
+        readonly IProperty<string> _rightUnitGroup = H.Property<string>(c => c
             .On(e => e.Consumable.UnitGroup)
             .Set(e=>e.Consumable.UnitGroup)
         );

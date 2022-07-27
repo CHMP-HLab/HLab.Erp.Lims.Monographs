@@ -16,7 +16,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _comment.Set(value);
         }
 
-        private readonly IProperty<string> _comment = H.Property<string>(c => c.Default(""));
+        readonly IProperty<string> _comment = H.Property<string>(c => c.Default(""));
 
 
 
@@ -28,7 +28,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _gradientId.Set(value);
         }
 
-        private readonly IProperty<int?> _gradientId = H.Property<int?>();
+        readonly IProperty<int?> _gradientId = H.Property<int?>();
 
         [NotMapped]
         public Gradient Gradient
@@ -37,7 +37,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => GradientId = value.Id;
         }
 
-        private readonly IProperty<Gradient> _gradient = H.Property<Gradient>(c => c.Foreign(e => e.GradientId));
+        readonly IProperty<Gradient> _gradient = H.Property<Gradient>(c => c.Foreign(e => e.GradientId));
 
 
         [Column]
@@ -47,7 +47,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _time.Set(value);
         }
 
-        private readonly IProperty<double?> _time = H.Property<double?>(c => c.Default((double?)default));
+        readonly IProperty<double?> _time = H.Property<double?>(c => c.Default((double?)default));
 
 
         [Column]
@@ -57,6 +57,6 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _ratio.Set(value);
         }
 
-        private readonly IProperty<double?> _ratio = H.Property<double?>(c => c.Default((double?)default));
+        readonly IProperty<double?> _ratio = H.Property<double?>(c => c.Default((double?)default));
     }
 }

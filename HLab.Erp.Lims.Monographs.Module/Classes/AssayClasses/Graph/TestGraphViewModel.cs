@@ -17,8 +17,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.AssayClasses.Graph
 
     public class TestGraphViewModel : GraphViewModel<MonographTest>
     {
-        private readonly IDataService _db;
-        private readonly IDialogService _dialog;
+        readonly IDataService _db;
+        readonly IDialogService _dialog;
 
         public TestGraphViewModel(IDataService db, IDialogService dialog)
         {
@@ -71,11 +71,13 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.AssayClasses.Graph
             get => _leftContentViewModel.Get();
             private set => _leftContentViewModel.Set(value);
         }
-        private readonly IProperty<FrameworkElement> _leftContentViewModel = H.Property<FrameworkElement>(c => c.Default((FrameworkElement)default));
+
+        readonly IProperty<FrameworkElement> _leftContentViewModel = H.Property<FrameworkElement>(c => c.Default((FrameworkElement)default));
 
 
         public override string IconName => _iconName.Get();
-        private readonly IProperty<string> _iconName = H.Property<string>(c => c
+
+        readonly IProperty<string> _iconName = H.Property<string>(c => c
             .On(e => e.Model.TestClass.IconPath)
             .Set(e => "Assays/" + e.Model?.TestClass?.IconPath ?? "IconSolution"));
 

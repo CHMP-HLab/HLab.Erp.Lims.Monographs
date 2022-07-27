@@ -10,6 +10,7 @@ using System.Xml;
 using HLab.Core.Annotations;
 using HLab.Erp.Base.Data;
 using HLab.Erp.Core.DragDrops;
+using HLab.Erp.Core.WebService;
 using HLab.Erp.Data;
 using HLab.Erp.Data.Observables;
 using HLab.Erp.Lims.Analysis.Data;
@@ -36,8 +37,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
 
     public class MonographGraphViewModel : MonographViewModel, IDropViewModel, IMvvmContextProvider
     {
-        private readonly IMessageBus _msg;
-        private readonly IDataService _db;
+        readonly IMessageBus _msg;
+        readonly IDataService _db;
         public IMvvmService MvvmService { get; }
         public MonographGraph MonographGraph { get; }
 
@@ -95,7 +96,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
 
 
 
-        public MonographGraphViewModel(IMessageBus msg)
+        public MonographGraphViewModel(IBrowserService browser, IMessageBus msg) : base(browser)
         {
             _msg = msg;
             _msg.Subscribe<SelectedMonographieEditor>(
@@ -122,7 +123,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
             set => _debugText.Set(value);
         }
 
-        private readonly IProperty<string> _debugText = H.Property<string>(c => c.Default(""));
+        readonly IProperty<string> _debugText = H.Property<string>(c => c.Default(""));
 
 
         public int Zoom
@@ -130,10 +131,12 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
             get => _zoom.Get();
             set => _zoom.Set(value);
         }
-        private readonly IProperty<int> _zoom = H.Property<int>(c => c.Default(25));
+
+        readonly IProperty<int> _zoom = H.Property<int>(c => c.Default(25));
 
         public double Scale => _scale.Get();
-        private readonly IProperty<double> _scale = H.Property<double>(c => c
+
+        readonly IProperty<double> _scale = H.Property<double>(c => c
             .On(e => e.Zoom)
             .Set(e => ((e.Zoom + 50.0) / 150.0) * 2.0)
         );
@@ -203,7 +206,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
                 .Link(() => Model?.Consumables));
         }
 
-        private readonly IProperty<ObservableViewModelCollection<ConsumableGraphViewModel>> _consumablesViewModels = H.Property<ObservableViewModelCollection<ConsumableGraphViewModel>>(c => c
+        readonly IProperty<ObservableViewModelCollection<ConsumableGraphViewModel>> _consumablesViewModels = H.Property<ObservableViewModelCollection<ConsumableGraphViewModel>>(c => c
             .On(e => e.Model.Consumables)
             .Do(e => e.ConsumablesViewModels.OnTriggered())
         );
@@ -231,7 +234,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
                 .Link(() => Model?.Tests));
         }
 
-        private readonly IProperty<ObservableViewModelCollection<TestGraphViewModel>> _assaysViewModels = H.Property<ObservableViewModelCollection<TestGraphViewModel>>(c => c
+        readonly IProperty<ObservableViewModelCollection<TestGraphViewModel>> _assaysViewModels = H.Property<ObservableViewModelCollection<TestGraphViewModel>>(c => c
             .On(e => e.Model.Tests)
             .Do(e => e.TestsViewModels.OnTriggered())
         );
@@ -243,7 +246,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
             set => _units.Set(value.FluentUpdate());
         }
 
-        private readonly IProperty<ObservableQuery<Unit>> _units = H.Property<ObservableQuery<Unit>>(c => c
+        readonly IProperty<ObservableQuery<Unit>> _units = H.Property<ObservableQuery<Unit>>(c => c
             //.On(e => e)
             //.Update()
         );
@@ -255,7 +258,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
             set => _newSolutionName.Set(value);
         }
 
-        private readonly IProperty<string> _newSolutionName = H.Property<string>(c => c.Default("Nouvelle Solution"));
+        readonly IProperty<string> _newSolutionName = H.Property<string>(c => c.Default("Nouvelle Solution"));
 
 
         //public ICommand NewSolutionCommand { get; } = H.Command(c => c

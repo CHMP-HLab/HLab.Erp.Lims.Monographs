@@ -5,9 +5,8 @@ namespace HLab.Erp.Lims.Monographs.Module
 {
     public class LimsMonographService //: IErpService
     {
-
-        private readonly IBrowserService _browser;
-        private readonly ICurrencyService _currency;
+        readonly IBrowserService _browser;
+        readonly ICurrencyService _currency;
 
         public LimsMonographService(ICurrencyService currency, IBrowserService browser)
         {

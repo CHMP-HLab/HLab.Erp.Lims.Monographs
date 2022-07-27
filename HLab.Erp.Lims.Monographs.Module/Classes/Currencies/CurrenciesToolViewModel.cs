@@ -17,7 +17,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Currencies
             public override string MenuPath => "tools";
         }
 
-        private readonly ICurrencyService _currency;
+        readonly ICurrencyService _currency;
 
         public CurrenciesToolViewModel(ICurrencyService currency)
         {
@@ -34,7 +34,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Currencies
             set => _currenciesList.Set(value.FluentUpdate());
         }
 
-        private readonly IProperty<ObservableQuery<Currency>> _currenciesList = H<CurrenciesToolViewModel>.Property<ObservableQuery<Currency>>(c => c
+        readonly IProperty<ObservableQuery<Currency>> _currenciesList = H<CurrenciesToolViewModel>.Property<ObservableQuery<Currency>>(c => c
         );
 
 

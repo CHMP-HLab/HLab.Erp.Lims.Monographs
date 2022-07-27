@@ -29,9 +29,9 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.AssayClasses.HistoricalTools
             public override string MenuPath => "tools";
         }
 
-        private readonly IMessageBus _msg;
-        private readonly IIconService _icons;
-        private readonly IDataService _db;
+        readonly IMessageBus _msg;
+        readonly IIconService _icons;
+        readonly IDataService _db;
 
         public HistoricalViewModel(IMessageBus msg, IIconService icons, IDataService db)
         {
@@ -45,7 +45,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.AssayClasses.HistoricalTools
         public object Icon => _icons.GetIconAsync("IconHistory").Result;
         public string Title => "Historique";
 
-        private void OnSelected(SelectedMessage message)
+        void OnSelected(SelectedMessage message)
         {
             if (message.Entity is Monograph m)
             {
@@ -60,7 +60,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.AssayClasses.HistoricalTools
             get => _formId.Get();
             set => _formId.Set(value);
         }
-        private readonly IProperty<int> _formId = H.Property<int>(c => c.Default((int)default));
+
+        readonly IProperty<int> _formId = H.Property<int>(c => c.Default((int)default));
 
 
         public string Inn
@@ -68,7 +69,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.AssayClasses.HistoricalTools
             get => _inn.Get();
             set => _inn.Set(value);
         }
-        private readonly IProperty<string> _inn = H.Property<string>(c => c.Default((string)default));
+
+        readonly IProperty<string> _inn = H.Property<string>(c => c.Default((string)default));
 
         public int PharmacopoeiaId
         {
@@ -76,13 +78,14 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.AssayClasses.HistoricalTools
             set => _pharmacopoeiaId.Set(value);
         }
 
-        private readonly IProperty<int> _pharmacopoeiaId = H.Property<int>(c => c.Default((int)default));
+        readonly IProperty<int> _pharmacopoeiaId = H.Property<int>(c => c.Default((int)default));
 
 
         [TriggerOn(nameof(Inn))]
         [TriggerOn(nameof(FormId))]
         public List<int> ProductsId => _productsId.Get();
-        private readonly IProperty<List<int>> _productsId = H.Property<List<int>>(c => c
+
+        readonly IProperty<List<int>> _productsId = H.Property<List<int>>(c => c
             .Set(async e => await e._db.FetchWhereAsync<Product>(f => f.FormId == e.FormId && f.Name == e.Inn).Select(f => f.Id).ToListAsync()));
 
 
@@ -95,14 +98,14 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.AssayClasses.HistoricalTools
                         e => e.ProductId != null && ProductsId.Any() && ProductsId.Contains(e.ProductId.Value)));
         }
 
-        private readonly IProperty<ObservableQuery<Sample>> _searchHistoryList = H.Property<ObservableQuery<Sample>>(c => c
+        readonly IProperty<ObservableQuery<Sample>> _searchHistoryList = H.Property<ObservableQuery<Sample>>(c => c
             .On(e => e.PharmacopoeiaId)
             .On(e => e.ProductsId)
             .Do((e,f) => f.Get().Update())
         );
 
         [TriggerOn(nameof(SearchHistoryList), "Selected")]
-        private void UpdateHistoriqueSelected()
+        void UpdateHistoriqueSelected()
         {
             _msg.Publish(new DetailMessage(SearchTestList.Selected));
         }
@@ -113,7 +116,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.AssayClasses.HistoricalTools
             set => _searchTestList.Set(value.FluentUpdate());
         }
 
-        private readonly IProperty<ObservableQuery<TestClass>> _searchTestList = H.Property<ObservableQuery<TestClass>>(c => c
+        readonly IProperty<ObservableQuery<TestClass>> _searchTestList = H.Property<ObservableQuery<TestClass>>(c => c
             //.On(e => e)
             //.Update()
         );
@@ -122,14 +125,15 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.AssayClasses.HistoricalTools
 
 
         [TriggerOn(nameof(SearchTestList), "Selected")]
-        private void UpdateTestSelected()
+        void UpdateTestSelected()
         {
             _msg.Publish(new DetailMessage(SearchTestList.Selected));
         }
 
 
         public int SelectedId => _selectedId.Get();
-        private readonly IProperty<int> _selectedId = H.Property<int>(c => c
+
+        readonly IProperty<int> _selectedId = H.Property<int>(c => c
             .On(e => e.SearchHistoryList.Selected)
             .Set(e => e.SearchHistoryList?.Selected?.Id ?? -1));
 
@@ -141,7 +145,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.AssayClasses.HistoricalTools
             set => _searchTestEchantillonList.Set(value.AddFilter("OneToMany", e => e.SampleId == SelectedId));
         }
 
-        private readonly IProperty<ObservableQuery<SampleTest>> _searchTestEchantillonList = H.Property<ObservableQuery<SampleTest>>(c => c
+        readonly IProperty<ObservableQuery<SampleTest>> _searchTestEchantillonList = H.Property<ObservableQuery<SampleTest>>(c => c
             .On(e => e.SelectedId)
             .Do(e => e.SearchHistoryList.OnTriggered())
         );

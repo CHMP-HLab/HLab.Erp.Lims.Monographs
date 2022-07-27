@@ -62,15 +62,17 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView
             get => _searchText.Get();
             set => _searchText.Set(value);
         }
-        private readonly IProperty<string> _searchText = H.Property<string>(c => c.Default(""));
+
+        readonly IProperty<string> _searchText = H.Property<string>(c => c.Default(""));
 
 
-        private readonly ITrigger _searchTrigger = H.Trigger(c => c
+        readonly ITrigger _searchTrigger = H.Trigger(c => c
             .On(e => e.SearchText)
             .On(e => e.WithMonographsOnly)
             .Do(e => e.SetSearch())
         );
-        private void SetSearch()
+
+        void SetSearch()
         {
             Children.AddFilter(e => e.Name != null && e.Name.Contains(SearchText), 0, "Search");
 
@@ -86,7 +88,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView
             get => _withMonographsOnly.Get();
             set => _withMonographsOnly.Set(value);
         }
-        private readonly IProperty<bool> _withMonographsOnly = H.Property<bool>(c => c.Default(true));
+
+        readonly IProperty<bool> _withMonographsOnly = H.Property<bool>(c => c.Default(true));
 
 
         public ObservableQuery<Monograph> Monographs { get; }

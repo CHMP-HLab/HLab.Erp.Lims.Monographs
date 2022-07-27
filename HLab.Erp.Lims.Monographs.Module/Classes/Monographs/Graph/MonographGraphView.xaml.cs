@@ -44,7 +44,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
             DataContextChanged += MonographGraphContentView_DataContextChanged;
         }
 
-        private void MonographGraphContentView_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        void MonographGraphContentView_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if (e.OldValue is MonographGraphViewModel vmold)
             {
@@ -66,7 +66,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
             }
         }
 
-        private void OnLoaded(object sender, RoutedEventArgs e)
+        void OnLoaded(object sender, RoutedEventArgs e)
         {
             // if (DataContext is MonographGraphViewModel vmnew)
             //{
@@ -82,19 +82,19 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
         }
 
 
-        private void TestsViewModels_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        void TestsViewModels_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             RemoveOldItems(e.OldItems, PanelTests);
             AddNewItems(e.NewItems, PanelTests);
         }
 
-        private void SolutionsViewModels_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        void SolutionsViewModels_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             RemoveOldItems(e.OldItems, PanelSolutions);
             AddNewItems(e.NewItems, PanelSolutions);
         }
 
-        private void ConsumablesViewModels_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        void ConsumablesViewModels_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             RemoveOldItems(e.OldItems, PanelConsumables);
             AddNewItems(e.NewItems, PanelConsumables);
@@ -102,7 +102,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
 
         public IMvvmService Mvvm => (DataContext as MonographGraphViewModel).MvvmService;
 
-        private void LinksViewModels_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        void LinksViewModels_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             RemoveOldItems(e.OldItems, PanelLinks);
             //            AddNewItems(e.NewItems, PanelLinks);
@@ -121,7 +121,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
                 }
         }
 
-        private static void RemoveOldItems(IEnumerable oldItems, Panel panel)
+        static void RemoveOldItems(IEnumerable oldItems, Panel panel)
         {
             if (oldItems == null) return;
 
@@ -151,7 +151,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
             }
         }
 
-        private void AddNewItems(IEnumerable newItems, Panel panel)
+        void AddNewItems(IEnumerable newItems, Panel panel)
         {
             if (newItems == null) return;
             Debug.Assert(panel != null);
@@ -255,7 +255,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
         }
 
 
-        private void UpdateTopValue(Panel p)
+        void UpdateTopValue(Panel p)
         {
             foreach (var c in p.Children.OfType<ConsumableFlowchartView>())
             {
@@ -271,21 +271,21 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
 
         }
 
-        private void View_LayoutUpdated(object sender, System.EventArgs e)
+        void View_LayoutUpdated(object sender, System.EventArgs e)
         {
             UpdateTopValue(PanelConsumables);
 
         }
 
-        private void View_Loaded(object sender, RoutedEventArgs e)
+        void View_Loaded(object sender, RoutedEventArgs e)
         {
             ViewLoaded?.Invoke(sender, e);
         }
 
-        private MonographGraphViewModel ViewModel => DataContext as MonographGraphViewModel;
+        MonographGraphViewModel ViewModel => DataContext as MonographGraphViewModel;
 
 
-        private static void OnMonographieChanged(DependencyObject source,
+        static void OnMonographieChanged(DependencyObject source,
                 DependencyPropertyChangedEventArgs e)
         {
             //(source as MonographGraphContentView)?.OnMonographieChanged(e);
@@ -306,8 +306,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
         //}
 
 
-
-        private void UpdatePanelLayout()
+        void UpdatePanelLayout()
         {
             PanelLinks.UpdateLayout();
             //SetLinksSize();
@@ -412,7 +411,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
             return changed;
         }
 
-        private void SetLinksSize()
+        void SetLinksSize()
         {
             foreach (var link in PanelLinks.Children.OfType<LinkFlowchartView>())
             {
@@ -421,20 +420,18 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
         }
 
 
-
-
-        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
             SortPanel(PanelSolutions, PanelConsumables);
             RenumConsommables();
             RenumSolutions();
         }
 
-        private int _startIndex = -1;
-        private double _startRight = 0.0;
-        private Point _startPoint;
+        int _startIndex = -1;
+        double _startRight = 0.0;
+        Point _startPoint;
 
-        private void DragSolution_Start(ErpDragDrop source)
+        void DragSolution_Start(ErpDragDrop source)
         {
             var view = source.MouseEventArgs.Source as SolutionFlowchartView;
             var vm = (view?.DataContext as SolutionGraphViewModel);
@@ -464,7 +461,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
         }
 
 
-        private void SetIndex(int i, FrameworkElement e, bool sort = false)
+        void SetIndex(int i, FrameworkElement e, bool sort = false)
         {
             if (PanelSolutions.Children.Contains(e))
                 if (PanelSolutions.Children.IndexOf(e) == i) return;
@@ -493,9 +490,9 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
         }
 
 
-        private readonly FrameworkElement _placeHolder = new FrameworkElement();
+        readonly FrameworkElement _placeHolder = new FrameworkElement();
 
-        private int GetIndex(ErpDragDrop s)
+        int GetIndex(ErpDragDrop s)
         {
             int i = 0;
             foreach (FrameworkElement element in PanelSolutions.Children)
@@ -506,7 +503,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
             return i;
         }
 
-        private void DragSolution_Drop(ErpDragDrop s)
+        void DragSolution_Drop(ErpDragDrop s)
         {
             if (s.DraggedElement?.DataContext is SolutionGraphViewModel vm)
             {
@@ -528,7 +525,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
             RenumSolutions();
         }
 
-        private void RenumSolutions()
+        void RenumSolutions()
         {
             var i = 0;
             foreach (FrameworkElement element in PanelSolutions.Children)
@@ -540,7 +537,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
                 }
             }
         }
-        private void RenumConsommables()
+
+        void RenumConsommables()
         {
             int i = 0;
             foreach (FrameworkElement element in PanelConsumables.Children)
@@ -552,7 +550,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
                 }
             }
         }
-        private void RenumTests()
+
+        void RenumTests()
         {
             int i = 0;
             foreach (FrameworkElement element in PanelTests.Children)
@@ -565,7 +564,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
             }
         }
 
-        private void DragSolution_Move(ErpDragDrop s)
+        void DragSolution_Move(ErpDragDrop s)
         {
             int i = GetIndex(s);
             if (s.DraggedElement?.DataContext is SolutionGraphViewModel vm)
@@ -584,13 +583,13 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
         }
 
 
-        private void UIElement_OnMouseWheel(object sender, MouseWheelEventArgs e)
+        void UIElement_OnMouseWheel(object sender, MouseWheelEventArgs e)
         {
 
         }
 
 
-        private void ScrollViewer_OnPreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        void ScrollViewer_OnPreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
             if (sender is ScrollViewer viewer && !e.Handled)
 
@@ -613,12 +612,12 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
             }
         }
 
-        private void ScrollViewer_OnMouseWheel(object sender, MouseWheelEventArgs e)
+        void ScrollViewer_OnMouseWheel(object sender, MouseWheelEventArgs e)
         {
             throw new NotImplementedException();
         }
 
-        private void UIElement_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        void UIElement_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             ViewModel.Select(null);
         }

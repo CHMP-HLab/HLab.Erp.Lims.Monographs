@@ -30,7 +30,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Solutions.Gradients
             get => _parent.Get();
             set => _parent.Set(value);
         }
-        private readonly IProperty<GradientViewModel> _parent = H.Property<GradientViewModel>();
+
+        readonly IProperty<GradientViewModel> _parent = H.Property<GradientViewModel>();
 
 
         //[TriggerOn(nameof(Model)+".Time")]

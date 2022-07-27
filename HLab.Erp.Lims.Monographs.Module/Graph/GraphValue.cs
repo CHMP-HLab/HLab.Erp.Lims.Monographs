@@ -13,7 +13,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Graph
             set => _value.Set(value);
         }
 
-        private readonly IProperty<double> _value = H<MonographValue>.Property<double>(c => c.Default(0.0));
+        readonly IProperty<double> _value = H<MonographValue>.Property<double>(c => c.Default(0.0));
        
         public abstract GraphValueType Type { get; }
     }

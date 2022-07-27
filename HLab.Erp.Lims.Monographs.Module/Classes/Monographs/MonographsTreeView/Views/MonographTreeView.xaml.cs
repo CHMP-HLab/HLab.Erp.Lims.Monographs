@@ -18,7 +18,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView.
 
         public string ContentId => nameof(MonographTreeView);
 
-        private void UIElement_OnPreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        void UIElement_OnPreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
             ScrollViewer scv = (ScrollViewer)sender;
             scv.ScrollToVerticalOffset(scv.VerticalOffset - e.Delta);

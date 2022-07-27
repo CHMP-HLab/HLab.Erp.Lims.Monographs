@@ -11,7 +11,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Graph.Blocks.Volumes
     [DataContract]
     public class VolumesBlock : GraphBlock, IToolGraphBlock
     {
-        public void Inject()
+        public VolumesBlock(Injector i) : base(i)
         {
             H.Initialize(this);
             Output = MainRightGroup.GetOrAddPin<OutputPin>("out",ValueTypes.Volume);
@@ -20,7 +20,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Graph.Blocks.Volumes
         public OutputPin Output { get; private set;}
 
         public double NbVolumes => _nbVolumes.Get();
-        private readonly IProperty<double> _nbVolumes = H.Property<double>(c => c
+
+        readonly IProperty<double> _nbVolumes = H.Property<double>(c => c
             .On(self => ((InputPinVolumes)self.MainLeftGroup.Pins.Item()).Volumes)
             .Set(self => self.MainLeftGroup.Pins.Sum(p => ((InputPinVolumes)p).Volumes)));
 

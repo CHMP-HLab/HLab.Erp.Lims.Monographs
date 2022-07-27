@@ -14,7 +14,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
             InitializeComponent();
         }
 
-        private void QuantiteTextBox_OnGotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        void QuantiteTextBox_OnGotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
             var fe = sender as TextBox;
             if (fe != null && !fe.IsReadOnly)
@@ -24,7 +24,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
             }
         }
 
-        private void QuantiteTextBox_OnLostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        void QuantiteTextBox_OnLostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
             var fe = sender as TextBox;
             if (fe != null && !fe.IsReadOnly)

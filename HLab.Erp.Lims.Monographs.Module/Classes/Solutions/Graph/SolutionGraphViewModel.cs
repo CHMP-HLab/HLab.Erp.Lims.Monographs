@@ -27,8 +27,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Solutions.Graph
 
     public class SolutionGraphViewModel : GraphViewModel<MonographSolution>, IDropViewModel
     {
-        private IMessageBus _msg;
-        private IDataService _db;
+        IMessageBus _msg;
+        IDataService _db;
 
         public SolutionGraphViewModel(IMessageBus msg, IDataService db, IDialogService dialog)
         {
@@ -43,7 +43,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Solutions.Graph
         }
 
 
-        private WeakReference<MonographEditorViewModel> _editor = null;
+        WeakReference<MonographEditorViewModel> _editor = null;
 
         public void Link()
         {
@@ -54,7 +54,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Solutions.Graph
         }
 
 
-        private void Bind(MonographEditorViewModel vm)
+        void Bind(MonographEditorViewModel vm)
         {
             _editor = new WeakReference<MonographEditorViewModel>(vm);
             var span = vm.Bind(Model.AnchorId(), State, "TextBackground");
@@ -62,7 +62,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Solutions.Graph
         }
 
 
-        private void Span_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        void Span_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Selected = true;
         }
@@ -100,7 +100,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Solutions.Graph
         //    }
         //}
 
-        private void DragDrop(ErpDragDrop e)
+        void DragDrop(ErpDragDrop e)
         {
             if (e.DraggedElement != null)
             {
@@ -125,7 +125,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Solutions.Graph
             IsSelectable = true;
         }
 
-        private void DragMove(ErpDragDrop e)
+        void DragMove(ErpDragDrop e)
         {
             switch (e.DraggedElement)
             {
@@ -166,7 +166,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Solutions.Graph
             set => _isSelectable.Set(value);
         }
 
-        private readonly IProperty<bool> _isSelectable = H.Property<bool>();
+        readonly IProperty<bool> _isSelectable = H.Property<bool>();
 
 
 
@@ -322,7 +322,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Solutions.Graph
             set => _top.Set(value);
         }
 
-        private readonly IProperty<double> _top = H.Property<double>(c => c
+        readonly IProperty<double> _top = H.Property<double>(c => c
 
             .On(self => self.Model.Top)
             .Set(self => self.Model.Top));
@@ -330,7 +330,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Solutions.Graph
 
         public Thickness Margin => _margin.Get();
 
-        private readonly IProperty<Thickness> _margin = H.Property<Thickness>(c => c
+        readonly IProperty<Thickness> _margin = H.Property<Thickness>(c => c
             .On(self => self.Top)
             .On(self => self.Right)
             .Set(self => new Thickness( /*Left*/0, self.Top, self.Right, 0)));
@@ -338,7 +338,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Solutions.Graph
 
         public override string IconName => _iconName.Get();
 
-        private readonly IProperty<string> _iconName = H.Property<string>(c => c
+        readonly IProperty<string> _iconName = H.Property<string>(c => c
             .On(self => self.Model.QtyMode)
             .Set(self =>
                 {
@@ -364,7 +364,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Solutions.Graph
             set => _quantite.Set(value);
         }
 
-        private readonly IProperty<double> _quantite = H.Property<double>();
+        readonly IProperty<double> _quantite = H.Property<double>();
 
         public double QuantiteSuivant
         {
@@ -372,7 +372,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Solutions.Graph
             set => _quantiteSuivant.Set(value);
         }
 
-        private readonly IProperty<double> _quantiteSuivant = H.Property<double>();
+        readonly IProperty<double> _quantiteSuivant = H.Property<double>();
 
 
         public Unit Unit
@@ -381,7 +381,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Solutions.Graph
             set => _unit.Set(value);
         }
 
-        private readonly IProperty<Unit> _unit = H.Property<Unit>();
+        readonly IProperty<Unit> _unit = H.Property<Unit>();
 
 
 
@@ -412,7 +412,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Solutions.Graph
             set => _tarif.Set(value);
         }
 
-        private readonly IProperty<double> _tarif = H.Property<double>();
+        readonly IProperty<double> _tarif = H.Property<double>();
 
         public double TarifSuivant
         {
@@ -420,9 +420,9 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Solutions.Graph
             set => _tarifSuivant.Set(value);
         }
 
-        private readonly IProperty<double> _tarifSuivant = H.Property<double>();
+        readonly IProperty<double> _tarifSuivant = H.Property<double>();
 
-        private readonly IDialogService _dialog;
+        readonly IDialogService _dialog;
 
 
         public override ICommand DeleteCommand { get; } = H.Command(c => c

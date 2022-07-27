@@ -19,8 +19,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Graph.Blocks.Solution
     }
 
 
-
-    class SolutionBlock : GraphBlock, IToolGraphBlock
+    internal class SolutionBlock : GraphBlock, IToolGraphBlock
     {
         class SoluteWeightPin : InputPinWeight
         {
@@ -56,7 +55,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Graph.Blocks.Solution
             }
         }
 
-        public SolutionBlock()
+        public SolutionBlock(Injector i) : base(i)
         {
             WeightSoluteGroup = GetOrAddGroup("SLTW", PinLocation.Left,"Soluté");
             VolumeSoluteGroup = GetOrAddGroup("SLTV", PinLocation.Left,null);

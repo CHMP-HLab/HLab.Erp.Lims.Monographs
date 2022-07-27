@@ -27,10 +27,10 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.TestClasses.Graph
             }
         }
 
-        private Dictionary<TextBox,Brush> _background = new Dictionary<TextBox, Brush>();
-        private Dictionary<TextBox,Brush> _foreground = new Dictionary<TextBox, Brush>();
+        Dictionary<TextBox,Brush> _background = new Dictionary<TextBox, Brush>();
+        Dictionary<TextBox,Brush> _foreground = new Dictionary<TextBox, Brush>();
 
-        private void TextBox_OnGotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        void TextBox_OnGotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
             var fe = sender as TextBox;
             if (fe != null && !fe.IsReadOnly)
@@ -42,7 +42,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.TestClasses.Graph
             }
         }
 
-        private void TextBox_OnLostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        void TextBox_OnLostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
             var fe = sender as TextBox;
             if (fe != null && !fe.IsReadOnly)

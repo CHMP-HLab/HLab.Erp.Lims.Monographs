@@ -10,9 +10,9 @@ namespace HLab.Erp.Lims.Monographs.Module.Graph
 {
     using H = H<MonographValueViewModel>;
 
-    class MonographValueViewModel : ViewModel<MonographValue>
+    internal class MonographValueViewModel : ViewModel<MonographValue>
     {
-        private readonly IDataService _db;
+        readonly IDataService _db;
 
         public MonographValueViewModel(IDataService db)
         {
@@ -21,7 +21,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Graph
         }
 
         public List<Unit> Units => _units.Get();
-        private readonly IProperty<List<Unit>> _units = H.Property<List<Unit>>(c => c
+
+        readonly IProperty<List<Unit>> _units = H.Property<List<Unit>>(c => c
             .Set(async e => await e._db.FetchAsync<Unit>().Where(u => u.UnitClass.Symbol == ((MonographValueType)e.Model.Type).UnitGroup).ToListAsync()));
 
 
@@ -32,7 +33,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Graph
             set => _value.Set(Model.Value = Unit.AbsQty(value));
         }
 
-        private readonly IProperty<double> _value = H.Property<double>(c => c
+        readonly IProperty<double> _value = H.Property<double>(c => c
             .On(e => e.Model.Value)
             .On(e => e.Unit)
             .Set(e => e.Unit.Qty(e.Model.Value)));
@@ -44,7 +45,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Graph
             set => _unit.Set(value);
         }
 
-        private readonly IProperty<Unit> _unit = H.Property<Unit>();
+        readonly IProperty<Unit> _unit = H.Property<Unit>();
 
 
         [TriggerOn]

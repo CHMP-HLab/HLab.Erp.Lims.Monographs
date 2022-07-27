@@ -15,7 +15,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _name.Set(value);
         }
 
-        private readonly IProperty<string> _name = H.Property<string>(c => c.Default(""));
+        readonly IProperty<string> _name = H.Property<string>(c => c.Default(""));
 
 
         public string Url
@@ -24,7 +24,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _url.Set(value);
         }
 
-        private readonly IProperty<string> _url = H.Property<string>(c => c.Default(""));
+        readonly IProperty<string> _url = H.Property<string>(c => c.Default(""));
 
         public string SearchUrl
         {
@@ -32,7 +32,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _searchUrl.Set(value);
         }
 
-        private readonly IProperty<string> _searchUrl = H.Property<string>(c => c.Default(""));
+        readonly IProperty<string> _searchUrl = H.Property<string>(c => c.Default(""));
 
 
         public string ReferenceUrl
@@ -41,7 +41,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _referenceUrl.Set(value);
         }
 
-        private readonly IProperty<string> _referenceUrl = H.Property<string>(c => c.Default(""));
+        readonly IProperty<string> _referenceUrl = H.Property<string>(c => c.Default(""));
 
 
         public string PriceRetriever
@@ -50,7 +50,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _priceRetriever.Set(value);
         }
 
-        private readonly IProperty<string> _priceRetriever = H.Property<string>(c => c.Default(""));
+        readonly IProperty<string> _priceRetriever = H.Property<string>(c => c.Default(""));
 
 
         public float Tax
@@ -59,7 +59,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _tax.Set(value);
         }
 
-        private readonly IProperty<float> _tax = H.Property<float>(c => c.Default(0.0f));
+        readonly IProperty<float> _tax = H.Property<float>(c => c.Default(0.0f));
 
     }
 }

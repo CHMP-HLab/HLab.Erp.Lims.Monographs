@@ -20,28 +20,28 @@ namespace HLab.Erp.Lims.Monographs.Data
             get => _name.Get(); set => _name.Set(value);
         }
 
-        private readonly IProperty<string> _name = H.Property<string>(c => c.Default(""));
+        readonly IProperty<string> _name = H.Property<string>(c => c.Default(""));
 
         public string Symbol
         {
             get => _symbol.Get(); set => _symbol.Set(value);
         }
 
-        private readonly IProperty<string> _symbol = H.Property<string>(c => c.Default(""));
+        readonly IProperty<string> _symbol = H.Property<string>(c => c.Default(""));
 
         public string Iso
         {
             get => _iso.Get(); set => _iso.Set(value);
         }
 
-        private readonly IProperty<string> _iso = H.Property<string>(c => c.Default(""));
+        readonly IProperty<string> _iso = H.Property<string>(c => c.Default(""));
 
         public decimal Rate
         {
             get => _rate.Get(); set => _rate.Set(value);
         }
 
-        private readonly IProperty<decimal> _rate = H.Property<decimal>(c => c.Default(decimal.One));
+        readonly IProperty<decimal> _rate = H.Property<decimal>(c => c.Default(decimal.One));
 
         [Timestamp]
         public DateTime? Date
@@ -49,7 +49,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             get => _date.Get(); set => _date.Set(value);
         }
 
-        private readonly IProperty<DateTime?> _date = H.Property<DateTime?>(c => c.Default((DateTime?)null));
+        readonly IProperty<DateTime?> _date = H.Property<DateTime?>(c => c.Default((DateTime?)null));
 
 
 
@@ -70,7 +70,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => CurrencyId = value.Id;
         }
 
-        private readonly IForeign<Currency> _currency = HD<SupplierPrice>.Foreign<Currency>();
+        readonly IForeign<Currency> _currency = HD<SupplierPrice>.Foreign<Currency>();
 
 
         [Ignore]
@@ -88,7 +88,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _currencyId.Set(value);
         }
 
-        private readonly IProperty<int?> _currencyId = HD<Supplier>.Property<int?>();
+        readonly IProperty<int?> _currencyId = HD<Supplier>.Property<int?>();
 
         [NotMapped]
         public Currency Currency
@@ -97,7 +97,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => CurrencyId = value.Id;
         }
 
-        private readonly IProperty<Currency> _currency = HD<Supplier>.Property<Currency>(c => c.Foreign(e => e.CurrencyId));
+        readonly IProperty<Currency> _currency = HD<Supplier>.Property<Currency>(c => c.Foreign(e => e.CurrencyId));
 
     }
 }

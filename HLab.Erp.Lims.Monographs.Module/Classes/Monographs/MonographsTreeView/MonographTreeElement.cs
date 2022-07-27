@@ -28,10 +28,10 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView
     public abstract class MonographTreeElement<T> : ViewModel<T>, IMonographTreeElement, IMvvmContextProvider
         where T : IEntity, IListableModel
     {
-        public IDataService Db { get; private set; }
-        public IIconService Icons { get; private set; }
+        public IDataService Db { get; }
+        public IIconService Icons { get; }
 
-        public void Inject(IDataService db, IIconService icons)
+        protected MonographTreeElement(IDataService db, IIconService icons)
         {
             Db = db;
             Icons = icons;
@@ -39,19 +39,22 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView
         }
 
         public Inn Inn => _inn.Get();
-        private readonly IProperty<Inn> _inn = H<MonographTreeElement<T>>.Property<Inn>(c => c
+
+        readonly IProperty<Inn> _inn = H<MonographTreeElement<T>>.Property<Inn>(c => c
             .On(e => e.Model)
             .On(e => e.Parent.Inn)
             .Set(e => (e.Model as Inn) ?? e.Parent.Inn));
 
         public Form Form => _form.Get();
-        private readonly IProperty<Form> _form = H<MonographTreeElement<T>>.Property<Form>(c => c
+
+        readonly IProperty<Form> _form = H<MonographTreeElement<T>>.Property<Form>(c => c
             .On(e => e.Model)
             .On(e => e.Parent.Form)
             .Set(e => (e.Model as Form) ?? e.Parent?.Form));
 
         public Pharmacopoeia Pharmacopoeia => _pharmacopoeia.Get();
-        private readonly IProperty<Pharmacopoeia> _pharmacopoeia = H<MonographTreeElement<T>>.Property<Pharmacopoeia>(c => c
+
+        readonly IProperty<Pharmacopoeia> _pharmacopoeia = H<MonographTreeElement<T>>.Property<Pharmacopoeia>(c => c
             .On(e => e.Model)
             .On(e => e.Parent.Pharmacopoeia)
             .Set(e => (e.Model as Pharmacopoeia) ?? e.Parent?.Pharmacopoeia));
@@ -61,7 +64,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView
 
         [TriggerOn(nameof(Model), "IconName")] public string IconPath => _iconPath.Get();
 
-        private IProperty<string> _iconPath = H<MonographTreeElement<T>>.Property<string>(c => c
+        IProperty<string> _iconPath = H<MonographTreeElement<T>>.Property<string>(c => c
             .On(e => e.Model.IconPath)
             .Set(e => e.Model?.IconPath)
             
@@ -71,14 +74,16 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView
             get => _isExpanded.Get();
             set => _isExpanded.Set(value);
         }
-        private readonly IProperty<bool> _isExpanded = H<MonographTreeElement<T>>.Property<bool>(c => c.Default(true));
+
+        readonly IProperty<bool> _isExpanded = H<MonographTreeElement<T>>.Property<bool>(c => c.Default(true));
 
         public bool IsSelected
         {
             get => _isSelected.Get();
             set => _isSelected.Set(value);
         }
-        private readonly IProperty<bool> _isSelected = H<MonographTreeElement<T>>.Property<bool>(c => c.Default(false));
+
+        readonly IProperty<bool> _isSelected = H<MonographTreeElement<T>>.Property<bool>(c => c.Default(false));
 
 
         public void ConfigureMvvmContext(IMvvmContext ctx)
@@ -99,7 +104,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView
             set => _childrenVisibility.Set(value);
         }
 
-        private readonly IProperty<Visibility> _childrenVisibility = H<MonographTreeElement<T>>.Property<Visibility>(c => c.Default(Visibility.Visible));
+        readonly IProperty<Visibility> _childrenVisibility = H<MonographTreeElement<T>>.Property<Visibility>(c => c.Default(Visibility.Visible));
 
 
         public virtual MonographsListViewModel Root => Parent?.Root;
@@ -110,7 +115,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView
             set => _parent.Set(value);
         }
 
-        private readonly IProperty<IMonographTreeElement> _parent = H<MonographTreeElement<T>>.Property<IMonographTreeElement>();
+        readonly IProperty<IMonographTreeElement> _parent = H<MonographTreeElement<T>>.Property<IMonographTreeElement>();
 
 
         public IObservableFilter<Monograph> MonographSource { get; } = H<MonographTreeElement<T>>.Filter<Monograph>(c => c

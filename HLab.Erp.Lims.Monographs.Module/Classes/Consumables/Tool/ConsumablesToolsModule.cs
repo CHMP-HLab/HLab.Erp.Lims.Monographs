@@ -9,7 +9,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Consumables.Tool
 
     public class ConsumablesToolsModule : NotifierBase, IBootloader
     {
-        private readonly IErpServices _erp;
+        readonly IErpServices _erp;
 
         public ConsumablesToolsModule(IErpServices erp)
         {

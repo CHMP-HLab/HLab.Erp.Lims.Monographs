@@ -1,7 +1,9 @@
 using System.Windows.Input;
 using HLab.Erp.Base.Data;
+using HLab.Erp.Data;
 using HLab.Erp.Data.Observables;
 using HLab.Erp.Lims.Monographs.Data;
+using HLab.Icons.Annotations.Icons;
 using HLab.Mvvm;
 using HLab.Mvvm.Application;
 using HLab.Notify.PropertyChanged;
@@ -9,12 +11,13 @@ using HLab.Notify.PropertyChanged;
 namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView
 {
     using H = H<MonographTreeElementViewModel>;
-    class MonographTreeElementViewModel : MonographTreeElement<Monograph>
-    {
-        private readonly IDocumentService _docs;
-        private readonly IDialogService _dialog;
 
-        public MonographTreeElementViewModel(IDocumentService docs, IDialogService dialog)
+    internal class MonographTreeElementViewModel : MonographTreeElement<Monograph>
+    {
+        readonly IDocumentService _docs;
+        readonly IDialogService _dialog;
+
+        public MonographTreeElementViewModel(IDataService db, IIconService icons, IDocumentService docs, IDialogService dialog) : base(db,icons)
         {
             _docs = docs;
             _dialog = dialog;

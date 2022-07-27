@@ -30,7 +30,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
             get => (bool)GetValue(SelectedProperty); set => SetValue(SelectedProperty, value);
         }
 
-        private static void OnSelectedChanged(DependencyObject source,
+        static void OnSelectedChanged(DependencyObject source,
             DependencyPropertyChangedEventArgs e)
         {
             (source as BlockGraphViewKC)?.SelectedChanged(source, new EventArgs());

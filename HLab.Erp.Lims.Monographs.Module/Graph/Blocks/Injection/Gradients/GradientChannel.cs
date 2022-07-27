@@ -20,7 +20,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Graph.Blocks.Injection.Gradients
             set => _name.Set(value);
         }
 
-        private readonly IProperty<string> _name = H.Property<string>();
+        readonly IProperty<string> _name = H.Property<string>();
 
         public void AdjustPoints()
         {
@@ -49,7 +49,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Graph.Blocks.Injection.Gradients
 
         public double Ratio => _ratio.Get();
 
-        private readonly IProperty<double> _ratio = H.Property<double>(c => c
+        readonly IProperty<double> _ratio = H.Property<double>(c => c
             .On(e => e.Points.Item().GradientTime.Time)
             .On(e => e.Points.Item().Ratio)
             .Set(e =>

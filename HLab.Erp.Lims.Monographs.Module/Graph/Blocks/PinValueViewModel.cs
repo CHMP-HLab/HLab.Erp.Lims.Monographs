@@ -8,15 +8,16 @@ using HLab.Notify.PropertyChanged;
 namespace HLab.Erp.Lims.Monographs.Module.Graph.Blocks
 {
     using H = H<PinValueViewModel>;
-    class PinValueViewModel : ViewModel<IPin>
+
+    internal class PinValueViewModel : ViewModel<IPin>
     {
         public PinValueViewModel() => H.Initialize(this);
 
         public IGraphValue Value1 => _value1.Get();
-        private readonly IProperty<IGraphValue> _value1 = H.Property<IGraphValue>(c => c.Set(e => e.GetGraphValue()));
+        readonly IProperty<IGraphValue> _value1 = H.Property<IGraphValue>(c => c.Set(e => e.GetGraphValue()));
 
         public IGraphValue ValueN => _valueN.Get();
-        private readonly IProperty<IGraphValue> _valueN = H.Property<IGraphValue>(c => c.Set(e => e.GetGraphValue()));
+        readonly IProperty<IGraphValue> _valueN = H.Property<IGraphValue>(c => c.Set(e => e.GetGraphValue()));
 
         [TriggerOn(nameof(Model),"Value")]
         public void Calculate()
@@ -26,7 +27,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Graph.Blocks
         }
 
         public Visibility E1Visibility => _e1Visibility.Get();
-        private readonly IProperty<Visibility> _e1Visibility = H.Property<Visibility>(c => c
+
+        readonly IProperty<Visibility> _e1Visibility = H.Property<Visibility>(c => c
             .On(e => e.Value1.Value)
             .On(e => e.ValueN.Value)
             .Set(e => (Math.Abs(e.Value1.Value - e.ValueN.Value) < double.Epsilon)?Visibility.Collapsed:Visibility.Visible)
@@ -34,13 +36,14 @@ namespace HLab.Erp.Lims.Monographs.Module.Graph.Blocks
 
 
         public Visibility EnVisibility => _enVisibility.Get();
-        private readonly IProperty<Visibility> _enVisibility = H.Property<Visibility>(c => c
+
+        readonly IProperty<Visibility> _enVisibility = H.Property<Visibility>(c => c
             .On(e => e.ValueN.Value)
             .Set(e => Math.Abs(e.ValueN.Value) < double.Epsilon ? Visibility.Collapsed : Visibility.Visible)
         );
 
 
-        private IGraphValue GetGraphValue()
+        IGraphValue GetGraphValue()
         {
             if(Model.ValueType==ValueTypes.Volume)
             {

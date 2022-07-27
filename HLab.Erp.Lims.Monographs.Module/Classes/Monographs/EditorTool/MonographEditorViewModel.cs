@@ -22,7 +22,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.EditorTool
 
     public class MonographEditorViewModel : ViewModel
     {
-        private readonly IMessageBus _msg;
+        readonly IMessageBus _msg;
 
         public MonographEditorViewModel(IMessageBus messageBus)
         {
@@ -46,7 +46,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.EditorTool
             set => _monograph.Set(value);
         }
 
-        private readonly IProperty<Monograph> _monograph = H.Property<Monograph>();
+        readonly IProperty<Monograph> _monograph = H.Property<Monograph>();
 
 
         public FlowDocument Document
@@ -55,12 +55,11 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.EditorTool
             set => _document.Set(value);
         }
 
-        private readonly IProperty<FlowDocument> _document = H.Property<FlowDocument>();
+        readonly IProperty<FlowDocument> _document = H.Property<FlowDocument>();
 
 
-
-        private bool _loadFromBinary = true;
-        private bool _saveChanges = true;
+        bool _loadFromBinary = true;
+        bool _saveChanges = true;
 
         public void SaveDocument(FlowDocument doc)
         {
@@ -87,20 +86,23 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.EditorTool
         }
 
        public Visibility ReaderVisibility => _readerVisibility.Get();
-       private readonly IProperty<Visibility> _readerVisibility = H.Property<Visibility>(c => c
+
+       readonly IProperty<Visibility> _readerVisibility = H.Property<Visibility>(c => c
            .On(e => e.EditMode)
            .On(e => e.SourceMode)
            .Set(e => (e.EditMode||e.SourceMode)?Visibility.Hidden : Visibility.Visible));
 
        public Visibility EditorVisibility => _editorVisibility.Get();
-        private readonly IProperty<Visibility> _editorVisibility = H.Property<Visibility>(c => c
+
+       readonly IProperty<Visibility> _editorVisibility = H.Property<Visibility>(c => c
            .On(e => e.EditMode)
            .On(e => e.SourceMode)
            .Set(e => (e.EditMode||!e.SourceMode)?Visibility.Visible : Visibility.Hidden));
 
 
         public Visibility SourceEditorVisibility => _sourceEditorVisibility.Get();
-        private readonly IProperty<Visibility> _sourceEditorVisibility = H.Property<Visibility>(c => c
+
+        readonly IProperty<Visibility> _sourceEditorVisibility = H.Property<Visibility>(c => c
             .On(e => e.SourceMode)
             .Set(e => e.SourceMode ? Visibility.Visible : Visibility.Hidden)
         );
@@ -111,7 +113,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.EditorTool
             set => _editEnabled.Set(value);
         }
 
-        private readonly IProperty<bool> _editEnabled = H.Property<bool>();
+        readonly IProperty<bool> _editEnabled = H.Property<bool>();
 
 
         public bool EditMode
@@ -120,7 +122,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.EditorTool
             set => _editMode.Set(value);
         }
 
-        private readonly IProperty<bool> _editMode = H.Property<bool>();
+        readonly IProperty<bool> _editMode = H.Property<bool>();
 
 
          public bool SourceMode
@@ -129,7 +131,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.EditorTool
             set => _sourceMode.Set(value);
         }
 
-        private readonly IProperty<bool> _sourceMode = H.Property<bool>();
+         readonly IProperty<bool> _sourceMode = H.Property<bool>();
 
 
         [TriggerOn(nameof(Monograph))]
@@ -165,7 +167,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.EditorTool
         }
 
 
-        private static void ClearHighlight(FlowDocument doc)
+        static void ClearHighlight(FlowDocument doc)
         {
             foreach (var p in doc.Blocks.OfType<Paragraph>())
             {
@@ -176,7 +178,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.EditorTool
             }
         }
 
-        private static IEnumerable<InlineUIContainer> FindImages(FlowDocument doc)
+        static IEnumerable<InlineUIContainer> FindImages(FlowDocument doc)
         {
             var blocks = doc.Blocks;
             for (var position = blocks.FirstBlock.ElementStart; position != null && position.CompareTo(blocks.LastBlock.ElementEnd) != 1; position = position.GetNextContextPosition(LogicalDirection.Forward))
@@ -189,7 +191,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.EditorTool
             }
         }
 
-        private static void RemoveImages(FlowDocument doc)
+        static void RemoveImages(FlowDocument doc)
         {
             foreach (var image in FindImages(doc))
             {
@@ -203,7 +205,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.EditorTool
             get => _reader.Get();
             set => _reader.Set(value);
         }
-        private readonly IProperty<FlowDocumentReader> _reader = H.Property<FlowDocumentReader>();
+
+        readonly IProperty<FlowDocumentReader> _reader = H.Property<FlowDocumentReader>();
 
         public RichTextBox Editor
         {
@@ -211,7 +214,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.EditorTool
             set => _editor.Set(value);
         }
 
-        private readonly IProperty<RichTextBox> _editor = H.Property<RichTextBox>();
+        readonly IProperty<RichTextBox> _editor = H.Property<RichTextBox>();
 
 
         public TextEditor SourceEditor
@@ -220,10 +223,10 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.EditorTool
             set => _sourceEditor.Set(value);
         }
 
-        private readonly IProperty<TextEditor> _sourceEditor = H.Property<TextEditor>();
+        readonly IProperty<TextEditor> _sourceEditor = H.Property<TextEditor>();
 
 
-        private void SetDocumentFromBinary(FlowDocument doc, byte[] binary, string format)
+        void SetDocumentFromBinary(FlowDocument doc, byte[] binary, string format)
         {
             try
             {
@@ -241,7 +244,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.EditorTool
                 //return new FlowDocument();
             }
         }
-        private FlowDocument GetDocumentFromBinary(byte[] binary)
+
+        FlowDocument GetDocumentFromBinary(byte[] binary)
         {
             try
             {
@@ -259,7 +263,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.EditorTool
             return new FlowDocument();
         }
 
-        private static string GetSourceFromBinary(byte[] binary)
+        static string GetSourceFromBinary(byte[] binary)
         {
             if (binary == null)
                 return "";
@@ -296,7 +300,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.EditorTool
 
 
         }
-        private void SetDocumentFromBinary(byte[] binary)
+
+        void SetDocumentFromBinary(byte[] binary)
         {
             if(SourceEditor!=null)
                 SourceEditor.Text = GetSourceFromBinary(binary);
@@ -324,7 +329,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.EditorTool
             return true;
         }
 
-        private static IEnumerable<Span> FindSpans(FlowDocument doc)
+        static IEnumerable<Span> FindSpans(FlowDocument doc)
         {
             var blocks = doc.Blocks;
 
@@ -341,7 +346,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.EditorTool
             }
         }
 
-        private static IEnumerable<Span> FindSpans(FlowDocument doc, string anchorId)
+        static IEnumerable<Span> FindSpans(FlowDocument doc, string anchorId)
         {
             return FindSpans(doc).Where(s => s.Name == anchorId);
         }
@@ -393,7 +398,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.EditorTool
             return span;
         }
 
-        private void RevoveSpan(Inline span)
+        void RevoveSpan(Inline span)
         {
             var others = span.SiblingInlines;
 

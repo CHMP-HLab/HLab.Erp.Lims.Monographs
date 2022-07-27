@@ -24,14 +24,15 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Solutions.Graph
             set => _root.Set(value);
         }
 
-        private readonly IProperty<MonographGraphViewModel> _root = H.Property<MonographGraphViewModel>();
+        readonly IProperty<MonographGraphViewModel> _root = H.Property<MonographGraphViewModel>();
 
         public string NewSolutionName
         {
             get => _newSolutionName.Get(); 
             set => _newSolutionName.Set(value);
         }
-        private readonly IProperty<string> _newSolutionName = H.Property<string>(c => c.Default("Nouvelle Solution"));
+
+        readonly IProperty<string> _newSolutionName = H.Property<string>(c => c.Default("Nouvelle Solution"));
 
         //public NotifyCommand AddCommand => this.GetCommand(()=>
         //{
@@ -40,10 +41,10 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Solutions.Graph
         //},()=>true);
 
         public bool IsSelectable { get => _isSelectable.Get(); set => _isSelectable.Set(value); }
-        private readonly IProperty<bool> _isSelectable = H.Property<bool>(c => c.Default(true));
+        readonly IProperty<bool> _isSelectable = H.Property<bool>(c => c.Default(true));
 
         public bool Selected { get => _selected.Get(); set => _selected.Set(value); }
-        private readonly IProperty<bool> _selected = H.Property<bool>(c => c.Default(true));
+        readonly IProperty<bool> _selected = H.Property<bool>(c => c.Default(true));
 
         public bool DragEnter(ErpDragDrop e)
         {

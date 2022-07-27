@@ -6,9 +6,9 @@ using HLab.Mvvm.Annotations;
 
 namespace HLab.Erp.Lims.Analysis.Module.Products
 {
-    public class MonographListViewModel : EntityListViewModel<Monograph>, IMvvmContextProvider
+    public class MonographListViewModel : Core.EntityLists.EntityListViewModel<Monograph>, IMvvmContextProvider
     {
-        public MonographListViewModel() : base(c => c
+        public MonographListViewModel(Injector i) : base(i, c => c
                 //.AddAllowed()
                 //.DeleteAllowed()
                 .Column("Name")

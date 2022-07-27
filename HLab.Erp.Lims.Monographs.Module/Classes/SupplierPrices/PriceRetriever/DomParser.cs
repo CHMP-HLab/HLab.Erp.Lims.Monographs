@@ -15,10 +15,10 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.SupplierPrices.PriceRetriever
     //TODO : Port to cefsharp
 
 
-    static class WebBrowserExt
+    internal static class WebBrowserExt
     {
         [ComImport, Guid("6D5140C1-7436-11CE-8034-00AA006009FA"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-        private interface IOleServiceProvider
+        interface IOleServiceProvider
         {
             [PreserveSig]
             int QueryService([In] ref Guid guidService, [In] ref Guid riid, [MarshalAs(UnmanagedType.IDispatch)] out object ppvObject);
@@ -51,7 +51,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.SupplierPrices.PriceRetriever
             webBrowser.GetType().InvokeMember("Silent", BindingFlags.Instance | BindingFlags.Public | BindingFlags.PutDispProperty, null, webBrowser, new object[] { silent });
         }
 
-        private static void BrowserOnNavigated(object sender, NavigationEventArgs arg)
+        static void BrowserOnNavigated(object sender, NavigationEventArgs arg)
         {
             WebBrowser browser = sender as WebBrowser;
             if (browser == null) return;
@@ -61,7 +61,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.SupplierPrices.PriceRetriever
         }
     }
 
-    class DomParser
+    internal class DomParser
     {
         [DllImport("user32.dll", SetLastError = true)]
         static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
@@ -71,9 +71,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.SupplierPrices.PriceRetriever
         [DllImport("user32.dll", SetLastError = true)]
         static extern bool PostMessage(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
         [DllImport("urlmon.dll", CharSet = CharSet.Ansi)]
-
-
-        private static extern int UrlMkSetSessionOption(
+        static extern int UrlMkSetSessionOption(
             int dwOption, string pBuffer, int dwBufferLength, int dwReserved);
 
         const int URLMON_OPTION_USERAGENT = 0x10000001;
@@ -89,9 +87,9 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.SupplierPrices.PriceRetriever
 
         public string Html = "";
 
-        private readonly WebBrowser _browser;
+        readonly WebBrowser _browser;
 
-        private readonly Timer _timer;
+        readonly Timer _timer;
 
         //public bool SupplierPrice = false;
 
@@ -142,8 +140,9 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.SupplierPrices.PriceRetriever
             java.Start();
         }
 
-        private bool _javaCloseRunning = false;
-        private void CloseJavaErrors()
+        bool _javaCloseRunning = false;
+
+        void CloseJavaErrors()
         {
             _javaCloseRunning = true;
             while (_javaCloseRunning)
@@ -159,14 +158,14 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.SupplierPrices.PriceRetriever
             }
         }
 
-        private void BrowserOnNavigated(object sender, NavigationEventArgs navigationEventArgs)
+        void BrowserOnNavigated(object sender, NavigationEventArgs navigationEventArgs)
         {
             _browser.Navigated -= BrowserOnNavigated;
             //InjectScript(_browser,"body",DisableScriptError);
         }
 
 
-        private void TimerTask(object stateObj)
+        void TimerTask(object stateObj)
         {
             _timer.Dispose();
             Parsed?.Invoke(this, "");
@@ -177,10 +176,10 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.SupplierPrices.PriceRetriever
                                                   new Action(delegate { }));
         }
 
-        private const string DisableScriptError = @"javascript:window.onerror=function(msg, url, line) { return true; }; void(0);";
+        const string DisableScriptError = @"javascript:window.onerror=function(msg, url, line) { return true; }; void(0);";
 
 
-        private void InjectScript(WebBrowser browser,string tag, string scriptCode)
+        void InjectScript(WebBrowser browser,string tag, string scriptCode)
         {
             //HTMLDocumentClass doc = browser.Document as HTMLDocumentClass;
             HTMLDocument doc = browser.Document as HTMLDocument;
@@ -210,9 +209,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.SupplierPrices.PriceRetriever
         }
 
 
-
-
-        private void _browser_LoadCompleted(object sender, NavigationEventArgs e)
+        void _browser_LoadCompleted(object sender, NavigationEventArgs e)
         {
             //InjectDisableScript(_browser);
             _timer.Dispose();

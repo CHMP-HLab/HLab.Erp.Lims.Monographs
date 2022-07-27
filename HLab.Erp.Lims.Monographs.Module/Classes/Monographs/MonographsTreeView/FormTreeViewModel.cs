@@ -2,8 +2,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Media;
+using HLab.Erp.Data;
 using HLab.Erp.Lims.Analysis.Data;
 using HLab.Erp.Lims.Analysis.Data.Entities;
+using HLab.Icons.Annotations.Icons;
 using HLab.Notify.PropertyChanged;
 
 namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView
@@ -11,7 +13,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView
     using H = H<FormTreeElementViewModel>;
     public interface ITreeContentViewModel
     { }
-    class FormTreeElementViewModel : MonographTreeElement<Form>, ITreeContentViewModel
+
+    internal class FormTreeElementViewModel : MonographTreeElement<Form>, ITreeContentViewModel
     {
         public Visibility IconVisibility => Visibility.Visible;
         public Brush TabColor => new LinearGradientBrush
@@ -26,7 +29,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView
         };
 
         public List<int> MonographSourceId => _monographSourceId.Get();
-        private readonly IProperty<List<int>> _monographSourceId = H.Property<List<int>>(c => c
+
+        readonly IProperty<List<int>> _monographSourceId = H.Property<List<int>>(c => c
             .On(e => e.MonographSource.Item().PharmacopoeiaId)
             .Set(e => e.MonographSource
                 .Where(m => m.PharmacopoeiaId != null)
@@ -42,5 +46,9 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView
             .On(e => e.MonographSourceId)
             .Update()
         );
+
+        public FormTreeElementViewModel(IDataService db, IIconService icons) : base(db, icons)
+        {
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs
 
     public abstract class MonographViewModel : ViewModel<Monograph>, IViewClassDocument
     {
-        public void Inject(IBrowserService browser)
+        protected MonographViewModel(IBrowserService browser)
         {
             Browser = browser;
         }
@@ -48,7 +48,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs
 
 
         public string IconForm => _iconForm.Get();
-        private readonly IProperty<string> _iconForm = H.Property<string>(c => c
+
+        readonly IProperty<string> _iconForm = H.Property<string>(c => c
             .On(e => e.Model.Form.IconPath)
             .Set(e => e.Model.Form.IconPath)
         );
@@ -56,7 +57,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs
 
         //TODO : new icon system
         public string IconPharmacopoeia => _iconPharmacopoeia.Get();
-        private readonly IProperty<string> _iconPharmacopoeia = H.Property<string>(c => c
+
+        readonly IProperty<string> _iconPharmacopoeia = H.Property<string>(c => c
             .On(e => e.Model.Pharmacopoeia.IconPath)
             .Set(e => e.Model.Pharmacopoeia.IconPath)
         );

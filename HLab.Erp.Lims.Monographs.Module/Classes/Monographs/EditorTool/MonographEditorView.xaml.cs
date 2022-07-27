@@ -17,7 +17,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.EditorTool
             DataContextChanged += MonographEditorView_DataContextChanged;
         }
 
-        private void MonographEditorView_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        void MonographEditorView_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if (DataContext is MonographEditorViewModel vm)
             {

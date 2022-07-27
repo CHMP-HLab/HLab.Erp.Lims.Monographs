@@ -8,9 +8,10 @@ using HLab.Notify.PropertyChanged;
 namespace HLab.Erp.Lims.Monographs.Module.DebugTools
 {
     using H = H<DebugViewModel>;
-    class DebugViewModel : ViewModel
+
+    internal class DebugViewModel : ViewModel
     {
-        private readonly IDebugLogger _log;
+        readonly IDebugLogger _log;
         public DebugViewModel(IDebugLogger log)
         {
             _log = log;
@@ -29,12 +30,14 @@ namespace HLab.Erp.Lims.Monographs.Module.DebugTools
         }
 
         public ObservableCollection<string> List => _list.Get();
-        private readonly IProperty<ObservableCollection<string>> _list = H.Property<ObservableCollection<string>>(c => c
+
+        readonly IProperty<ObservableCollection<string>> _list = H.Property<ObservableCollection<string>>(c => c
             .Set(e => new ObservableCollection<string>())
         );
 
         public ObservableCollection<string> Labels => _labels.Get();
-        private readonly IProperty<ObservableCollection<string>> _labels = H.Property<ObservableCollection<string>>(c => c
+
+        readonly IProperty<ObservableCollection<string>> _labels = H.Property<ObservableCollection<string>>(c => c
             .Set(e => new ObservableCollection<string>())
         );
 
@@ -47,7 +50,7 @@ namespace HLab.Erp.Lims.Monographs.Module.DebugTools
             }
         }
 
-        private readonly IProperty<string> _selected = H.Property<string>();
+        readonly IProperty<string> _selected = H.Property<string>();
 
         // TODO
         //public SeriesCollection Series { get; }

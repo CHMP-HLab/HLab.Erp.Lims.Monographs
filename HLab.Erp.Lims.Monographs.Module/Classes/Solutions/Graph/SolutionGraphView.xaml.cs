@@ -33,29 +33,29 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Solutions.Graph
             Loaded += OnLoaded;
         }
 
-        private void OnLoaded(object sender, RoutedEventArgs routedEventArgs)
+        void OnLoaded(object sender, RoutedEventArgs routedEventArgs)
         {
             if (DataContext is SolutionGraphViewModel vm) vm.Width = this.ActualWidth;
         }
 
-        private void SolutionGraphView_SizeChanged(object sender, SizeChangedEventArgs e)
+        void SolutionGraphView_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             if (DataContext is SolutionGraphViewModel vm) vm.Width = this.ActualWidth;
         }
 
-        private void TextBox_OnGotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        void TextBox_OnGotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
             if(sender is TextBox t) t.Background=new SolidColorBrush(Colors.White);
         }
 
-        private void TextBox_OnLostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        void TextBox_OnLostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
             if (sender is TextBox t) t.Background = new SolidColorBrush(Colors.Transparent);
         }
 
         public SolutionGraphViewModel ViewModel => DataContext as SolutionGraphViewModel;
 
-        private void UIElement_OnDrop(object sender, DragEventArgs e)
+        void UIElement_OnDrop(object sender, DragEventArgs e)
         {
             var formats = e.Data.GetFormats();
 

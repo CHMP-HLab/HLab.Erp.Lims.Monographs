@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using HLab.Erp.Core.WebService;
+using HLab.Erp.Data;
 
 namespace HLab.Erp.Lims.Monographs.Module.Classes.SupplierPrices.PriceRetriever
 {
@@ -14,7 +16,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.SupplierPrices.PriceRetriever
             Browser.WebBrowser.Navigate(url);
         }
 
-        private string GetValue(string name)
+        string GetValue(string name)
         {
             var tr = Document.GetElementsByTagName("tr");
 
@@ -42,7 +44,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.SupplierPrices.PriceRetriever
             return null;
         }
 
-        private async void BrowserOnLoadCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        async void BrowserOnLoadCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             Browser.WebBrowser.DocumentCompleted -= BrowserOnLoadCompleted;
             var d = (Browser.WebBrowser?.Document);
@@ -90,5 +92,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.SupplierPrices.PriceRetriever
             }
         }
 
+        public PriceRetrieverEdqm(IDataService dbService, IBrowserService browser) : base(dbService, browser)
+        {
+        }
     }
 }

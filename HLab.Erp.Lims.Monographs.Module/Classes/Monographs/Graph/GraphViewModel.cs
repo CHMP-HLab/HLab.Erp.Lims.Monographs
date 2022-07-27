@@ -22,10 +22,10 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
     {
         protected GraphViewModel() => H<GraphViewModel<T>>.Initialize(this);
 
-        private IMessageBus _messageBus;
-        private IDragDropService _dragDropService;
+        readonly IMessageBus _messageBus;
+        readonly IDragDropService _dragDropService;
 
-        public void Inject(IMessageBus messageBus, IDragDropService dragDrop)
+        protected GraphViewModel(IMessageBus messageBus, IDragDropService dragDrop)
         {
             _messageBus = messageBus;
             _dragDropService = dragDrop;
@@ -38,7 +38,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
             set => _root.Set(value);
         }
 
-        private readonly IProperty<MonographGraphViewModel> _root = H<GraphViewModel<T>>.Property<MonographGraphViewModel>();
+        readonly IProperty<MonographGraphViewModel> _root = H<GraphViewModel<T>>.Property<MonographGraphViewModel>();
 
 
 
@@ -50,7 +50,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
             set => _state.Set(value);
         }
 
-        private readonly IProperty<State> _state = H<GraphViewModel<T>>.Property<State>();
+        readonly IProperty<State> _state = H<GraphViewModel<T>>.Property<State>();
 
 
         //public virtual int HorizontalOrder => -1;
@@ -61,7 +61,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
         set => _top.Set(value);
     }
 
-    private readonly IProperty<double> _top = H<GraphViewModel<T>>.Property<double>(c => c.Default(0.0));
+    readonly IProperty<double> _top = H<GraphViewModel<T>>.Property<double>(c => c.Default(0.0));
 
 
 
@@ -71,7 +71,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
             set => _width.Set(value);
         }
 
-        private readonly IProperty<double> _width = H<GraphViewModel<T>>.Property<double>(c => c.Default(0.0));
+        readonly IProperty<double> _width = H<GraphViewModel<T>>.Property<double>(c => c.Default(0.0));
 
 
 
@@ -81,7 +81,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
             //set => _right.Set(value);
         }
 
-        private readonly IProperty<double> _right = H<GraphViewModel<T>>.Property<double>(c => c.Default(0.0));
+        readonly IProperty<double> _right = H<GraphViewModel<T>>.Property<double>(c => c.Default(0.0));
 
 
         public IIconService IconService { get; set;}
@@ -139,7 +139,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
 
 
         public Panel DragCanvas => _dragCanvas.Get();
-        private readonly IProperty<Panel> _dragCanvas = H<GraphViewModel<T>>.Property<Panel>(c => c.Set(e => e._dragDropService.GetDragCanvas()));
+        readonly IProperty<Panel> _dragCanvas = H<GraphViewModel<T>>.Property<Panel>(c => c.Set(e => e._dragDropService.GetDragCanvas()));
 
 
         public abstract bool  IsConnectable(string thisAnchorClass, IGraphViewModel model, string anchorClass);
@@ -156,7 +156,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
             }
         }
 
-        private readonly IProperty<bool> _selected = H<GraphViewModel<T>>.Property<bool>(c => c
+        readonly IProperty<bool> _selected = H<GraphViewModel<T>>.Property<bool>(c => c
             .On(e => e.State.Selected)
             .Set(e => e.State.Selected)
         );
@@ -247,7 +247,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
 
 
         public IMonographLinkedElement LinkedElement => _linkedElement.Get();
-        private readonly IProperty<IMonographLinkedElement> _linkedElement = H<GraphViewModel<T>>.Property<IMonographLinkedElement>(c => c
+
+        readonly IProperty<IMonographLinkedElement> _linkedElement = H<GraphViewModel<T>>.Property<IMonographLinkedElement>(c => c
             .On(e => e.Model)
             .Set(e => e.Model as IMonographLinkedElement)
         );
@@ -255,7 +256,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
 
 
         public Unit ViewUnit => _viewUnit.Get();
-        private readonly IProperty<Unit> _viewUnit = H<GraphViewModel<T>>.Property<Unit>(c => c
+
+        readonly IProperty<Unit> _viewUnit = H<GraphViewModel<T>>.Property<Unit>(c => c
             .On(e => e.Root.Units.Item().UnitClass.Symbol)
             .On(e => e.LinkedElement.UnitGroup)
             .On(e => e.LinkedElement.QtyAbs)
@@ -266,7 +268,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
 
         //DbService.FetchWhere<Unit>()?.BestMatch();
         public double ViewQty => _viewQty.Get();
-        private readonly IProperty<double> _viewQty = H<GraphViewModel<T>>.Property<double>(c => c
+
+        readonly IProperty<double> _viewQty = H<GraphViewModel<T>>.Property<double>(c => c
             .On(e => e.ViewUnit)
             .On(e => e.LinkedElement.QtyAbs)
             .Set(e => e.ViewUnit?.Qty(e.LinkedElement.QtyAbs) ?? 0)
@@ -274,7 +277,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
 
 
         public double ViewQtyNext => _viewQtyNext.Get();
-        private readonly IProperty<double> _viewQtyNext = H<GraphViewModel<T>>.Property<double>(c => c
+
+        readonly IProperty<double> _viewQtyNext = H<GraphViewModel<T>>.Property<double>(c => c
             .On(e => e.ViewUnit)
             .On(e => e.LinkedElement.QtyAbsNext)
             .Set(e => e.ViewUnit?.Qty(e.LinkedElement.QtyAbsNext) ?? 0)

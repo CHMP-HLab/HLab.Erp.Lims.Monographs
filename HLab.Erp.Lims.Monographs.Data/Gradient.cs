@@ -16,7 +16,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _flowRate.Set(value);
         }
 
-        private readonly IProperty<double?> _flowRate = H.Property<double?>(c => c.Default((double?)default));
+        readonly IProperty<double?> _flowRate = H.Property<double?>(c => c.Default((double?)default));
 
 
         [Column]
@@ -26,7 +26,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _lostVolume.Set(value);
         }
 
-        private readonly IProperty<double?> _lostVolume = H.Property<double?>(c => c.Default((double?)default));
+        readonly IProperty<double?> _lostVolume = H.Property<double?>(c => c.Default((double?)default));
 
 
         [Column]
@@ -36,7 +36,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _nbInjectionFirst.Set(value);
         }
 
-        private readonly IProperty<int?> _nbInjectionFirst = H.Property<int?>(c => c.Default((int?)default));
+        readonly IProperty<int?> _nbInjectionFirst = H.Property<int?>(c => c.Default((int?)default));
 
 
         [Column]
@@ -46,7 +46,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _nbInjectionNext.Set(value);
         }
 
-        private readonly IProperty<int?> _nbInjectionNext = H.Property<int?>(c => c.Default((int?)default));
+        readonly IProperty<int?> _nbInjectionNext = H.Property<int?>(c => c.Default((int?)default));
 
 
 
@@ -57,7 +57,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _monographSolutionId.Set(value);
         }
 
-        private readonly IProperty<int?> _monographSolutionId = H.Property<int?>();
+        readonly IProperty<int?> _monographSolutionId = H.Property<int?>();
 
         //[NotMapped]
         //public MonographSolution MonographSolution

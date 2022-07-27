@@ -22,14 +22,14 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Solutions.Gradients
             // TODO : Chart.DataClick += Chart_DataClick;
         }
 
-        private GradientViewModel ViewModel => DataContext as GradientViewModel;
+        GradientViewModel ViewModel => DataContext as GradientViewModel;
 
 
-        private GradientLineViewModel _movingPoint;
-        private Point _startPoint;
-        private double _startY;
+        GradientLineViewModel _movingPoint;
+        Point _startPoint;
+        double _startY;
 
-        private void Chart_DataClick(object sender, object chartPoint)
+        void Chart_DataClick(object sender, object chartPoint)
         {
             //TODO : _movingPoint = (chartPoint.Instance as GradientLineViewModel);
             //Chart.MouseMove += Chart_MouseMove;
@@ -38,12 +38,12 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Solutions.Gradients
             //_startY = _movingPoint.RatioPCent;
         }
 
-        private void Chart_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        void Chart_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             _movingPoint = null;
         }
 
-        private void Chart_MouseMove(object sender, MouseEventArgs e)
+        void Chart_MouseMove(object sender, MouseEventArgs e)
         {
             if (_movingPoint == null) return;
 

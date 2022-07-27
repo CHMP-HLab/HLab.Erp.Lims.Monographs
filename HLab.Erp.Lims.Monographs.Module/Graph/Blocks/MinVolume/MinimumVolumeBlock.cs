@@ -10,7 +10,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Graph.Blocks.MinVolume
 
     public class MinimumVolumeBlock : GraphBlock, IToolGraphBlock
     {
-        public MinimumVolumeBlock()
+        public MinimumVolumeBlock(Injector i) : base(i)
         {
             Input = MainLeftGroup.GetOrAddPin<InputPinMinVolume>("in");
             Output = MainRightGroup.GetOrAddPin<OutputPin>("out", ValueTypes.Volume);

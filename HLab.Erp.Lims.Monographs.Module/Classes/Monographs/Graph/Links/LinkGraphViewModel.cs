@@ -21,8 +21,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph.Links
 
     public class LinkGraphViewModel : ViewModel<MonographLink>
     {
-        private readonly IMessageBus _msg;
-        private readonly IDataService _db;
+        readonly IMessageBus _msg;
+        readonly IDataService _db;
         public LinkGraphViewModel(IMessageBus msg, IDataService db, IDialogService dialog)
         {
             _msg = msg;
@@ -42,11 +42,10 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph.Links
             set => _root.Set(value);
         }
 
-        private readonly IProperty<MonographGraphViewModel> _root = H.Property<MonographGraphViewModel>();
+        readonly IProperty<MonographGraphViewModel> _root = H.Property<MonographGraphViewModel>();
 
 
-
-        private WeakReference<MonographEditorViewModel> _editor = null;
+        WeakReference<MonographEditorViewModel> _editor = null;
 
         public void Link()
         {
@@ -57,14 +56,14 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph.Links
         }
 
 
-        private void Bind(MonographEditorViewModel vm)
+        void Bind(MonographEditorViewModel vm)
         {
             _editor = new WeakReference<MonographEditorViewModel>(vm);
             var span = vm.Bind(Model.AnchorId(), State, "TextBackground");
             if (span != null) span.MouseLeftButtonDown += Span_MouseLeftButtonDown;
         }
 
-        private void Span_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        void Span_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Selected = true;
         }
@@ -249,8 +248,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph.Links
         //    .Set(e => e.ViewUnit?.Qty(e.Model.QtyAbsNext) ?? 0));
 
 
-
-        private readonly IDialogService _dialog;
+        readonly IDialogService _dialog;
 
         public ICommand DeleteCommand { get; } = H.Command(c => c
             .Action(
@@ -263,7 +261,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph.Links
 
         public double StrokeThicknessBase => _strokeThicknessBase.Get();
 
-        private readonly IProperty<double> _strokeThicknessBase = H.Property<double>(c => c
+        readonly IProperty<double> _strokeThicknessBase = H.Property<double>(c => c
             //.On(e => e.Model.Cost)
             //.On(e => e.Model.Monograph.ConsumablesCost)
             //.Set(e => e.Model.Monograph.ConsumablesCost > 0 && (e.Model.Cost).IsRegular()?(50 * e.Model.Cost / e.Model.Monograph.ConsumablesCost):0)
@@ -273,21 +271,24 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph.Links
 
 
         public double StrokeThickness => _strokeThickness.Get();
-        private readonly IProperty<double> _strokeThickness = H.Property<double>(c => c
+
+        readonly IProperty<double> _strokeThickness = H.Property<double>(c => c
             .On(e => e.StrokeThicknessBase)
             .Set(e => Math.Max(3, e.StrokeThicknessBase.IsRegular()?e.StrokeThicknessBase:0))
         );
 
 
         public DoubleCollection StrokeDashArray => _strokeDashArray.Get();
-        private readonly IProperty<DoubleCollection> _strokeDashArray = H.Property<DoubleCollection>(c => c
+
+        readonly IProperty<DoubleCollection> _strokeDashArray = H.Property<DoubleCollection>(c => c
             .On(e => e.StrokeThicknessBase)
             .Set(e =>  e.StrokeThicknessBase>5? new DoubleCollection(){1,0} : new DoubleCollection(){Math.Max(0.5, e.StrokeThicknessBase*3),0.5 })
         );
 
 
         public Visibility LabelVisibility => _labelVisibility.Get();
-        private readonly IProperty<Visibility> _labelVisibility = H.Property<Visibility>(c => c
+
+        readonly IProperty<Visibility> _labelVisibility = H.Property<Visibility>(c => c
             .On(e => e.Selected)
             .Set(e => e.Selected ? Visibility.Visible : Visibility.Collapsed)
         );

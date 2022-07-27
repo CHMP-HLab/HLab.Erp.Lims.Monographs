@@ -12,7 +12,7 @@ namespace HLab.Erp.Lims.Monographs.Data
         [NotMapped]
         public double HourlyCost => _hourlyCost.Get();
 
-        private readonly IProperty<double> _hourlyCost = H.Property<double>(c => c.Default(100.0));
+        readonly IProperty<double> _hourlyCost = H.Property<double>(c => c.Default(100.0));
 
         [NotMapped]
         [TriggerOn(nameof(TestClass), "DurationFirst")]

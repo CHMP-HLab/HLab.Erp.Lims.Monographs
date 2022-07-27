@@ -12,7 +12,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Graph.Blocks.Injection
 
     public class InjectionBlock : GraphBlock, IToolGraphBlock
     {
-        public InjectionBlock()
+        public InjectionBlock(Injector i) : base(i)
         {
             Samples = GetOrAddGroup("Samples", PinLocation.Left, "Echantillons");
             Channels = GetOrAddGroup("Channels", PinLocation.Left, "Cannaux");
@@ -57,7 +57,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Graph.Blocks.Injection
             }
 
             public GradientChannel Channel => _channel.Get();
-            private readonly IProperty<GradientChannel> _channel = H<InputPinChannel>.Property<GradientChannel>(c => c
+
+            readonly IProperty<GradientChannel> _channel = H<InputPinChannel>.Property<GradientChannel>(c => c
                 .On(self => ((InjectionBlock)self.Group.Block).Gradient)
                 .On(self => self.Caption)
                 .Set(

@@ -66,7 +66,7 @@ namespace HLab.Erp.Lims.Monographs.Data
         [Ignore]
         public double SumRightQtyAbs => _sumRightQtyAbs.Get();
 
-        private readonly IProperty<double> _sumRightQtyAbs = H.Property<double>(c => c
+        readonly IProperty<double> _sumRightQtyAbs = H.Property<double>(c => c
             //.On(e => e.RightLinks.Item().QtyAbs)
             //.Set(e => e.RightLinks.Sum(link => link.QtyAbs))
             );
@@ -74,7 +74,7 @@ namespace HLab.Erp.Lims.Monographs.Data
         [Ignore]
         public double SumRightQtyAbsNext => _sumRightQtyAbsNext.Get();
 
-        private readonly IProperty<double> _sumRightQtyAbsNext = H.Property<double>(c => c
+        readonly IProperty<double> _sumRightQtyAbsNext = H.Property<double>(c => c
             //.On(e => e.RightLinks.Item().QtyAbsNext)
             //.Set(e => e.RightLinks.Sum(link => link.QtyAbsNext))
         );
@@ -82,7 +82,7 @@ namespace HLab.Erp.Lims.Monographs.Data
         [Ignore]
         public double MainQtyAbs => _mainQtyAbs.Get();
 
-        private readonly IProperty<double> _mainQtyAbs = H.Property<double>(c => c
+        readonly IProperty<double> _mainQtyAbs = H.Property<double>(c => c
             //.On(e => e.LeftLinks.Item().QtyAbs)
             //.On(e => e.LeftLinks.Item().LeftUnit.Group)
             //.Set(e => e.LeftLinks.Where(i => i.LeftUnit?.Group != "qs").Sum(i => i.QtyAbs))
@@ -91,7 +91,8 @@ namespace HLab.Erp.Lims.Monographs.Data
 
         [NotMapped]
         public double MainQtyAbsNext => _mainQtyAbsNext.Get();
-        private readonly IProperty<double> _mainQtyAbsNext = H.Property<double>(c => c
+
+        readonly IProperty<double> _mainQtyAbsNext = H.Property<double>(c => c
             //.On(e => e.LeftLinks.Item().QtyAbsNext)
             //.On(e => e.LeftLinks.Item().LeftUnit.Group)
             //.Set(e => e.LeftLinks.Where(i => i.LeftUnit?.Group != "qs").Sum(i => i.QtyAbsNext))
@@ -100,7 +101,7 @@ namespace HLab.Erp.Lims.Monographs.Data
         [NotMapped]
         public double SumLeftCost => _sumLeftCost.Get();
 
-        private readonly IProperty<double> _sumLeftCost = H.Property<double>(c => c
+        readonly IProperty<double> _sumLeftCost = H.Property<double>(c => c
             //.On(e => e.LeftLinks.Item().Cost)
             //.Set(e => e.LeftLinks?.Where(l => l.Cost.IsRegular()).Sum(l => l.Cost) ?? 0)
         );
@@ -108,7 +109,8 @@ namespace HLab.Erp.Lims.Monographs.Data
 
 //        [TriggerOn(nameof(LeftLinks), "Item", "CostNext"), NotMapped]
         public double SumLeftCostNext => _sumLeftCostNext.Get();
-        private readonly IProperty<double> _sumLeftCostNext = H.Property<double>(c => c
+
+        readonly IProperty<double> _sumLeftCostNext = H.Property<double>(c => c
             //.On(e => e.LeftLinks.Item().Cost)
             //.Set(e => e.LeftLinks?.Where(l => l.CostNext.IsRegular()).Sum(l => l.CostNext) ?? 0)
         );
@@ -117,7 +119,7 @@ namespace HLab.Erp.Lims.Monographs.Data
         [NotMapped]
         public double NbVolumes => _nbVolumes.Get();
 
-        private readonly IProperty<double> _nbVolumes = H.Property<double>(c => c
+        readonly IProperty<double> _nbVolumes = H.Property<double>(c => c
             //.On(e => e.LeftLinks.Item().Qty)
             //.On(e => e.LeftLinks.Item().LeftUnit.Group)
             //.Set(e => e.LeftLinks.Where(i => i.LeftUnit != null && i.LeftUnit.Group == "vol").Sum(i => i.Qty))
@@ -126,7 +128,7 @@ namespace HLab.Erp.Lims.Monographs.Data
         [NotMapped]
         public double NbVolumesNext => _nbVolumesNext.Get();
 
-        private readonly IProperty<double> _nbVolumesNext = H.Property<double>(c => c
+        readonly IProperty<double> _nbVolumesNext = H.Property<double>(c => c
             //.On(e => e.LeftLinks.Item().QtyNext)
             //.On(e => e.LeftLinks.Item().LeftUnit.Group)
             //.Set(e => e.LeftLinks.Where(i => i.LeftUnit != null && i.LeftUnit.Group == "vol").Sum(i => i.QtyNext))
@@ -139,7 +141,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _monographId.Set(value);
         }
 
-        private readonly IProperty<int?> _monographId = H.Property<int?>();
+        readonly IProperty<int?> _monographId = H.Property<int?>();
 
         [NotMapped]
         public Monograph Monograph
@@ -148,7 +150,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => MonographId = value.Id;
         }
 
-        private readonly IProperty<Monograph> _monograph = H.Property<Monograph>(c => c.Foreign(e => e.MonographId));
+        readonly IProperty<Monograph> _monograph = H.Property<Monograph>(c => c.Foreign(e => e.MonographId));
 
 
     }

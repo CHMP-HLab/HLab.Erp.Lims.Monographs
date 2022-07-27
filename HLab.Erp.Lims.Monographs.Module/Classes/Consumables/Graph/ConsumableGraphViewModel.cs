@@ -18,8 +18,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Consumables.Graph
 
     public class ConsumableGraphViewModel : GraphViewModel<MonographConsumable>
     {
-        private readonly IMessageBus _msg;
-        private readonly IDataService _db;
+        readonly IMessageBus _msg;
+        readonly IDataService _db;
         public ConsumableGraphViewModel(IMessageBus msg, IDataService db, IDialogService dialog)
         {
             _msg = msg;
@@ -31,13 +31,13 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Consumables.Graph
             });
         }
 
-        private void Bind(MonographEditorViewModel vm)
+        void Bind(MonographEditorViewModel vm)
         {
             var span = vm.Bind(Model.AnchorId(), State, "Background");
             if (span != null) span.MouseLeftButtonDown += Span_MouseLeftButtonDown;
         }
 
-        private void Span_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        void Span_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Selected = true;
         }
@@ -81,7 +81,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Consumables.Graph
 
 
         //public Monograph Monograph { get => this.Get<Monograph>(); set => N.Set(value); }
-        private readonly IDialogService _dialog;
+        readonly IDialogService _dialog;
 
         public override ICommand DeleteCommand { get; } = H.Command(c => c
 //            .CanExecute(e => (e.RightLinks?.Count ?? 0) == 0 && (e.LeftLinks?.Count ?? 0) == 0)
@@ -99,7 +99,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Consumables.Graph
 
 
         public string IconPath => _iconName.Get();
-        private readonly IProperty<string> _iconName = H.Property<string>(c => c
+
+        readonly IProperty<string> _iconName = H.Property<string>(c => c
             .On(e => e.Model.Consumable.Type.IconPath)
             .Set(e => e.Model.Consumable.Type?.IconPath)
         );

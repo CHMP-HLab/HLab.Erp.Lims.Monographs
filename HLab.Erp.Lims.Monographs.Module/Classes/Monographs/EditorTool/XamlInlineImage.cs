@@ -117,7 +117,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.EditorTool
 
             #region Private Members
 
-            private static void OnBase64SourceChanged(DependencyObject sender,
+            static void OnBase64SourceChanged(DependencyObject sender,
                 DependencyPropertyChangedEventArgs e)
             {
                 var inlineImage = (InlineImage)sender;

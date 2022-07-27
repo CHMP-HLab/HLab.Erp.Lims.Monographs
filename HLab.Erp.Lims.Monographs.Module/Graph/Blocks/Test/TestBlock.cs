@@ -10,9 +10,9 @@ namespace HLab.Erp.Lims.Monographs.Module.Graph.Blocks.Test
 {
     using H = H<AssayBlock>;
 
-    class AssayBlock : GraphBlock
+    internal class AssayBlock : GraphBlock
     {
-        public AssayBlock()
+        public AssayBlock(Injector i) : base(i)
         {
             MainLeftGroup.GetOrAddPin<InputPinUnitTest>("in");
 
@@ -32,24 +32,27 @@ namespace HLab.Erp.Lims.Monographs.Module.Graph.Blocks.Test
             set => _monographAssay.Set(value);
         }
 
-        private readonly IProperty<MonographTest> _monographAssay = H.Property<MonographTest>();
+        readonly IProperty<MonographTest> _monographAssay = H.Property<MonographTest>();
 
 
         public override string Caption => _caption.Get();
-        private readonly IProperty<string> _caption = H.Property<string>(c => c
+
+        readonly IProperty<string> _caption = H.Property<string>(c => c
             .On(self => self.MonographTest.TestClass.Name)
             .Set(self => self.MonographTest.TestClass.Name)
         );
 
 
         public override string IconName => _iconName.Get();
-        private readonly IProperty<string> _iconName = H.Property<string>(c => c
+
+        readonly IProperty<string> _iconName = H.Property<string>(c => c
             .On(self => self.MonographTest.TestClass.IconPath)
             .Set(self => self.MonographTest.TestClass.IconPath)
         );
 
         public override Color Color => _color.Get();
-        private readonly IProperty<Color> _color = H.Property<Color>(c => c
+
+        readonly IProperty<Color> _color = H.Property<Color>(c => c
             .On(self => self.MonographTest.TestClass.Color)
             .Set(self => self.MonographTest.TestClass.Color.ToColor().AdjustBrightness(-0.5))
         );

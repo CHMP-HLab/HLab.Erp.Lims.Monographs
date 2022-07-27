@@ -18,7 +18,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _cost.Set(value);
         }
 
-        private readonly IProperty<decimal> _cost = H.Property<decimal>(c => c.Default(Decimal.Zero));
+        readonly IProperty<decimal> _cost = H.Property<decimal>(c => c.Default(Decimal.Zero));
 
         public decimal Discount
         {
@@ -26,7 +26,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _discount.Set(value);
         }
 
-        private readonly IProperty<decimal> _discount = H.Property<decimal>(c => c.Default(Decimal.Zero));
+        readonly IProperty<decimal> _discount = H.Property<decimal>(c => c.Default(Decimal.Zero));
 
 
         public double Quantity
@@ -35,7 +35,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _quantity.Set(value);
         }
 
-        private readonly IProperty<double> _quantity = H.Property<double>(c => c.Default(0.0));
+        readonly IProperty<double> _quantity = H.Property<double>(c => c.Default(0.0));
 
 
         public string Reference
@@ -44,7 +44,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _reference.Set(value);
         }
 
-        private readonly IProperty<string> _reference = H.Property<string>(c => c.Default(""));
+        readonly IProperty<string> _reference = H.Property<string>(c => c.Default(""));
 
         public int? UnitId
         {
@@ -59,7 +59,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => UnitId = value.Id;
         }
 
-        private readonly IForeign<Unit> _unit = H.Foreign<Unit>();
+        readonly IForeign<Unit> _unit = H.Foreign<Unit>();
 
 
         public int? SupplierId
@@ -75,7 +75,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => SupplierId = value.Id;
         }
 
-        private readonly IForeign<Supplier> _supplier = H.Foreign<Supplier>();
+        readonly IForeign<Supplier> _supplier = H.Foreign<Supplier>();
 
 
          public int? ConsumableId
@@ -91,7 +91,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => ConsumableId = value.Id;
         }
 
-        private readonly IForeign<Consumable> _consumable = H.Foreign<Consumable>();
+        readonly IForeign<Consumable> _consumable = H.Foreign<Consumable>();
 
 
         public double? Assay
@@ -100,7 +100,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _assay.Set(value);
         }
 
-        private readonly IProperty<double?> _assay = H.Property<double?>(c => c.Default(default(double?)));
+        readonly IProperty<double?> _assay = H.Property<double?>(c => c.Default(default(double?)));
 
 
         public double? Density
@@ -109,7 +109,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _density.Set(value);
         }
 
-        private readonly IProperty<double?> _density = H.Property<double?>(c => c.Default(default(double?)));
+        readonly IProperty<double?> _density = H.Property<double?>(c => c.Default(default(double?)));
 
 
         public string Message
@@ -118,7 +118,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _message.Set(value);
         }
 
-        private readonly IProperty<string> _message = H.Property<string>(c => c.Default(default(string)));
+        readonly IProperty<string> _message = H.Property<string>(c => c.Default(default(string)));
 
 
         public DateTime? DateValid
@@ -127,7 +127,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _dateValid.Set(value);
         }
 
-        private readonly IProperty<DateTime?> _dateValid = H.Property<DateTime?>(c => c.Default((DateTime?)DateTime.MinValue));
+        readonly IProperty<DateTime?> _dateValid = H.Property<DateTime?>(c => c.Default((DateTime?)DateTime.MinValue));
 
     }
 }

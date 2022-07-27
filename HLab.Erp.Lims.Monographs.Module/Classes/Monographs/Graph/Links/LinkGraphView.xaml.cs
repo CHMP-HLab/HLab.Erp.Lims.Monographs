@@ -30,12 +30,12 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph.Links
             Loaded += LinkGraphView_Loaded;
         }
 
-        private void LinkGraphView_Loaded(object sender, RoutedEventArgs e)
+        void LinkGraphView_Loaded(object sender, RoutedEventArgs e)
         {
             this.FindVisualParent<MonographFlowchartView>().ViewLoaded += LinkGraphView_ViewLoaded; ;
         }
 
-        private void LinkGraphView_ViewLoaded(object sender, RoutedEventArgs e)
+        void LinkGraphView_ViewLoaded(object sender, RoutedEventArgs e)
         {
             if (sender is FrameworkElement element)
             {
@@ -71,9 +71,9 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph.Links
         //    }
         //}
 
-        private bool _loaded = false;
+        bool _loaded = false;
 
-        private void LinkGraphView_LayoutUpdated(object sender, EventArgs e)
+        void LinkGraphView_LayoutUpdated(object sender, EventArgs e)
         {
             if (!_loaded && (ActualHeight > 0 || ActualWidth > 0))
             {
@@ -83,7 +83,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph.Links
             }
         }
 
-        private void LinkGraphView_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        void LinkGraphView_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if (e.OldValue != null)
             {
@@ -109,11 +109,11 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph.Links
         }
 
 
-        private FrameworkElement LeftView { get; set; }
+        FrameworkElement LeftView { get; set; }
 
-        private FrameworkElement RightView { get; set; }
+        FrameworkElement RightView { get; set; }
 
-        private void LeftViewModelChanged()
+        void LeftViewModelChanged()
         {
             //if (ViewModel.LeftViewModel == null) return;
 
@@ -136,7 +136,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph.Links
             //SetSize();
         }
 
-        private void RightViewModelChanged()
+        void RightViewModelChanged()
         {
             //if (ViewModel.RightViewModel == null) return;
 
@@ -159,7 +159,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph.Links
             //SetSize();
         }
 
-        private void Vm_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        void Vm_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             Dispatcher.Invoke(
                 () =>
@@ -177,14 +177,15 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph.Links
                 );
         }
 
-        private LinkGraphViewModel ViewModel => DataContext as LinkGraphViewModel;
+        LinkGraphViewModel ViewModel => DataContext as LinkGraphViewModel;
 
         public static readonly DependencyProperty ContainerPanelProperty = DependencyProperty.Register(nameof(ContainerPanel), typeof(Panel), typeof(LinkFlowchartView), new FrameworkPropertyMetadata(OnChanged));
 
         public Panel ContainerPanel
             //{ get { return (Panel)GetValue(ContenerProperty); } set { SetValue(ContenerProperty, value); } }
             => VisualTreeHelper.GetParent(this) as Panel;
-        private static void OnChanged(DependencyObject src,
+
+        static void OnChanged(DependencyObject src,
             DependencyPropertyChangedEventArgs e)
         {
             (src as LinkFlowchartView)?.OnChanged(e);
@@ -214,7 +215,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph.Links
         }
 
 
-        private void OnChanged(DependencyPropertyChangedEventArgs e)
+        void OnChanged(DependencyPropertyChangedEventArgs e)
         {
             var oldgrid = e.OldValue as FrameworkElement;
             var newgrid = e.NewValue as FrameworkElement;
@@ -231,7 +232,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph.Links
             }
         }
 
-        private void SetSize(object sender, RoutedEventArgs e)
+        void SetSize(object sender, RoutedEventArgs e)
         {
             SetSize();
         }
@@ -271,7 +272,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph.Links
 
         }
 
-        private void Path_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        void Path_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             ViewModel.Selected = true;
         }

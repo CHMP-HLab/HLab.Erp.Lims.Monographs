@@ -16,7 +16,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs
             InitializeComponent();
         }
 
-        private void ConsommableMonographieView_Loaded(object sender, RoutedEventArgs e)
+        void ConsommableMonographieView_Loaded(object sender, RoutedEventArgs e)
         {
 
         }

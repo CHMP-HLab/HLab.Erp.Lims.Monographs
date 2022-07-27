@@ -23,7 +23,8 @@ namespace HLab.Erp.Lims.Monographs.Data
             get => _monograph.Get();
             set => _monograph.Set(value);
         }
-        private readonly IForeign<Monograph> _monograph = H.Foreign<Monograph>(); 
+
+        readonly IForeign<Monograph> _monograph = H.Foreign<Monograph>(); 
 
         public string Name
         {
@@ -31,7 +32,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _name.Set(value);
         }
 
-        private readonly IProperty<string> _name = H.Property<string>(c => c.Default(""));
+        readonly IProperty<string> _name = H.Property<string>(c => c.Default(""));
 
 
         public string Description
@@ -40,7 +41,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _description.Set(value);
         }
 
-        private readonly IProperty<string> _description = H.Property<string>(c => c.Default(""));
+        readonly IProperty<string> _description = H.Property<string>(c => c.Default(""));
 
 
         public string Values
@@ -48,7 +49,8 @@ namespace HLab.Erp.Lims.Monographs.Data
             get => _values.Get();
             set => _values.Set(value);
         }
-        private readonly IProperty<string> _values = H.Property<string>(c => c.Default(""));
+
+        readonly IProperty<string> _values = H.Property<string>(c => c.Default(""));
 
 
         public string Specifications
@@ -57,7 +59,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _specifications.Set(value);
         }
 
-        private readonly IProperty<string> _specifications = H.Property<string>(c => c.Default(""));
+        readonly IProperty<string> _specifications = H.Property<string>(c => c.Default(""));
 
 
         public string Comment
@@ -65,7 +67,8 @@ namespace HLab.Erp.Lims.Monographs.Data
             get => _comment.Get();
             set => _comment.Set(value);
         }
-        private readonly IProperty<string> _comment = H.Property<string>(c => c.Default(""));
+
+        readonly IProperty<string> _comment = H.Property<string>(c => c.Default(""));
 
 
         public int? Order
@@ -73,7 +76,8 @@ namespace HLab.Erp.Lims.Monographs.Data
             get => _order.Get();
             set => _order.Set(value);
         }
-        private readonly IProperty<int?> _order = H.Property<int?>(c => c.Default((int?)null));
+
+        readonly IProperty<int?> _order = H.Property<int?>(c => c.Default((int?)null));
 
 
 
@@ -83,7 +87,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _assayClassId.Set(value);
         }
 
-        private readonly IProperty<int?> _assayClassId = H.Property<int?>();
+        readonly IProperty<int?> _assayClassId = H.Property<int?>();
 
         [Ignore]
         public TestClass TestClass
@@ -92,7 +96,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => TestClassId = value.Id;
         }
 
-        private readonly IProperty<TestClass> _assayClass = H.Property<TestClass>(c => c.Foreign(e => e.TestClassId));
+        readonly IProperty<TestClass> _assayClass = H.Property<TestClass>(c => c.Foreign(e => e.TestClassId));
 
 
         [Ignore]

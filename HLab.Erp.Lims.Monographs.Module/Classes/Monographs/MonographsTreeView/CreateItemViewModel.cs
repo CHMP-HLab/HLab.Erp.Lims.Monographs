@@ -6,18 +6,20 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView
 {
     using H = H<CreateItemViewModel>;
 
-    class CreateItemViewModel : ViewModel<IListableModel>
+    internal class CreateItemViewModel : ViewModel<IListableModel>
     {
 
         public string IconPath => _icon.Get();
-        private readonly IProperty<string> _icon = H.Property<string>(c => c
+
+        readonly IProperty<string> _icon = H.Property<string>(c => c
             .On(e => e.Model.IconPath)
             .Set(e => e.Model.IconPath)
         );
 
 
         public string Caption => _caption.Get();
-        private readonly IProperty<string> _caption = H.Property<string>(c => c
+
+        readonly IProperty<string> _caption = H.Property<string>(c => c
             .On(e => e.Model.Caption)
             .Set(e => e.Model.Caption)
         );

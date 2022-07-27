@@ -24,7 +24,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Consumables.Detail
             set => _state.Set(value.SetColor(() => Model.Type.Color.ToColor()));
         }
 
-        private readonly IProperty<State> _state = H.Property<State>(c => c
+        readonly IProperty<State> _state = H.Property<State>(c => c
             .On(e => e.Model.Type.Color)
             .Do(e => e.State.OnTriggered())
             );
@@ -44,7 +44,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Consumables.Detail
             set => _typeList.Set(value.FluentUpdate());
         }
 
-        private readonly IProperty<ObservableQuery<ConsumableType>> _typeList = H.Property<ObservableQuery<ConsumableType>>(c => c
+        readonly IProperty<ObservableQuery<ConsumableType>> _typeList = H.Property<ObservableQuery<ConsumableType>>(c => c
             //.On(e => e)
             //.Update()
         );

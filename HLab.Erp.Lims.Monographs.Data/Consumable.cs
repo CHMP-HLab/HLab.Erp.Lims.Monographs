@@ -15,7 +15,8 @@ namespace HLab.Erp.Lims.Monographs.Data
         {
             get => _name.Get(); set => _name.Set(value);
         }
-        private readonly IProperty<string> _name = H.Property<string>(c => c.Default(""));
+
+        readonly IProperty<string> _name = H.Property<string>(c => c.Default(""));
 
 
         public string UnitGroup
@@ -23,7 +24,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             get => _unitGroup.Get(); set => _unitGroup.Set(value);
         }
 
-        private readonly IProperty<string> _unitGroup = H.Property<string>(c => c.Default(""));
+        readonly IProperty<string> _unitGroup = H.Property<string>(c => c.Default(""));
 
 
         public int? SupplierPriceDefaultId
@@ -38,7 +39,8 @@ namespace HLab.Erp.Lims.Monographs.Data
             get => _supplierPriceDefault.Get();
             set => SupplierPriceDefaultId = value.Id;
         }
-        private readonly IForeign<SupplierPrice> _supplierPriceDefault = H.Foreign<SupplierPrice>();
+
+        readonly IForeign<SupplierPrice> _supplierPriceDefault = H.Foreign<SupplierPrice>();
 
 
         public int? TypeId
@@ -53,7 +55,8 @@ namespace HLab.Erp.Lims.Monographs.Data
             get => _type.Get();
             set => TypeId = value.Id;
         }
-        private readonly IForeign<ConsumableType> _type = H.Foreign<ConsumableType>();
+
+        readonly IForeign<ConsumableType> _type = H.Foreign<ConsumableType>();
 
 
         public string CasNumber
@@ -62,14 +65,14 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _casNumber.Set(value);
         }
 
-        private readonly IProperty<string> _casNumber = H.Property<string>(c => c.Default(""));
+        readonly IProperty<string> _casNumber = H.Property<string>(c => c.Default(""));
 
         public double? MolarMass
         {
             get => _molarMass.Get(); set => _molarMass.Set(value);
         }
 
-        private readonly IProperty<double?> _molarMass = H.Property<double?>(c => c.Default((double?)default));
+        readonly IProperty<double?> _molarMass = H.Property<double?>(c => c.Default((double?)default));
 
 
         public double? Density
@@ -77,12 +80,12 @@ namespace HLab.Erp.Lims.Monographs.Data
             get => _density.Get(); set => _density.Set(value);
         }
 
-        private readonly IProperty<double?> _density = H.Property<double?>(c => c.Default((double?)default));
+        readonly IProperty<double?> _density = H.Property<double?>(c => c.Default((double?)default));
 
         [Ignore] 
         public string IconPath => _iconPath.Get();
 
-        private readonly IProperty<string> _iconPath = H.Property<string>(c => c
+        readonly IProperty<string> _iconPath = H.Property<string>(c => c
             .NotNull(e => e.Type)
             .Set(e => e.Type.IconPath)
             .On(e => e.Type.IconPath)

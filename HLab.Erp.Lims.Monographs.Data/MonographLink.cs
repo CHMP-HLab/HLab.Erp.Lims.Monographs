@@ -16,7 +16,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _monographId.Set(value);
         }
 
-        private readonly IProperty<int?> _monographId = H.Property<int?>();
+        readonly IProperty<int?> _monographId = H.Property<int?>();
 
         [NotMapped]
         public Monograph Monograph
@@ -25,7 +25,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => MonographId = value.Id;
         }
 
-        private readonly IProperty<Monograph> _monograph = H.Property<Monograph>(c => c.Foreign(e => e.MonographId));
+        readonly IProperty<Monograph> _monograph = H.Property<Monograph>(c => c.Foreign(e => e.MonographId));
 
 
         [Column("MonographieConsommableId")]
@@ -35,7 +35,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _monographConsumableId.Set(value);
         }
 
-        private readonly IProperty<int?> _monographConsumableId = H.Property<int?>();
+        readonly IProperty<int?> _monographConsumableId = H.Property<int?>();
 
         [NotMapped]
         public MonographConsumable MonographConsumable
@@ -44,7 +44,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => MonographConsumableId = value.Id;
         }
 
-        private readonly IProperty<MonographConsumable> _monographConsumable = H.Property<MonographConsumable>(c => c.Foreign(e => e.MonographConsumableId));
+        readonly IProperty<MonographConsumable> _monographConsumable = H.Property<MonographConsumable>(c => c.Foreign(e => e.MonographConsumableId));
 
 
         [Column("MonographieSolutionId")]
@@ -54,7 +54,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _monographSolutionId.Set(value);
         }
 
-        private readonly IProperty<int?> _monographSolutionId = H.Property<int?>();
+        readonly IProperty<int?> _monographSolutionId = H.Property<int?>();
 
         [NotMapped]
         public MonographSolution MonographSolution
@@ -63,7 +63,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => MonographSolutionId = value.Id;
         }
 
-        private readonly IProperty<MonographSolution> _monographSolution = H.Property<MonographSolution>(c => c.Foreign(e => e.MonographSolutionId));
+        readonly IProperty<MonographSolution> _monographSolution = H.Property<MonographSolution>(c => c.Foreign(e => e.MonographSolutionId));
 
 
         [Column("MonographieSolutionParentId")]
@@ -73,7 +73,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _monographSolutionParentId.Set(value);
         }
 
-        private readonly IProperty<int?> _monographSolutionParentId = H.Property<int?>();
+        readonly IProperty<int?> _monographSolutionParentId = H.Property<int?>();
 
         [NotMapped]
         public MonographSolution MonographSolutionParent
@@ -82,7 +82,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => MonographSolutionParentId = value.Id;
         }
 
-        private readonly IProperty<MonographSolution> _monographSolutionParent = H.Property<MonographSolution>(c => c.Foreign(e => e.MonographSolutionParentId));
+        readonly IProperty<MonographSolution> _monographSolutionParent = H.Property<MonographSolution>(c => c.Foreign(e => e.MonographSolutionParentId));
 
 
         [Column("MonographieTestId")]
@@ -92,7 +92,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _monographAssayId.Set(value);
         }
 
-        private readonly IProperty<int?> _monographAssayId = H.Property<int?>();
+        readonly IProperty<int?> _monographAssayId = H.Property<int?>();
 
         [NotMapped]
         public MonographTest MonographAssay
@@ -101,7 +101,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => MonographAssayId = value.Id;
         }
 
-        private readonly IProperty<MonographTest> _monographAssay = H.Property<MonographTest>(c => c.Foreign(e => e.MonographAssayId));
+        readonly IProperty<MonographTest> _monographAssay = H.Property<MonographTest>(c => c.Foreign(e => e.MonographAssayId));
 
 
         [Column("Quantite")]
@@ -111,7 +111,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _qty.Set(value);
         }
 
-        private readonly IProperty<double> _qty = H.Property<double>();
+        readonly IProperty<double> _qty = H.Property<double>();
 
 
         [Column("QuantiteSuivant")]
@@ -121,7 +121,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _qtyNext.Set(value);
         }
 
-        private readonly IProperty<double> _qtyNext = H.Property<double>();
+        readonly IProperty<double> _qtyNext = H.Property<double>();
 
 
         [Column("QuantiteRatio")]
@@ -131,7 +131,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _qtyRatio.Set(value);
         }
 
-        private readonly IProperty<double> _qtyRatio = H.Property<double>(c => c.Default(0.0));
+        readonly IProperty<double> _qtyRatio = H.Property<double>(c => c.Default(0.0));
 
 
         [Column("UniteId")]
@@ -141,7 +141,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _unitId.Set(value);
         }
 
-        private readonly IProperty<int?> _unitId = H.Property<int?>();
+        readonly IProperty<int?> _unitId = H.Property<int?>();
 
         [NotMapped]
         public Unit Unit
@@ -150,7 +150,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => UnitId = value.Id;
         }
 
-        private readonly IProperty<Unit> _unit = H.Property<Unit>(c => c.Foreign(e => e.UnitId));
+        readonly IProperty<Unit> _unit = H.Property<Unit>(c => c.Foreign(e => e.UnitId));
 
 
         [Column("UniteRatioId")]
@@ -160,7 +160,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _unitRatioId.Set(value);
         }
 
-        private readonly IProperty<int?> _unitRatioId = H.Property<int?>();
+        readonly IProperty<int?> _unitRatioId = H.Property<int?>();
 
         [NotMapped]
         public Unit UnitRatio
@@ -169,7 +169,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => UnitRatioId = value.Id;
         }
 
-        private readonly IProperty<Unit> _unitRatio = H.Property<Unit>(c => c.Foreign(e => e.UnitRatioId));
+        readonly IProperty<Unit> _unitRatio = H.Property<Unit>(c => c.Foreign(e => e.UnitRatioId));
 
 
         [Column("Commentaire")]
@@ -179,7 +179,7 @@ namespace HLab.Erp.Lims.Monographs.Data
             set => _comment.Set(value);
         }
 
-        private readonly IProperty<string> _comment = H.Property<string>(c => c.Default(""));
+        readonly IProperty<string> _comment = H.Property<string>(c => c.Default(""));
 
     }
 }

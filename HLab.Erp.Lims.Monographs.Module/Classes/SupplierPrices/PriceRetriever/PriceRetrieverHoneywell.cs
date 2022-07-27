@@ -1,19 +1,21 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
+using HLab.Erp.Core.WebService;
+using HLab.Erp.Data;
 
 namespace HLab.Erp.Lims.Monographs.Module.Classes.SupplierPrices.PriceRetriever
 {
 
     public class PriceRetrieverHoneywell : PriceRetreiver.PriceRetriever
     {
-        private string ReferenceUrl => @"http://www.sigmaaldrich.com/catalog/product/(ref)?lang=fr&region=FR";
+        string ReferenceUrl => @"http://www.sigmaaldrich.com/catalog/product/(ref)?lang=fr&region=FR";
 
 
-        private Uri GetReferenceUri(string url, string reference)
+        Uri GetReferenceUri(string url, string reference)
             => new Uri(url.Replace("(ref)", reference.Split('-')[0].ToLower()));
 
-        private bool Navigate()
+        bool Navigate()
         {
             Browser.WebBrowser.Navigate(GetReferenceUri(SupplierPrice.Supplier.ReferenceUrl, SupplierPrice.Reference));
                 return true;
@@ -34,7 +36,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.SupplierPrices.PriceRetriever
 
 //        private readonly string[] _catalogue = {"sial/", "aldrich/", "fluka/"};
 
-        private void BrowserOnDocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+void BrowserOnDocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             if (Browser.WebBrowser.DocumentTitle.Contains("404"))
             {
@@ -67,7 +69,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.SupplierPrices.PriceRetriever
             target?.AttachEventHandler("onpropertychange", Handler);
         }
 
-        private async void Browser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+async void Browser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             Browser.WebBrowser.DocumentCompleted -= Browser_DocumentCompleted;
 
@@ -99,7 +101,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.SupplierPrices.PriceRetriever
             }
         }
 
-        private async void Handler(object sender, EventArgs eventArgs)
+async void Handler(object sender, EventArgs eventArgs)
         {
             var target = Browser.WebBrowser.Document?.GetElementById("row"+ SupplierPrice.Reference) ??
                          Browser.WebBrowser.Document?.GetElementById("row" + SupplierPrice.Reference + "-D");
@@ -121,6 +123,10 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.SupplierPrices.PriceRetriever
                     return;
                 }
             }
+        }
+
+        public PriceRetrieverHoneywell(IDataService dbService, IBrowserService browser) : base(dbService, browser)
+        {
         }
     }
 }

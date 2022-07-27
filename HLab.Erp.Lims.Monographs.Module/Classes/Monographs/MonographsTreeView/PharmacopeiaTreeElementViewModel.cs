@@ -1,8 +1,10 @@
 ﻿using System.Windows;
 using System.Windows.Media;
+using HLab.Erp.Data;
 using HLab.Erp.Lims.Analysis.Data;
 using HLab.Erp.Lims.Analysis.Data.Entities;
 using HLab.Erp.Lims.Monographs.Data;
+using HLab.Icons.Annotations.Icons;
 using HLab.Notify.PropertyChanged;
 
 namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView
@@ -30,5 +32,10 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView
             .On(e => e.MonographSource)
             .Update()
         );
+
+        public PharmacopoeiaTreeElementViewModel(IDataService db, IIconService icons) : base(db, icons)
+        {
+            H.Initialize(this);
+        }
     }
 }

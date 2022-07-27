@@ -17,18 +17,20 @@ namespace HLab.Erp.Lims.Monographs.Module.Graph.Blocks.Volumes
             set => _volumes.Set(value);
         }
 
-        private readonly IProperty<double> _volumes = H.Property<double>(c => c.Default(0.0));
+        readonly IProperty<double> _volumes = H.Property<double>(c => c.Default(0.0));
 
 
         public double Ratio => _ratio.Get();
-        private readonly IProperty<double> _ratio = H.Property<double>(c => c
+
+        readonly IProperty<double> _ratio = H.Property<double>(c => c
             .On(e => ((VolumesBlock)e.Group.Block).NbVolumes)
             .Set(e => e.Volumes / ((VolumesBlock)e.Group.Block).NbVolumes)
         );
 
 
         public override double Value => _value.Get();
-        private readonly IProperty<double> _value = H.Property<double>(c => c
+
+        readonly IProperty<double> _value = H.Property<double>(c => c
                 .On(e => e.Ratio)
                 .On("Group.Block.Output.Value")
                 .Set(e => e.Value) // TODO : base.Value

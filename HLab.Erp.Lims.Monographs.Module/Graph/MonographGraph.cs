@@ -5,6 +5,8 @@ using HLab.Erp.Lims.Monographs.Module.Graph.Blocks.Injection;
 using HLab.Erp.Lims.Monographs.Module.Graph.Blocks.Solution;
 using HLab.Erp.Lims.Monographs.Module.Graph.Blocks.Test;
 using HLab.Erp.Lims.Monographs.Module.Graph.Blocks.Volumes;
+using HLab.Mvvm.Flowchart;
+using HLab.Mvvm.Flowchart.Models;
 using HLab.Notify.PropertyChanged;
 
 namespace HLab.Erp.Lims.Monographs.Module.Graph
@@ -14,16 +16,16 @@ namespace HLab.Erp.Lims.Monographs.Module.Graph
     [DataContract]
     public class MonographGraph : Mvvm.Flowchart.Models.Graph
     {
-        public MonographGraph() => H.Initialize(this);
+        public MonographGraph(GraphService graphService) : base(graphService) => H.Initialize(this);
 
-        public void ConvertMonograph(Monograph monograph)
+        public void ConvertMonograph(GraphBlock.Injector i, Monograph monograph)
         {
             Monograph = monograph;
 
 
-            var s = new SolutionBlock{Parent = this, Id = "SOL"};
-            var v = new VolumesBlock { Parent = this, Id = "VOL"};
-            var g = new InjectionBlock { Parent = this, Id = "INJ"};
+            var s = new SolutionBlock(i){Parent = this, Id = "SOL"};
+            var v = new VolumesBlock(i){ Parent = this, Id = "VOL"};
+            var g = new InjectionBlock(i){ Parent = this, Id = "INJ"};
 
 
             g.Gradient.Set("A", 0, 0.0);
@@ -48,7 +50,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Graph
 
             foreach (var c in Monograph.Consumables)
             {
-                var cb = new ConsumableBlock
+                var cb = new ConsumableBlock(i)
                 {
                     Parent = this,
                     Id = "C_" + c.Id,
@@ -76,7 +78,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Graph
 
             foreach (var test in Monograph.Tests)
             {
-                Blocks.Add(new AssayBlock
+                Blocks.Add(new AssayBlock(i)
                 {
                     Parent = this,
                     Id = "T_"+ test.Id,

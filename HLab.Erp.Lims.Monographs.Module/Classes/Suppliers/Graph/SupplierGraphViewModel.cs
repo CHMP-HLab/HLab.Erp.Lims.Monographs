@@ -3,7 +3,7 @@ using HLab.Mvvm;
 
 namespace HLab.Erp.Lims.Monographs.Module.Classes.Suppliers.Graph
 {
-    class SupplierGraphViewModel : ViewModel<Supplier>
+    internal class SupplierGraphViewModel : ViewModel<Supplier>
     {
     }
 }

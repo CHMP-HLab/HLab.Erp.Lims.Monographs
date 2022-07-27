@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HLab.Erp.Core.WebService;
+using HLab.Erp.Data;
+using System;
 using System.Windows.Forms;
 
 namespace HLab.Erp.Lims.Monographs.Module.Classes.SupplierPrices.PriceRetreiver
@@ -6,6 +8,10 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.SupplierPrices.PriceRetreiver
 
     public class PriceRetrieverBp : PriceRetriever
     {
+        public PriceRetrieverBp(IDataService dbService, IBrowserService browser) : base(dbService, browser)
+        {
+        }
+
         public override void Process()
         {
             //ChangeUserAgent();
@@ -19,7 +25,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.SupplierPrices.PriceRetreiver
             Browser.WebBrowser.Navigate(url);
         }
 
-        private void BrowserOnDocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs args)
+        void BrowserOnDocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs args)
         {
             Browser.WebBrowser.DocumentCompleted -= BrowserOnDocumentCompleted;
 
@@ -39,7 +45,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.SupplierPrices.PriceRetreiver
             }
         }
 
-        private async void BrowserOnDocumentCompleted2(object sender, WebBrowserDocumentCompletedEventArgs args)
+        async void BrowserOnDocumentCompleted2(object sender, WebBrowserDocumentCompletedEventArgs args)
         {
             Browser.WebBrowser.DocumentCompleted -= BrowserOnDocumentCompleted2;
             var doc = (Browser.WebBrowser?.Document);

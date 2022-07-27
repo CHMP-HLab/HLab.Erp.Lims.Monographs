@@ -18,9 +18,9 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Consumables.Monographs
 
     public class MonographConsumableViewModel : ViewModel<MonographConsumable>, IMvvmContextProvider
     {
-        private readonly IDataService _db;
-        private readonly IBrowserService _browser;
-        private readonly IUnitService _units;
+        readonly IDataService _db;
+        readonly IBrowserService _browser;
+        readonly IUnitService _units;
 
         public MonographConsumableViewModel(IDataService db, IBrowserService browser, IUnitService units)
         {
@@ -58,7 +58,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Consumables.Monographs
                 .FluentUpdate());
         }
 
-        private readonly IProperty<ObservableQuery<SupplierPrice>> _prices = H.Property<ObservableQuery<SupplierPrice>>(c => c
+        readonly IProperty<ObservableQuery<SupplierPrice>> _prices = H.Property<ObservableQuery<SupplierPrice>>(c => c
             .On(e => e.Model.ConsumableId)
             .Do(e => e.Prices.OnTriggered())
         );
@@ -71,7 +71,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Consumables.Monographs
                 .Link(() => Prices));
         }
 
-        private readonly IProperty<ObservableViewModelCollection<SupplierPriceViewModel>> _pricesViewModel = H.Property<ObservableViewModelCollection<SupplierPriceViewModel>>(c => c
+        readonly IProperty<ObservableViewModelCollection<SupplierPriceViewModel>> _pricesViewModel = H.Property<ObservableViewModelCollection<SupplierPriceViewModel>>(c => c
             .On(e => e.Prices)
             .Do(e => e.PricesViewModel.OnTriggered())
         );
@@ -147,7 +147,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Consumables.Monographs
             set => _supplier.Set(value);
         }
 
-        private readonly IProperty<Supplier> _supplier = H.Property<Supplier>(c => c.Default((Supplier)default));
+        readonly IProperty<Supplier> _supplier = H.Property<Supplier>(c => c.Default((Supplier)default));
 
 
         public ObservableQuery<Supplier> SupplierList
@@ -156,7 +156,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Consumables.Monographs
             set => _supplierList.Set(value.FluentUpdate());
         }
 
-        private readonly IProperty<ObservableQuery<Supplier>> _supplierList = H.Property<ObservableQuery<Supplier>>(c => c
+        readonly IProperty<ObservableQuery<Supplier>> _supplierList = H.Property<ObservableQuery<Supplier>>(c => c
             .On(e => e)
             .Do(e => e.SupplierList.Update())
         );

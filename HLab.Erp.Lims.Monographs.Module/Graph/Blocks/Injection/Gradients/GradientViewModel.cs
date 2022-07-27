@@ -33,7 +33,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Graph.Blocks.Injection.Gradients
             }
         }
 
-        private void Channels_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        void Channels_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             foreach (var item in e.NewItems.OfType<GradientChannel>())
             {

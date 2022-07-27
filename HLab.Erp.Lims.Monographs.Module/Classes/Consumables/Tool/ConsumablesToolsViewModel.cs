@@ -21,7 +21,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Consumables.Tool
 {
     using H = H<ConsumablesToolsViewModel>;
 
-    class ConsumablesToolsViewModel : ViewModel
+    internal class ConsumablesToolsViewModel : ViewModel
         , IMvvmContextProvider
         , IToolListViewModel
     {
@@ -31,8 +31,8 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Consumables.Tool
             public override string MenuPath => "tools";
         }
 
-        private readonly IMessageBus _msg;
-        private readonly IDataService _db;
+        readonly IMessageBus _msg;
+        readonly IDataService _db;
 
         public ConsumablesToolsViewModel(IMessageBus msg, IDataService db)
         {
@@ -46,25 +46,26 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Consumables.Tool
 
         public string Title => "{Consumables}";
 
-        private void SetDocument(FlowDocument doc) => Document = doc;
+        void SetDocument(FlowDocument doc) => Document = doc;
 
         public FlowDocument Document
         {
             get => _document.Get();
             set => _document.Set(value);
         }
-        private readonly IProperty<FlowDocument> _document = H.Property<FlowDocument>();
+
+        readonly IProperty<FlowDocument> _document = H.Property<FlowDocument>();
 
         public string Search
         {
             get => _search.Get();
             set => _search.Set(value);
         }
-        private readonly IProperty<string> _search = H.Property<string>();
+
+        readonly IProperty<string> _search = H.Property<string>();
 
 
-
-        private void OnSelectedText(SelectedMonographieEditor msg)
+        void OnSelectedText(SelectedMonographieEditor msg)
         {
             Search = msg.Text;
         }
@@ -106,7 +107,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Consumables.Tool
             set => _searchList.Set(value.FluentUpdate());
         }
 
-        private readonly IProperty<ObservableQuery<Consumable>> _searchList = H.Property<ObservableQuery<Consumable>>(c => c
+        readonly IProperty<ObservableQuery<Consumable>> _searchList = H.Property<ObservableQuery<Consumable>>(c => c
             //.On(e => e)
             //.Update()
         );
