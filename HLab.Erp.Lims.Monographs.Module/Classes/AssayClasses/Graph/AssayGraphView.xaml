@@ -8,9 +8,9 @@
              xmlns:core="clr-namespace:HLab.Erp.Core;assembly=HLab.Erp.Core.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <graph1:BlockGraphView Foreground="White" x:Name="Block">
+    <graph1:BlockGraphView Foreground="{DynamicResource HLab.Brushes.Foreground}" x:Name="Block">
         <StackPanel>
-            <!--<TextBlock Text="{Binding Model.TestClass.Name, FallbackValue='Test'}"  Foreground="AliceBlue" FontWeight="Bold"/>-->
+            <!--<TextBlock Text="{Binding Model.TestClass.Name, FallbackValue='Test'}"  Foreground="{DynamicResource HLab.Brushes.Foreground}" FontWeight="Bold"/>-->
             <core:TextBoxAdvanced 
                 Text="{Binding Model.Name, FallbackValue='Test'}" 
                        DefaultBackground="{Binding State.Front}" 
@@ -53,7 +53,7 @@
                     Text="{Binding Norme, FallbackValue=Norme, UpdateSourceTrigger=PropertyChanged}" 
                     FontStyle="Italic"
                     Background="Transparent"
-                    Foreground="AliceBlue"
+                    Foreground="{DynamicResource HLab.Brushes.Foreground}"
                     BorderThickness="0"
                     AcceptsReturn="True"
                     GotKeyboardFocus="TextBox_OnGotKeyboardFocus"

@@ -13,7 +13,7 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <!--<Border Grid.ColumnSpan="2" CornerRadius="5" Margin="-2" BorderBrush="White" BorderThickness="2"/>-->
-        <TextBlock FontWeight="Black" FontSize="12" Opacity="0.8" Foreground="White" Grid.Column="0" Text="{Binding Model.Volumes,FallbackValue=5}"/>
+        <TextBlock FontWeight="Black" FontSize="12" Opacity="0.8" Foreground="{DynamicResource HLab.Brushes.Foreground}" Grid.Column="0" Text="{Binding Model.Volumes,FallbackValue=5}"/>
 
     </Grid>
 </UserControl>

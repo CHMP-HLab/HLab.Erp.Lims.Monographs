@@ -20,7 +20,7 @@
         </Grid.RowDefinitions>
 
 
-        <Label Grid.Row="0" Grid.Column="0" Foreground="AliceBlue">Debit :</Label>
+        <Label Grid.Row="0" Grid.Column="0" Foreground="{DynamicResource HLab.Brushes.Foreground}">Debit :</Label>
         <StackPanel Grid.Row="0" Grid.Column="1"
                     Grid.ColumnSpan="4"
                     Orientation="Horizontal">
@@ -29,7 +29,7 @@
                                   IsEditable="True"
                                   ItemsSource="{Binding FlowRateList}"
             />
-            <Label Foreground="AliceBlue">mL/min</Label>
+            <Label Foreground="{DynamicResource HLab.Brushes.Foreground}">mL/min</Label>
         </StackPanel>
 
         <!-- Row 2 -->
@@ -53,7 +53,7 @@
 
                 </core:TextBoxDecimal>
             </Border>
-            <Label Foreground="AliceBlue" VerticalAlignment="Center">mL</Label>
+            <Label Foreground="{DynamicResource HLab.Brushes.Foreground}" VerticalAlignment="Center">mL</Label>
         </StackPanel>
 
     </Grid>

@@ -6,7 +6,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Background="#A0000000">
-        <Label HorizontalAlignment="Left" VerticalAlignment="Center" Content="{Binding Model.Nom,FallbackValue=Supplier}" Foreground="AliceBlue">
+        <Label HorizontalAlignment="Left" VerticalAlignment="Center" Content="{Binding Model.Nom,FallbackValue=Supplier}" Foreground="{DynamicResource HLab.Brushes.Foreground}">
             <Label.LayoutTransform>
                 <RotateTransform Angle="-90" />
             </Label.LayoutTransform>

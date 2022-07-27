@@ -41,7 +41,7 @@
                 <Label 
                     Margin="5"
                     Padding="1"
-                    Foreground="White"
+                    Foreground="{DynamicResource HLab.Brushes.Foreground}"
                     Background="{Binding State.Front}" Grid.Column="1"  Grid.Row="1" Content="{Binding Model.AssayName, FallbackValue=Nom du test}" FontWeight="Bold"/>
 
                 <Grid Grid.Column="1" Grid.Row="2">
@@ -55,8 +55,8 @@
                     </Grid.RowDefinitions>
                     <!--<Label FontWeight="Bold">Description</Label>
                     <Label Grid.Column="1" FontWeight="Bold">Norme</Label>-->
-                    <Label Opacity="0.8" Foreground="White" Grid.Row="1" Content="{Binding Model.Description, FallbackValue=Description}" FontStyle="Italic"/>
-                    <Label Foreground="White" Grid.Row="1" Grid.Column="1" Content="{Binding Model.Specification, FallbackValue=Norme}" FontStyle="Italic"/>
+                    <Label Opacity="0.8" Foreground="{DynamicResource HLab.Brushes.Foreground}" Grid.Row="1" Content="{Binding Model.Description, FallbackValue=Description}" FontStyle="Italic"/>
+                    <Label Foreground="{DynamicResource HLab.Brushes.Foreground}" Grid.Row="1" Grid.Column="1" Content="{Binding Model.Specification, FallbackValue=Norme}" FontStyle="Italic"/>
                 </Grid>
 
 

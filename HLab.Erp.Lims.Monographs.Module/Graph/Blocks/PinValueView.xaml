@@ -11,11 +11,11 @@
              mvvm:ViewLocator.ViewMode ="{x:Type annotations:ViewModeDefault}">
     <StackPanel Margin="0,0,10,0">
         <StackPanel Orientation="Horizontal" Margin="0,-5,0,-5" Visibility="{Binding E1Visibility}">
-            <Label FontStyle="Italic" Foreground="White" VerticalAlignment="Center">E1 :</Label>
+            <Label FontStyle="Italic" Foreground="{DynamicResource HLab.Brushes.Foreground}" VerticalAlignment="Center">E1 :</Label>
             <ContentControl VerticalAlignment="Center" Content ="{Binding Value1,FallbackValue=Value1}"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="0,-5,0,-5" Visibility="{Binding EnVisibility}">
-            <Label FontStyle="Italic" Foreground="White">En :</Label>
+            <Label FontStyle="Italic" Foreground="{DynamicResource HLab.Brushes.Foreground}">En :</Label>
             <ContentControl VerticalAlignment="Center" Content ="{Binding ValueN,FallbackValue=ValueN}"/>
         </StackPanel>
     </StackPanel>

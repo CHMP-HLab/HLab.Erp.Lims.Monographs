@@ -30,8 +30,8 @@
                         MaxWidth="20"
                         HorizontalAlignment="Right"/>
                     <!--<Label VerticalAlignment="Top"  Width="50" Height="50" Content="{Binding Icon}"/>-->
-                    <TextBox BorderThickness="0" IsReadOnly="True" Background="Transparent"  Foreground="AliceBlue"  Margin="5,0,5,0" Text="{Binding ViewQty, StringFormat=N2, FallbackValue=-.--, Mode=OneWay}"/>
-                    <TextBox BorderThickness="0" IsReadOnly="True" Background="Transparent"  Foreground="AliceBlue"   Margin="5,0,5,0" Text="{Binding ViewQtyNext, StringFormat=N2, FallbackValue=-.--, Mode=OneWay}"/>
+                    <TextBox BorderThickness="0" IsReadOnly="True" Background="Transparent"  Foreground="{DynamicResource HLab.Brushes.Foreground}"  Margin="5,0,5,0" Text="{Binding ViewQty, StringFormat=N2, FallbackValue=-.--, Mode=OneWay}"/>
+                    <TextBox BorderThickness="0" IsReadOnly="True" Background="Transparent"  Foreground="{DynamicResource HLab.Brushes.Foreground}"   Margin="5,0,5,0" Text="{Binding ViewQtyNext, StringFormat=N2, FallbackValue=-.--, Mode=OneWay}"/>
                     <TextBox BorderThickness="0" IsReadOnly="True" Background="Transparent"  Foreground="#80FFFFFF"   Margin="5,0,5,0" Text="{Binding ViewUnit.Symbol, FallbackValue=--, Mode=OneWay}"/>
                 </StackPanel>
             </ToggleButton>

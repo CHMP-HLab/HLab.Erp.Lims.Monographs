@@ -157,7 +157,7 @@
                                 </Grid>
                             
                             <StackPanel Orientation="Horizontal" Grid.Column="0"  VerticalAlignment="Center">
-                            <!--<Label Foreground="AliceBlue" IsHitTestVisible="False"  VerticalAlignment="Center" Grid.Column="0"  Content ="{Binding LeftLinks.Count, FallbackValue=0}"/>-->
+                            <!--<Label Foreground="{DynamicResource HLab.Brushes.Foreground}" IsHitTestVisible="False"  VerticalAlignment="Center" Grid.Column="0"  Content ="{Binding LeftLinks.Count, FallbackValue=0}"/>-->
                             <graph1:Anchor 
                                 Grid.Column="0" 
                                 Margin="-7,0" 
@@ -181,7 +181,7 @@
             
                                 DragCanvas="{Binding DragCanvas}"            
                                 />
-                                <!--<Label Foreground="AliceBlue" IsHitTestVisible="False" VerticalAlignment="Center" Grid.Column="2"  Content ="{Binding RightLinks.Count, FallbackValue=0}"/>-->
+                                <!--<Label Foreground="{DynamicResource HLab.Brushes.Foreground}" IsHitTestVisible="False" VerticalAlignment="Center" Grid.Column="2"  Content ="{Binding RightLinks.Count, FallbackValue=0}"/>-->
 
                             </StackPanel>
                         </Grid>

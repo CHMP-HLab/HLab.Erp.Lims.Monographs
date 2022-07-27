@@ -27,15 +27,15 @@
             </Grid.ColumnDefinitions>
             
             <StackPanel>
-                <Label Foreground="AliceBlue" FontWeight="Bold" FontSize="20" Content="{Binding Model.Inn.Name, FallbackValue=Abacavir Sulfate}"></Label>
+                <Label Foreground="{DynamicResource HLab.Brushes.Foreground}" FontWeight="Bold" FontSize="20" Content="{Binding Model.Inn.Name, FallbackValue=Abacavir Sulfate}"></Label>
                 <StackPanel Orientation="Horizontal">
                     <ContentControl
-                    Foreground="White" 
+                    Foreground="{DynamicResource HLab.Brushes.Foreground}" 
                     VerticalAlignment="Top" 
                     HorizontalAlignment="Center" Height="25" Width ="25"  Content="{Binding IconForm}"/>
                     <Label Foreground="LightBlue" FontSize="17" FontStyle="Italic" Content="{Binding Model.Form.Name, FallbackValue=Abacavir Sulfate}"/>
                 </StackPanel>
-                <Label HorizontalAlignment="Left" FontSize="10" Foreground="White" Content="{Binding Model.Id}"></Label>
+                <Label HorizontalAlignment="Left" FontSize="10" Foreground="{DynamicResource HLab.Brushes.Foreground}" Content="{Binding Model.Id}"></Label>
             </StackPanel>
             
             <monographs1:MonographCostView Grid.Column="1"/>
@@ -43,7 +43,7 @@
             <StackPanel Grid.Column="2" Orientation="Vertical">
                 <StackPanel Orientation="Horizontal">
                     <ContentControl 
-                        Foreground="AliceBlue" 
+                        Foreground="{DynamicResource HLab.Brushes.Foreground}" 
                         VerticalAlignment="Top" 
                         HorizontalAlignment="Center" 
                         Height="40" 
@@ -51,7 +51,7 @@
                         Content="{Binding IconPharmacopoeia}"/>
 
                     <Label 
-                        Foreground="AliceBlue" 
+                        Foreground="{DynamicResource HLab.Brushes.Foreground}" 
                         FontSize="15" 
                         HorizontalAlignment="Center" 
                         FontWeight="Bold" 
@@ -70,7 +70,7 @@
                         <RowDefinition Height ="Auto"/>
                     </Grid.RowDefinitions>
                     
-                    <Label Foreground="AliceBlue" FontStyle="Italic">Version</Label>
+                    <Label Foreground="{DynamicResource HLab.Brushes.Foreground}" FontStyle="Italic">Version</Label>
 
                     <ComboBox
                         Grid.Row="0"
@@ -84,7 +84,7 @@
                     <Label 
                         Grid.Row="1"
                         Grid.Column="0"
-                        Foreground="AliceBlue" FontStyle="Italic">Référence</Label>
+                        Foreground="{DynamicResource HLab.Brushes.Foreground}" FontStyle="Italic">Référence</Label>
                     
                         <TextBox 
                         Grid.Row="1"

@@ -6,7 +6,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel Orientation="Horizontal">
-            <TextBlock Foreground="White" Text="{Binding Value,FallbackValue=100.0}"/>
-            <TextBlock Margin="5,0,0,0" Foreground="White" Text="{Binding Unit.Symbol,FallbackValue=ml}"/>
+            <TextBlock Foreground="{DynamicResource HLab.Brushes.Foreground}" Text="{Binding Value,FallbackValue=100.0}"/>
+            <TextBlock Margin="5,0,0,0" Foreground="{DynamicResource HLab.Brushes.Foreground}" Text="{Binding Unit.Symbol,FallbackValue=ml}"/>
     </StackPanel>
 </UserControl>

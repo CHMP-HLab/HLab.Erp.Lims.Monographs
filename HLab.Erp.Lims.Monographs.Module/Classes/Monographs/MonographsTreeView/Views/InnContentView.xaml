@@ -14,7 +14,7 @@
              d:DataContext="{d:DesignInstance Type=monographs:InnTreeElementViewModel, IsDesignTimeCreatable=True}"
              >
     <Label 
-        Foreground="AliceBlue" 
+        Foreground="{DynamicResource HLab.Brushes.Foreground}" 
         Content="{Binding Model.Caption}" 
         FontWeight="Bold" 
         FontSize="16"

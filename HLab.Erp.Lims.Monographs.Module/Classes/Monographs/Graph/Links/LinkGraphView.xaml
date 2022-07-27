@@ -31,9 +31,9 @@
             </Path>
 
             <StackPanel x:Name="Label" VerticalAlignment="Center" Visibility="{Binding LabelVisibility}">
-                <Label Foreground="AliceBlue" Content="{Binding LeftViewModel.Model.Cost,FallbackValue=Left}"/>
-                <Label Foreground="AliceBlue" Content="{Binding LeftViewModel.Model.QtyAbs,FallbackValue=Right}"/>
-                <Label Foreground="AliceBlue" Content="{Binding Model.QtyAbs,FallbackValue=Right}"/>
+                <Label Foreground="{DynamicResource HLab.Brushes.Foreground}" Content="{Binding LeftViewModel.Model.Cost,FallbackValue=Left}"/>
+                <Label Foreground="{DynamicResource HLab.Brushes.Foreground}" Content="{Binding LeftViewModel.Model.QtyAbs,FallbackValue=Right}"/>
+                <Label Foreground="{DynamicResource HLab.Brushes.Foreground}" Content="{Binding Model.QtyAbs,FallbackValue=Right}"/>
             </StackPanel>
 
 
