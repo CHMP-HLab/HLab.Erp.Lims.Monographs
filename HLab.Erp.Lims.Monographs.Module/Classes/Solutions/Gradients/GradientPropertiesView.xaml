@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:core="clr-namespace:HLab.Erp.Core;assembly=HLab.Erp.Core.Wpf"
+             xmlns:wpf="clr-namespace:HLab.Erp.Core.Wpf;assembly=HLab.Erp.Core.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Grid.Column="0">
@@ -24,7 +25,7 @@
         <StackPanel Grid.Row="0" Grid.Column="1"
                     Grid.ColumnSpan="4"
                     Orientation="Horizontal">
-            <core:ComboBoxDecimal Width="50"
+            <wpf:ComboBoxDecimal Width="50"
                                   Text="{Binding Model.FlowRate}"
                                   IsEditable="True"
                                   ItemsSource="{Binding FlowRateList}"
@@ -42,7 +43,7 @@
                 Background="LightGray"
                 Opacity="0.5"
 >
-            <core:TextBoxDecimal
+            <wpf:TextBoxDecimal
                 TextAlignment="Center"
                 VerticalContentAlignment="Center"
                 Width="50"
@@ -51,7 +52,7 @@
                 BorderThickness="1,0,1,0"
             >
 
-                </core:TextBoxDecimal>
+                </wpf:TextBoxDecimal>
             </Border>
             <Label Foreground="{DynamicResource HLab.Brushes.Foreground}" VerticalAlignment="Center">mL</Label>
         </StackPanel>

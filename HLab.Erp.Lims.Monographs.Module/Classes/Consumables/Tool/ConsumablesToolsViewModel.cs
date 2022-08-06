@@ -27,19 +27,22 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Consumables.Tool
     {
         public class Bootloader : NestedBootloader
         {
-            public override bool Allowed => Erp.Acl.IsGranted(AclRights.BetaTest);
+            readonly IAclService _acl;
+            public Bootloader(IAclService acl)
+            {
+                _acl = acl;
+            }
+            public override bool Allowed => _acl.IsGranted(AclRights.BetaTest);
             public override string MenuPath => "tools";
         }
 
-        readonly IMessageBus _msg;
         readonly IDataService _db;
 
-        public ConsumablesToolsViewModel(IMessageBus msg, IDataService db)
+        public ConsumablesToolsViewModel(IMessagesService msg, IDataService db)
         {
-            _msg = msg;
             _db = db;
-            _msg.Subscribe<SelectedMonographieEditor>(OnSelectedText);
-            _msg.Subscribe<FlowDocument>(SetDocument);
+            msg.Subscribe<SelectedMonographieEditor>(OnSelectedText);
+            msg.Subscribe<FlowDocument>(SetDocument);
 
             H.Initialize(this);
         }

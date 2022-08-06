@@ -37,7 +37,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
 
     public class MonographGraphViewModel : MonographViewModel, IDropViewModel, IMvvmContextProvider
     {
-        readonly IMessageBus _msg;
+        readonly IMessagesService _msg;
         readonly IDataService _db;
         public IMvvmService MvvmService { get; }
         public MonographGraph MonographGraph { get; }
@@ -96,7 +96,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
 
 
 
-        public MonographGraphViewModel(IBrowserService browser, IMessageBus msg) : base(browser)
+        public MonographGraphViewModel(IBrowserService browser, IMessagesService msg) : base(browser)
         {
             _msg = msg;
             _msg.Subscribe<SelectedMonographieEditor>(

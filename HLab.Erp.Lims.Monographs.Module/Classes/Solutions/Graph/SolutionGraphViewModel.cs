@@ -27,10 +27,10 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Solutions.Graph
 
     public class SolutionGraphViewModel : GraphViewModel<MonographSolution>, IDropViewModel
     {
-        IMessageBus _msg;
+        IMessagesService _msg;
         IDataService _db;
 
-        public SolutionGraphViewModel(IMessageBus msg, IDataService db, IDialogService dialog)
+        public SolutionGraphViewModel(IMessagesService msg, IDataService db, IDialogService dialog)
         {
             _msg = msg;
             _db = db;

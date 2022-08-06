@@ -21,9 +21,9 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph.Links
 
     public class LinkGraphViewModel : ViewModel<MonographLink>
     {
-        readonly IMessageBus _msg;
+        readonly IMessagesService _msg;
         readonly IDataService _db;
-        public LinkGraphViewModel(IMessageBus msg, IDataService db, IDialogService dialog)
+        public LinkGraphViewModel(IMessagesService msg, IDataService db, IDialogService dialog)
         {
             _msg = msg;
             _db = db;

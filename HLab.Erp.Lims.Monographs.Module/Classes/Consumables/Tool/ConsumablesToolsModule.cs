@@ -1,31 +1,33 @@
 ﻿using System.Windows.Input;
 using HLab.Core.Annotations;
 using HLab.Erp.Core;
+using HLab.Mvvm.Application;
 using HLab.Notify.PropertyChanged;
 
-namespace HLab.Erp.Lims.Monographs.Module.Classes.Consumables.Tool
+namespace HLab.Erp.Lims.Monographs.Module.Classes.Consumables.Tool;
+
+using H = H<ConsumablesToolsModule>;
+
+public class ConsumablesToolsModule : NotifierBase, IBootloader
 {
-    using H = H<ConsumablesToolsModule>;
+    readonly IDocumentService _docs;
+    readonly IMenuService _menu;
 
-    public class ConsumablesToolsModule : NotifierBase, IBootloader
+    public ConsumablesToolsModule(IDocumentService docs, IMenuService menu)
     {
-        readonly IErpServices _erp;
+        _docs = docs;
+        _menu = menu;
+        H.Initialize(this);
+    }
 
-        public ConsumablesToolsModule(IErpServices erp)
-        {
-            _erp = erp;
-            H.Initialize(this);
-        }
+    public ICommand ConsumablesListCommand { get; } = H.Command(c => c
+        .Action(
+            e => e._docs.OpenDocumentAsync<ConsumablesToolsViewModel>()
+        )
+    );
 
-        public ICommand ConsumablesListCommand { get; } = H.Command(c => c
-            .Action(
-                e => e._erp.Docs.OpenDocumentAsync<ConsumablesToolsViewModel>()
-            )
-        );
-
-        public void Load(IBootContext b)
-        {
-            _erp.Menu.RegisterMenu("data/consumables", "{Consumables}", ConsumablesListCommand, "Icons/Consumable");
-        }
+    public void Load(IBootContext b)
+    {
+        _menu.RegisterMenu("data/consumables", "{Consumables}", ConsumablesListCommand, "Icons/Consumable");
     }
 }

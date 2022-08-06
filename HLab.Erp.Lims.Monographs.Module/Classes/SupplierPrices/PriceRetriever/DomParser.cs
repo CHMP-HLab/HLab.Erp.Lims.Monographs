@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -136,8 +137,7 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.SupplierPrices.PriceRetriever
 
             browser.Navigate(url);
 
-            var java = new Thread(CloseJavaErrors);
-            java.Start();
+            Task.Run(CloseJavaErrors);
         }
 
         bool _javaCloseRunning = false;
@@ -147,11 +147,11 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.SupplierPrices.PriceRetriever
             _javaCloseRunning = true;
             while (_javaCloseRunning)
             {
-                IntPtr hwnd = FindWindowByCaption(IntPtr.Zero, "Erreur de script");
-                while (hwnd != IntPtr.Zero)
+                var hWnd = FindWindowByCaption(IntPtr.Zero, "Erreur de script");
+                while (hWnd != IntPtr.Zero)
                 {
-                    PostMessage(hwnd, 0x10, IntPtr.Zero, IntPtr.Zero);
-                    hwnd = FindWindowByCaption(IntPtr.Zero, "Erreur de script");
+                    PostMessage(hWnd, 0x10, IntPtr.Zero, IntPtr.Zero);
+                    hWnd = FindWindowByCaption(IntPtr.Zero, "Erreur de script");
                 }
 
                 DoEvents();

@@ -25,15 +25,22 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.AssayClasses.HistoricalTools
     {
         public class Bootloader : NestedBootloader
         {
-            public override bool Allowed => Erp.Acl.IsGranted(AclRights.BetaTest);
+            readonly IAclService _acl;
+
+            public Bootloader(IAclService acl)
+            {
+                _acl = acl;
+            }
+
+            public override bool Allowed => _acl.IsGranted(AclRights.BetaTest);
             public override string MenuPath => "tools";
         }
 
-        readonly IMessageBus _msg;
+        readonly IMessagesService _msg;
         readonly IIconService _icons;
         readonly IDataService _db;
 
-        public HistoricalViewModel(IMessageBus msg, IIconService icons, IDataService db)
+        public HistoricalViewModel(IMessagesService msg, IIconService icons, IDataService db)
         {
             _msg = msg;
             _icons = icons;

@@ -7,6 +7,7 @@
              xmlns:detail="clr-namespace:HLab.Erp.Lims.Monographs.Module.Classes.Consumables.Detail"
              xmlns:core1="clr-namespace:HLab.Erp.Core;assembly=HLab.Erp.Core.Wpf"
              xmlns:detail1="clr-namespace:HLab.Erp.Lims.Monographs.Module.Classes.Consumables.Detail"
+             xmlns:wpf="clr-namespace:HLab.Erp.Core.Wpf;assembly=HLab.Erp.Core.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              d:DataContext="{d:DesignInstance Type=detail1:ConsumableViewModel, IsDesignTimeCreatable=False}"
@@ -40,7 +41,7 @@
                   SelectedItem="{Binding UniteGroup, Mode=TwoWay}"/>
         
         <Label Grid.Row="3" Grid.Column="0">Masse Molaire</Label>
-        <core1:TextBoxDecimal Grid.Row="3" Grid.Column="1"  Text="{Binding Model.MolarMass}" />
+        <wpf:TextBoxDecimal Grid.Row="3" Grid.Column="1"  Text="{Binding Model.MolarMass}" />
         <Label Grid.Row="4" Grid.Column="0">CAS</Label>
         <TextBox Grid.Row="4" Grid.Column="1"  Text="{Binding Model.CasNumber}" />
 

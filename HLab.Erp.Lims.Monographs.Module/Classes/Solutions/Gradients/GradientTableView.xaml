@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:listViewLayout1="clr-namespace:HLab.Erp.Core.ListViewLayout;assembly=HLab.Erp.Core.Wpf"
              xmlns:core="clr-namespace:HLab.Erp.Core;assembly=HLab.Erp.Core.Wpf"
+             xmlns:wpf="clr-namespace:HLab.Erp.Core.Wpf;assembly=HLab.Erp.Core.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
@@ -53,7 +54,7 @@
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Border Margin="0,0,0,-6">
-                                    <core:ComboBoxDecimal 
+                                    <wpf:ComboBoxDecimal 
                                         Height="22"
                                         MinWidth="50"
                                         Text="{Binding RatioPCent, Mode=TwoWay}"

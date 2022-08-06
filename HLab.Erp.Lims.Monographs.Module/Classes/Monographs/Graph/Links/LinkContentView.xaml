@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:core1="clr-namespace:HLab.Erp.Core;assembly=HLab.Erp.Core.Wpf"
+             xmlns:wpf="clr-namespace:HLab.Erp.Core.Wpf;assembly=HLab.Erp.Core.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="150" d:DesignWidth="300">
 
@@ -245,7 +246,7 @@
                                 </Label>
 
                                 <!-- E1 - Value -->
-                                <core1:TextBoxDecimal  
+                                <wpf:TextBoxDecimal  
                         Grid.Column="1"
                         Grid.Row="0"
                         Margin="5,0,0,0" 
@@ -270,7 +271,7 @@
                                 </Label>
 
                                 <!-- En - Value -->
-                                <core1:TextBoxDecimal  
+                                <wpf:TextBoxDecimal  
                         Grid.Column="1"
                         Grid.Row="1"
                         Margin="5,0,0,0" 
@@ -297,7 +298,7 @@
                                         Visibility="{Binding IsRatioVisibility}">/</Label>
                                     <!--IsChecked="{Binding IsRatio}"-->
 
-                                    <core1:TextBoxDecimal  
+                                    <wpf:TextBoxDecimal  
                                         Margin="0,0,0,0" 
                                         Text="{Binding Model.QtyRatio, FallbackValue=0.00}"
                                         Visibility="{Binding RatioVisibility}"

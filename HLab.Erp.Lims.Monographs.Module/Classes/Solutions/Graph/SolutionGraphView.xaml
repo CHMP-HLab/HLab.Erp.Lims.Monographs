@@ -8,6 +8,7 @@
              xmlns:mvvm="clr-namespace:HLab.Mvvm;assembly=HLab.Mvvm.Wpf"
              xmlns:monographsGraph="clr-namespace:HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph"
              xmlns:solutionsGraph="clr-namespace:HLab.Erp.Lims.Monographs.Module.Classes.Solutions.Graph"
+             xmlns:wpf="clr-namespace:HLab.Erp.Core.Wpf;assembly=HLab.Erp.Core.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              Margin="{Binding Margin}"
@@ -45,7 +46,7 @@
             
             <StackPanel Visibility="{Binding QtyMinVisibility}" Orientation="Horizontal">
                 <Label>Quantité min</Label>
-                <core:TextBoxDecimal  
+                <wpf:TextBoxDecimal  
                     Margin="0,0,0,0" 
                     VerticalContentAlignment="Center"
                     Text="{Binding Model.QtyMin, FallbackValue=0.00}"

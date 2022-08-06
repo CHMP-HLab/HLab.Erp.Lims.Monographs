@@ -18,9 +18,9 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Consumables.Graph
 
     public class ConsumableGraphViewModel : GraphViewModel<MonographConsumable>
     {
-        readonly IMessageBus _msg;
+        readonly IMessagesService _msg;
         readonly IDataService _db;
-        public ConsumableGraphViewModel(IMessageBus msg, IDataService db, IDialogService dialog)
+        public ConsumableGraphViewModel(IMessagesService msg, IDataService db, IDialogService dialog)
         {
             _msg = msg;
             _db = db;

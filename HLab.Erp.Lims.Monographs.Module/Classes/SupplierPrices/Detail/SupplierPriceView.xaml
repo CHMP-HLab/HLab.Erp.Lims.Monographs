@@ -7,6 +7,7 @@
              xmlns:mvvm="clr-namespace:HLab.Mvvm;assembly=HLab.Mvvm.Wpf"
              xmlns:annotations="clr-namespace:HLab.Mvvm.Annotations;assembly=HLab.Mvvm.Annotations"
              xmlns:core="clr-namespace:HLab.Erp.Core;assembly=HLab.Erp.Core.Wpf"
+             xmlns:wpf="clr-namespace:HLab.Erp.Core.Wpf;assembly=HLab.Erp.Core.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
@@ -79,7 +80,7 @@
                     <GridViewColumn Header="Concentration">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <core:TextBoxDecimal Text="{Binding Model.Assay}"/>
+                                <wpf:TextBoxDecimal Text="{Binding Model.Assay}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -87,7 +88,7 @@
                     <GridViewColumn Header="Densité">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <core:TextBoxDecimal Text="{Binding Model.Density}"/>
+                                <wpf:TextBoxDecimal Text="{Binding Model.Density}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -96,7 +97,7 @@
                     <GridViewColumn Header="Tarif">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <core:TextBoxDecimal Text="{Binding Model.Cost, StringFormat=f}"  TextAlignment="Right"/>
+                                <wpf:TextBoxDecimal Text="{Binding Model.Cost, StringFormat=f}"  TextAlignment="Right"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -115,7 +116,7 @@
                     <GridViewColumn Header="Tarif €/Qté">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <core:TextBoxDecimal Text="{Binding UnitPriceView, StringFormat=f, Mode=OneWay}" TextAlignment="Right"/>
+                                <wpf:TextBoxDecimal Text="{Binding UnitPriceView, StringFormat=f, Mode=OneWay}" TextAlignment="Right"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -131,7 +132,7 @@
                     <GridViewColumn Header="Remise">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <core:TextBoxDecimal Text="{Binding Model.Remise}"  TextAlignment="Right"/>
+                                <wpf:TextBoxDecimal Text="{Binding Model.Remise}"  TextAlignment="Right"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

@@ -19,12 +19,19 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.AssayClasses.Tool
     {
         public class Bootloader : NestedBootloader
         {
-            public override bool Allowed => Erp.Acl.IsGranted(AclRights.BetaTest);
+            readonly IAclService _acl;
+
+            public Bootloader(IAclService acl)
+            {
+                _acl = acl;
+            }
+
+            public override bool Allowed => _acl.IsGranted(AclRights.BetaTest);
             public override string MenuPath => "tools";
         }
         
-        public IMessageBus MessageBus { get; } 
-        public TestClassToolViewModel(IMessageBus messageBus, ObservableQuery<TestClass> searchList)
+        public IMessagesService MessageBus { get; } 
+        public TestClassToolViewModel(IMessagesService messageBus, ObservableQuery<TestClass> searchList)
         {
             MessageBus = messageBus;
             SearchList = searchList;

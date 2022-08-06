@@ -22,9 +22,9 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.EditorTool
 
     public class MonographEditorViewModel : ViewModel
     {
-        readonly IMessageBus _msg;
+        readonly IMessagesService _msg;
 
-        public MonographEditorViewModel(IMessageBus messageBus)
+        public MonographEditorViewModel(IMessagesService messageBus)
         {
             _msg = messageBus;
             H.Initialize(this);

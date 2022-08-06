@@ -22,10 +22,10 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
     {
         protected GraphViewModel() => H<GraphViewModel<T>>.Initialize(this);
 
-        readonly IMessageBus _messageBus;
+        readonly IMessagesService _messageBus;
         readonly IDragDropService _dragDropService;
 
-        protected GraphViewModel(IMessageBus messageBus, IDragDropService dragDrop)
+        protected GraphViewModel(IMessagesService messageBus, IDragDropService dragDrop)
         {
             _messageBus = messageBus;
             _dragDropService = dragDrop;
