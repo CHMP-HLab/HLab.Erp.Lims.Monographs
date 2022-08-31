@@ -1,14 +1,13 @@
-﻿using HLab.Erp.Core.Wpf.EntityLists;
-using HLab.Erp.Core.ListFilterConfigurators;
+﻿using HLab.Erp.Core.ListFilterConfigurators;
 using HLab.Erp.Lims.Analysis.Module.SampleTests;
 using HLab.Erp.Lims.Monographs.Data;
 using HLab.Mvvm.Annotations;
 
-namespace HLab.Erp.Lims.Analysis.Module.Products
+namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs
 {
-    public class MonographListViewModel : Core.EntityLists.EntityListViewModel<Monograph>, IMvvmContextProvider
+    public class MonographsListViewModel : Core.EntityLists.EntityListViewModel<Monograph>, IMvvmContextProvider
     {
-        public MonographListViewModel(Injector i) : base(i, c => c
+        public MonographsListViewModel(Injector i) : base(i, c => c
                 //.AddAllowed()
                 //.DeleteAllowed()
                 .Column("Name")
@@ -29,7 +28,7 @@ namespace HLab.Erp.Lims.Analysis.Module.Products
                     .Width(200)
                     .Link(e => e.Inn)
                         .Filter()
-                        .IconPath("Icons/Entities/Products/Inn")
+                        .IconPath("Icons/Entities/Inn")
 
                 .FormColumn(e => e.Form)
         )

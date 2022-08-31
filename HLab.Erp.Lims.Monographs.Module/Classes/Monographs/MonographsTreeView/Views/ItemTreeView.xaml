@@ -7,6 +7,7 @@
              xmlns:annotations="clr-namespace:HLab.Mvvm.Annotations;assembly=HLab.Mvvm.Annotations"
              xmlns:mvvm="clr-namespace:HLab.Mvvm;assembly=HLab.Mvvm.Wpf"
              xmlns:module1="clr-namespace:HLab.Erp.Lims.Monographs.Module"
+             xmlns:wpf="clr-namespace:HLab.Mvvm.Wpf;assembly=HLab.Mvvm.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              Tag="{Binding}"
@@ -83,8 +84,8 @@
 
         <StackPanel Grid.Column="1">
             <ContentControl
-                mvvm:ViewLocator.ViewMode="{x:Type module1:ViewModeContent}" 
-                mvvm:ViewLocator.ViewClass ="{x:Type annotations:IViewClassDefault}"
+                wpf:ViewLocator.ViewMode="{x:Type module1:ViewModeContent}" 
+                wpf:ViewLocator.ViewClass ="{x:Type annotations:IViewClassDefault}"
                 Background="Transparent"
                 BorderThickness="0"
                 Margin="0"
@@ -97,8 +98,8 @@
             </ContentControl>
 
             <ListView Visibility="{Binding ChildrenVisibility, FallbackValue=Visible}"
-                mvvm:ViewLocator.ViewMode ="{x:Type module1:ViewModeTree}"
-                mvvm:ViewLocator.ViewClass ="{x:Type annotations:IViewClassDefault}"
+                wpf:ViewLocator.ViewMode ="{x:Type module1:ViewModeTree}"
+                wpf:ViewLocator.ViewClass ="{x:Type annotations:IViewClassDefault}"
                 ItemsSource="{Binding Children}"
                 ItemContainerStyle="{StaticResource LvItemStyle}"
                 BorderThickness="0"

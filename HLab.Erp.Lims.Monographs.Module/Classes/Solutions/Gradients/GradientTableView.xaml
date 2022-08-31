@@ -4,7 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:listViewLayout1="clr-namespace:HLab.Erp.Core.ListViewLayout;assembly=HLab.Erp.Core.Wpf"
-             xmlns:core="clr-namespace:HLab.Erp.Core;assembly=HLab.Erp.Core.Wpf"
              xmlns:wpf="clr-namespace:HLab.Erp.Core.Wpf;assembly=HLab.Erp.Core.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
@@ -19,10 +18,10 @@
             x:Name ="ListView"
             ItemsSource="{Binding LinesViewModel}"
             SelectedItem = "{Binding LinesViewModel.Selected}"  
-            listViewLayout1:ListViewLayoutManager.Enabled="True"
             Margin="0"
                 
         >
+            <!--listViewLayout:ListViewLayoutManager.Enabled="True"-->
 
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">

@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit"
              xmlns:core="clr-namespace:HLab.Erp.Core;assembly=HLab.Erp.Core.Wpf"
+             xmlns:wpf="clr-namespace:HLab.Erp.Core.Wpf;assembly=HLab.Erp.Core.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
@@ -28,7 +29,7 @@
             Visibility="{Binding EditorVisibility}" 
             Grid.Row="1" 
             x:Name="RichTextBox" 
-            core:RichTextBoxHelper.DocumentXaml="{Binding EditDocument}"
+            wpf:RichTextBoxHelper.DocumentXaml="{Binding EditDocument}"
             />
         
         <FlowDocumentReader 

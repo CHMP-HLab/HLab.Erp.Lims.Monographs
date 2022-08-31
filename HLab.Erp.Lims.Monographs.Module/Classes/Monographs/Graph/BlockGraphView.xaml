@@ -10,6 +10,7 @@
              xmlns:module1="clr-namespace:HLab.Erp.Lims.Monographs.Module"
              xmlns:graph1="clr-namespace:HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph"
              xmlns:icons1="clr-namespace:HLab.Icons.Wpf.Icons;assembly=HLab.Icons.Wpf"
+             xmlns:wpf="clr-namespace:HLab.Mvvm.Wpf;assembly=HLab.Mvvm.Wpf"
 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
@@ -79,7 +80,7 @@
 
                                     <ContentControl 
                                         Content="{Binding LeftLink}" 
-                                        mvvm:ViewLocator.ViewMode="{x:Type module1:ViewModeDisplay}"/>
+                                        wpf:ViewLocator.ViewMode="{x:Type module1:ViewModeDisplay}"/>
                                     
                                     <ToggleButton 
                                         Grid.Column="1" 
@@ -151,7 +152,7 @@
                                     <ContentControl 
                                         Grid.Column="3"  
                                         Content="{Binding RightLink}" 
-                                        mvvm:ViewLocator.ViewMode="{x:Type annotations:ViewModeEdit}"
+                                        wpf:ViewLocator.ViewMode="{x:Type annotations:ViewModeEdit}"
                                         />
                                     
                                 </Grid>

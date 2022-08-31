@@ -37,19 +37,17 @@ namespace HLab.Erp.Lims.Monographs.Module.Classes.AssayClasses.HistoricalTools
         }
 
         readonly IMessagesService _msg;
-        readonly IIconService _icons;
         readonly IDataService _db;
 
-        public HistoricalViewModel(IMessagesService msg, IIconService icons, IDataService db)
+        public HistoricalViewModel(IMessagesService msg, IDataService db)
         {
             _msg = msg;
-            _icons = icons;
             _db = db;
             H.Initialize(this);
             _msg.Subscribe<SelectedMessage>(OnSelected);
         }
 
-        public object Icon => _icons.GetIconAsync("IconHistory").Result;
+        public object IconPath => "IconHistory";
         public string Title => "Historique";
 
         void OnSelected(SelectedMessage message)

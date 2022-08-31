@@ -6,6 +6,7 @@
              xmlns:base="clr-namespace:HLab.Mvvm;assembly=HLab.Mvvm"
              xmlns:annotations="clr-namespace:HLab.Mvvm.Annotations;assembly=HLab.Mvvm.Annotations"
              xmlns:mvvm="clr-namespace:HLab.Mvvm;assembly=HLab.Mvvm.Wpf"
+             xmlns:wpf="clr-namespace:HLab.Mvvm.Wpf;assembly=HLab.Mvvm.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
@@ -17,7 +18,7 @@
         <ScrollViewer Grid.Row="0">
             <ListView
                 MinHeight="500"
-                mvvm:ViewLocator.ViewMode ="{x:Type annotations:ViewModeList}"                
+                wpf:ViewLocator.ViewMode ="{x:Type annotations:ViewModeList}"                
                 Name ="ListViewHistorique"
                 ItemsSource="{Binding SearchHistoriqueList}"
                 SelectedItem="{Binding SearchHistoriqueList.Selected}"
@@ -51,7 +52,7 @@
         </ScrollViewer>
         <ScrollViewer Grid.Row="1">
             <ListView                
-                mvvm:ViewLocator.ViewMode ="{x:Type annotations:ViewModeList}"                
+                wpf:ViewLocator.ViewMode ="{x:Type annotations:ViewModeList}"                
                 x:Name ="ListView"
                 AllowDrop="True"
                 ItemsSource="{Binding SearchTestEchantillonList}"

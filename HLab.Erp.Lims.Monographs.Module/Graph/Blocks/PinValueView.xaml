@@ -5,10 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mvvm="clr-namespace:HLab.Mvvm;assembly=HLab.Mvvm.Wpf"
              xmlns:annotations="clr-namespace:HLab.Mvvm.Annotations;assembly=HLab.Mvvm.Annotations"
+             xmlns:wpf="clr-namespace:HLab.Mvvm.Wpf;assembly=HLab.Mvvm.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             mvvm:ViewLocator.ViewClass ="{x:Type annotations:IViewClassDefault}"
-             mvvm:ViewLocator.ViewMode ="{x:Type annotations:ViewModeDefault}">
+             wpf:ViewLocator.ViewClass ="{x:Type annotations:IViewClassDefault}"
+             wpf:ViewLocator.ViewMode ="{x:Type annotations:ViewModeDefault}">
     <StackPanel Margin="0,0,10,0">
         <StackPanel Orientation="Horizontal" Margin="0,-5,0,-5" Visibility="{Binding E1Visibility}">
             <Label FontStyle="Italic" Foreground="{DynamicResource HLab.Brushes.Foreground}" VerticalAlignment="Center">E1 :</Label>

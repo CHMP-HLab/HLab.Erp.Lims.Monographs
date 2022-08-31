@@ -9,6 +9,7 @@ using HLab.Erp.Lims.Monographs.Data;
 using HLab.Mvvm;
 using HLab.Mvvm.Annotations;
 using HLab.Mvvm.Views;
+using HLab.Mvvm.Wpf.Views;
 using HLab.Notify.PropertyChanged;
 
 

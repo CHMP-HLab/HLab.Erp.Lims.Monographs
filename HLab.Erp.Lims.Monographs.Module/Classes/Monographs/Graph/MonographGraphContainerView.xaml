@@ -8,6 +8,7 @@
              xmlns:flowchart="clr-namespace:HLab.Mvvm.Flowchart;assembly=HLab.Mvvm.Flowchart.Wpf"
              xmlns:mvvm="clr-namespace:HLab.Mvvm;assembly=HLab.Mvvm.Wpf"
              xmlns:graph1="clr-namespace:HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph"
+             xmlns:wpf="clr-namespace:HLab.Mvvm.Wpf;assembly=HLab.Mvvm.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              d:DataContext="{d:DesignInstance Type=graph1:MonographGraphViewModel, IsDesignTimeCreatable=True}"
@@ -23,7 +24,7 @@
                     </Grid.RowDefinitions>
                     <graph1:ZoomScrollView>
                         <ContentControl 
-                            mvvm:ViewLocator.ViewClass="{x:Type flowchart:IViewClassFlowchart}"
+                            wpf:ViewLocator.ViewClass="{x:Type flowchart:IViewClassFlowchart}"
                             Content="{Binding}"/>
                     </graph1:ZoomScrollView>
 
@@ -45,8 +46,8 @@
                     </Grid.RowDefinitions>
                     <graph1:ZoomScrollView>
                         <ContentControl
-                                    mvvm:ViewLocator.ViewMode="{x:Type annotations:ViewModeDefault}"  
-                                    mvvm:ViewLocator.ViewClass="{x:Type flowchart:IViewClassFlowchart}"  
+                                    wpf:ViewLocator.ViewMode="{x:Type annotations:ViewModeDefault}"  
+                                    wpf:ViewLocator.ViewClass="{x:Type flowchart:IViewClassFlowchart}"  
 
                                     Content="{Binding MonographGraph}"/>
 

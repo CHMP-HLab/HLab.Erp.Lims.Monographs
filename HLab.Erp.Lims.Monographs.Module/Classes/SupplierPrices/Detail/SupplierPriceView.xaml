@@ -8,6 +8,7 @@
              xmlns:annotations="clr-namespace:HLab.Mvvm.Annotations;assembly=HLab.Mvvm.Annotations"
              xmlns:core="clr-namespace:HLab.Erp.Core;assembly=HLab.Erp.Core.Wpf"
              xmlns:wpf="clr-namespace:HLab.Erp.Core.Wpf;assembly=HLab.Erp.Core.Wpf"
+             xmlns:wpf1="clr-namespace:HLab.Mvvm.Wpf;assembly=HLab.Mvvm.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
@@ -39,7 +40,7 @@
         <GridSplitter Grid.Column="1" Height="Auto" HorizontalAlignment="Stretch" />
 
         <ListView Grid.Column="2"  Width="Auto" 
-                  mvvm:ViewLocator.ViewMode ="{x:Type annotations:ViewModeList}"
+                  wpf1:ViewLocator.ViewMode ="{x:Type annotations:ViewModeList}"
                           ItemsSource="{Binding PricesViewModel}"
                           SelectedItem="{Binding PricesViewModel.Selected}"
                   

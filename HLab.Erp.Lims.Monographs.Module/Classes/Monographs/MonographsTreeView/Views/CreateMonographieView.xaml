@@ -6,10 +6,11 @@
         xmlns:annotations="clr-namespace:HLab.Mvvm.Annotations;assembly=HLab.Mvvm.Annotations"
         xmlns:monographsTreeView="clr-namespace:HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView"
         xmlns:mvvm="clr-namespace:HLab.Mvvm;assembly=HLab.Mvvm.Wpf"
+        xmlns:wpf="clr-namespace:HLab.Mvvm.Wpf;assembly=HLab.Mvvm.Wpf"
         mc:Ignorable="d"
         Height="300" Width="300"
         d:DataContext="{d:DesignInstance Type=monographsTreeView:CreateMonographViewModel, IsDesignTimeCreatable=True}"
-        mvvm:ViewLocator.ViewMode ="{x:Type annotations:ViewModeList}"
+        wpf:ViewLocator.ViewMode ="{x:Type annotations:ViewModeList}"
         >
     <DockPanel>
         <ComboBox 

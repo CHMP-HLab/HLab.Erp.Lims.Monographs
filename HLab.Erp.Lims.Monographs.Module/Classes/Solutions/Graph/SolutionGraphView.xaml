@@ -9,6 +9,7 @@
              xmlns:monographsGraph="clr-namespace:HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph"
              xmlns:solutionsGraph="clr-namespace:HLab.Erp.Lims.Monographs.Module.Classes.Solutions.Graph"
              xmlns:wpf="clr-namespace:HLab.Erp.Core.Wpf;assembly=HLab.Erp.Core.Wpf"
+             xmlns:wpf1="clr-namespace:HLab.Mvvm.Wpf;assembly=HLab.Mvvm.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              Margin="{Binding Margin}"
@@ -60,7 +61,7 @@
             </StackPanel>
 
 
-            <mvvm:ViewLocator 
+            <wpf1:ViewLocator 
                 Visibility ="{Binding GradientVisibility}"
                 Model="{Binding Model.Gradient}" 
                 ViewMode="{x:Type annotations:ViewModePreview}" 

@@ -19,6 +19,7 @@ using HLab.Erp.Lims.Monographs.Module.Classes.Suppliers.Graph;
 using HLab.Mvvm;
 using HLab.Mvvm.Annotations;
 using HLab.Mvvm.Flowchart;
+using HLab.Mvvm.Wpf;
 
 namespace HLab.Erp.Lims.Monographs.Module.Classes.Monographs.Graph
 {

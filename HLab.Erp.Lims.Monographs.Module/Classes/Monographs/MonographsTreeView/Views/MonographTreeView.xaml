@@ -6,11 +6,12 @@
              xmlns:mvvm="clr-namespace:HLab.Mvvm;assembly=HLab.Mvvm.Wpf"
              xmlns:module="clr-namespace:HLab.Erp.Lims.Monographs.Module"
              xmlns:views="clr-namespace:HLab.Erp.Lims.Monographs.Module.Classes.Monographs.MonographsTreeView.Views"
+             xmlns:wpf="clr-namespace:HLab.Mvvm.Wpf;assembly=HLab.Mvvm.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              >
     <ScrollViewer Background="White"  PreviewMouseWheel="UIElement_OnPreviewMouseWheel">
-            <StackPanel mvvm:ViewLocator.ViewMode="{x:Type module:ViewModeTree}" >
+            <StackPanel wpf:ViewLocator.ViewMode="{x:Type module:ViewModeTree}" >
                 <views:ItemTreeView/>
             </StackPanel>
     </ScrollViewer>
